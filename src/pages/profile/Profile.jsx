@@ -1,7 +1,7 @@
 import React from 'react';
 import './profile.css'
 import profile_banner from '../../assets/profile_banner.png'
-import profile_pic from '../../assets/profile.jpg'
+import profile_pic from '../../assets/seller1.png'
 import Bids from '../../components/bids/Bids'
 
 const Profile = () => {
@@ -14,10 +14,13 @@ const Profile = () => {
         </div>
         <div className="profile-pic">
             <img src={profile_pic} alt="profile" />
-            <h3>James Bond</h3>
+            <h3>Silk Road Swag</h3>
         </div>
       </div>
       <div className="profile-bottom">
+      <h1 className='bio'>First customer owned blockchain clothing brand
+      Receive SILK tokens on every order and receive your share of all future profits!</h1>
+      <h1 className='bio'>Visit us at silkroadswag.com</h1>
         <div className="profile-bottom-input">
           <input type="text" placeholder='Search Item here' />
           <select>

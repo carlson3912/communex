@@ -6,7 +6,7 @@ const Home = () => {
 
   return <div>
    <Header />
-   <Bids title="Hot Bids"  />
+   <Bids title="Upcoming Drops"  />
   </div>;
 };
 

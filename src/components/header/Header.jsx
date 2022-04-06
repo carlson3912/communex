@@ -3,7 +3,7 @@ import './header.css'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import seller1 from '../../assets/seller1.jpg'
+import seller1 from '../../assets/seller1.png'
 import seller2 from '../../assets/seller2.png'
 import seller3 from '../../assets/seller3.png'
 import seller4 from '../../assets/seller4.png'
@@ -74,12 +74,14 @@ const Header = () => {
     <div className='header section__padding'>
       <div className="header-content">
         <div>
-          <h1>Discover, collect, and sell extraordinary NFTs</h1>
+          <h1>Discover, collect, and sell wearable NFTs that are
+          backed by physical items
+          </h1>
           <img className='shake-vertical' src={coin} alt="" />
         </div>
       </div>
       <div className="header-slider">
-        <h1>Top Sellers</h1>
+        <h1>Top Stores</h1>
        <Slider {...settings} className='slider'>
             <div className='slider-card'>
               <p className='slider-card-number'>1</p>
@@ -88,9 +90,9 @@ const Header = () => {
                 <img src={verify} className='verify' alt="" />
               </div>
               <Link to={`/profile/Rian`}>
-              <p className='slider-card-name'>James Bond</p>
+              <p className='slider-card-name'>Silk Road Swag</p>
               </Link>
-              <p className='slider-card-price'>5.250 <span>ETH</span></p>
+              <p className='slider-card-price'>10,000 <span>MATIC</span></p>
             </div>
             <div className='slider-card'>
               <p className='slider-card-number'>2</p>
@@ -99,9 +101,9 @@ const Header = () => {
                 <img src={verify} className='verify' alt="" />
               </div>
               <Link to={`/profile/Rian`}>
-              <p className='slider-card-name'>Rian Leon</p>
+              <p className='slider-card-name'>Hype Kills</p>
               </Link>
-              <p className='slider-card-price'>4.932 <span>ETH</span></p>
+              <p className='slider-card-price'>6,500 <span>MATIC</span></p>
             </div>
             <div className='slider-card'>
               <p className='slider-card-number'>3</p>

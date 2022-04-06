@@ -8,6 +8,7 @@ const Menu = () => (
   <>
      <Link to="/"><p>Explore</p> </Link>
      <p>My Items</p>
+     <Link to ="/about/About"><p>About us</p></Link>
     
   </>
  )
@@ -29,7 +30,7 @@ const Menu = () => (
         <div className="navbar-links_logo">
           <img src={logo} alt="logo" />
           <Link to="/"> 
-            <h1>CryptoKet</h1>
+            <h1>CommuneX</h1>
           </Link>
         </div>
         <div className="navbar-links_container">
