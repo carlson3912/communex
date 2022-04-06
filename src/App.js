@@ -1,6 +1,6 @@
 import './App.css';
 import {Navbar,Footer} from './components'
-import { Home,Profile,Item, Create,Login,Register} from './pages'
+import { About, Home,Profile,Item, Create,Login,Register} from './pages'
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
     <div>
       <Navbar />
           <Routes>
+            <Route path="/about" element={<About />} />
             <Route path="/" element={<Home />} />
             <Route path=":item/:id" element={<Item />} />
             <Route path="/create" element={<Create /> } />
