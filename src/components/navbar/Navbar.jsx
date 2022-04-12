@@ -1,9 +1,9 @@
 import React,{ useState} from 'react'
 import './navbar.css'
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
-import logo from '../../assets/logo.png'
+import seller1 from '../../assets/seller1.png'
 import {  Link } from "react-router-dom";
-const web3 = new Web3("http://localhost:8545")
+import Web3 from "web3";
 
 const Menu = () => (
   <>
@@ -28,56 +28,425 @@ const Menu = () => (
     setUser(true);
   }
 
-  const NFTabi = require('./nft.json')
+  //const NFTabi = require('./nft.json')
   
   async function metamaskLogin(){
+    console.log("Login started")
     if(!window.ethereum){console.log("Window.ethereum error")}
     const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
+    console.log(accounts)
     setUserAddress(accounts[0])
-    setUserID(userAddress.slice(0,6) +'...'+userAddress.slice(38,41))
-  }
-  async function buyNFT(){
-    // params: [
-    //   {
-    //     from:userAddress ,
-    //     to: '0xd46e8dd67c5d32be8058bb8eb970870f07244567',
-    //     gas: '0x76c0', // 30400
-    //     gasPrice: '0x9184e72a000', // 10000000000000
-    //     value: '0x9184e72a', // 2441406250
-    //     data:
-    //       '0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675',
-    //   },
-    // ];
+    window.accounts = accounts
+    setUserID(accounts[0][0] + accounts[0][1] + accounts[0][2]+ + accounts[0][3]+accounts[0][4]+accounts[0][5]+"..."+accounts[0][38]+accounts[0][39]+accounts[0][40]+accounts[0][41])
+    // setUserID(userAddress.slice(0,6) +'...'+userAddress.slice(38,41))
+    window.web3 = new Web3(window.ethereum)
+   
+    // console.log(result)
+  //     })
+   }
+
+  // async function buyNFT(){
+  //   var Contract = require('web3-eth-contract');
     
-    window.ethereum
-      .request({
-        method: 'eth_sendTransaction',
-        params: [
-          {
-            from:userAddress ,
-            to: '0xE2687F6DfB3f330b8b4D2717dF2A3dC3E82531e1',
-            gas: '0x186A0', // 60,000 
-            gasPrice: '0x1BF08EB000', // 10000000000000
-            value: '56BC75E2D63100', // 2441406250
-          },
-        ],
-      })
-      .then((result) => {
-        // The result varies by RPC method.
-        // For example, this method will return a transaction hash hexadecimal string on success.
-      })
-      .catch((error) => {
-        // If the request fails, the Promise will reject with an error.
-      });
-  }
+  //   const abi =  [
+  //     {
+  //       "inputs": [],
+  //       "stateMutability": "nonpayable",
+  //       "type": "constructor"
+  //     },
+  //     {
+  //       "anonymous": false,
+  //       "inputs": [
+  //         {
+  //           "indexed": true,
+  //           "internalType": "address",
+  //           "name": "owner",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "indexed": true,
+  //           "internalType": "address",
+  //           "name": "approved",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "indexed": true,
+  //           "internalType": "uint256",
+  //           "name": "tokenId",
+  //           "type": "uint256"
+  //         }
+  //       ],
+  //       "name": "Approval",
+  //       "type": "event"
+  //     },
+  //     {
+  //       "anonymous": false,
+  //       "inputs": [
+  //         {
+  //           "indexed": true,
+  //           "internalType": "address",
+  //           "name": "owner",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "indexed": true,
+  //           "internalType": "address",
+  //           "name": "operator",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "indexed": false,
+  //           "internalType": "bool",
+  //           "name": "approved",
+  //           "type": "bool"
+  //         }
+  //       ],
+  //       "name": "ApprovalForAll",
+  //       "type": "event"
+  //     },
+  //     {
+  //       "anonymous": false,
+  //       "inputs": [
+  //         {
+  //           "indexed": true,
+  //           "internalType": "address",
+  //           "name": "from",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "indexed": true,
+  //           "internalType": "address",
+  //           "name": "to",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "indexed": true,
+  //           "internalType": "uint256",
+  //           "name": "tokenId",
+  //           "type": "uint256"
+  //         }
+  //       ],
+  //       "name": "Transfer",
+  //       "type": "event"
+  //     },
+  //     {
+  //       "inputs": [
+  //         {
+  //           "internalType": "address",
+  //           "name": "to",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "internalType": "uint256",
+  //           "name": "tokenId",
+  //           "type": "uint256"
+  //         }
+  //       ],
+  //       "name": "approve",
+  //       "outputs": [],
+  //       "stateMutability": "nonpayable",
+  //       "type": "function"
+  //     },
+  //     {
+  //       "inputs": [
+  //         {
+  //           "internalType": "address",
+  //           "name": "owner",
+  //           "type": "address"
+  //         }
+  //       ],
+  //       "name": "balanceOf",
+  //       "outputs": [
+  //         {
+  //           "internalType": "uint256",
+  //           "name": "",
+  //           "type": "uint256"
+  //         }
+  //       ],
+  //       "stateMutability": "view",
+  //       "type": "function",
+  //       "constant": true
+  //     },
+  //     {
+  //       "inputs": [
+  //         {
+  //           "internalType": "uint256",
+  //           "name": "tokenId",
+  //           "type": "uint256"
+  //         }
+  //       ],
+  //       "name": "getApproved",
+  //       "outputs": [
+  //         {
+  //           "internalType": "address",
+  //           "name": "",
+  //           "type": "address"
+  //         }
+  //       ],
+  //       "stateMutability": "view",
+  //       "type": "function",
+  //       "constant": true
+  //     },
+  //     {
+  //       "inputs": [
+  //         {
+  //           "internalType": "address",
+  //           "name": "owner",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "internalType": "address",
+  //           "name": "operator",
+  //           "type": "address"
+  //         }
+  //       ],
+  //       "name": "isApprovedForAll",
+  //       "outputs": [
+  //         {
+  //           "internalType": "bool",
+  //           "name": "",
+  //           "type": "bool"
+  //         }
+  //       ],
+  //       "stateMutability": "view",
+  //       "type": "function",
+  //       "constant": true
+  //     },
+  //     {
+  //       "inputs": [],
+  //       "name": "name",
+  //       "outputs": [
+  //         {
+  //           "internalType": "string",
+  //           "name": "",
+  //           "type": "string"
+  //         }
+  //       ],
+  //       "stateMutability": "view",
+  //       "type": "function",
+  //       "constant": true
+  //     },
+  //     {
+  //       "inputs": [
+  //         {
+  //           "internalType": "uint256",
+  //           "name": "tokenId",
+  //           "type": "uint256"
+  //         }
+  //       ],
+  //       "name": "ownerOf",
+  //       "outputs": [
+  //         {
+  //           "internalType": "address",
+  //           "name": "",
+  //           "type": "address"
+  //         }
+  //       ],
+  //       "stateMutability": "view",
+  //       "type": "function",
+  //       "constant": true
+  //     },
+  //     {
+  //       "inputs": [
+  //         {
+  //           "internalType": "address",
+  //           "name": "from",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "internalType": "address",
+  //           "name": "to",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "internalType": "uint256",
+  //           "name": "tokenId",
+  //           "type": "uint256"
+  //         }
+  //       ],
+  //       "name": "safeTransferFrom",
+  //       "outputs": [],
+  //       "stateMutability": "nonpayable",
+  //       "type": "function"
+  //     },
+  //     {
+  //       "inputs": [
+  //         {
+  //           "internalType": "address",
+  //           "name": "from",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "internalType": "address",
+  //           "name": "to",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "internalType": "uint256",
+  //           "name": "tokenId",
+  //           "type": "uint256"
+  //         },
+  //         {
+  //           "internalType": "bytes",
+  //           "name": "_data",
+  //           "type": "bytes"
+  //         }
+  //       ],
+  //       "name": "safeTransferFrom",
+  //       "outputs": [],
+  //       "stateMutability": "nonpayable",
+  //       "type": "function"
+  //     },
+  //     {
+  //       "inputs": [
+  //         {
+  //           "internalType": "address",
+  //           "name": "operator",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "internalType": "bool",
+  //           "name": "approved",
+  //           "type": "bool"
+  //         }
+  //       ],
+  //       "name": "setApprovalForAll",
+  //       "outputs": [],
+  //       "stateMutability": "nonpayable",
+  //       "type": "function"
+  //     },
+  //     {
+  //       "inputs": [
+  //         {
+  //           "internalType": "bytes4",
+  //           "name": "interfaceId",
+  //           "type": "bytes4"
+  //         }
+  //       ],
+  //       "name": "supportsInterface",
+  //       "outputs": [
+  //         {
+  //           "internalType": "bool",
+  //           "name": "",
+  //           "type": "bool"
+  //         }
+  //       ],
+  //       "stateMutability": "view",
+  //       "type": "function",
+  //       "constant": true
+  //     },
+  //     {
+  //       "inputs": [],
+  //       "name": "symbol",
+  //       "outputs": [
+  //         {
+  //           "internalType": "string",
+  //           "name": "",
+  //           "type": "string"
+  //         }
+  //       ],
+  //       "stateMutability": "view",
+  //       "type": "function",
+  //       "constant": true
+  //     },
+  //     {
+  //       "inputs": [],
+  //       "name": "tokenCounter",
+  //       "outputs": [
+  //         {
+  //           "internalType": "uint256",
+  //           "name": "",
+  //           "type": "uint256"
+  //         }
+  //       ],
+  //       "stateMutability": "view",
+  //       "type": "function",
+  //       "constant": true
+  //     },
+  //     {
+  //       "inputs": [],
+  //       "name": "tokenURI",
+  //       "outputs": [
+  //         {
+  //           "internalType": "string",
+  //           "name": "",
+  //           "type": "string"
+  //         }
+  //       ],
+  //       "stateMutability": "view",
+  //       "type": "function",
+  //       "constant": true
+  //     },
+  //     {
+  //       "inputs": [
+  //         {
+  //           "internalType": "uint256",
+  //           "name": "tokenId",
+  //           "type": "uint256"
+  //         }
+  //       ],
+  //       "name": "tokenURI",
+  //       "outputs": [
+  //         {
+  //           "internalType": "string",
+  //           "name": "",
+  //           "type": "string"
+  //         }
+  //       ],
+  //       "stateMutability": "view",
+  //       "type": "function",
+  //       "constant": true
+  //     },
+  //     {
+  //       "inputs": [
+  //         {
+  //           "internalType": "address",
+  //           "name": "from",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "internalType": "address",
+  //           "name": "to",
+  //           "type": "address"
+  //         },
+  //         {
+  //           "internalType": "uint256",
+  //           "name": "tokenId",
+  //           "type": "uint256"
+  //         }
+  //       ],
+  //       "name": "transferFrom",
+  //       "outputs": [],
+  //       "stateMutability": "nonpayable",
+  //       "type": "function"
+  //     },
+  //     {
+  //       "inputs": [],
+  //       "name": "createCollectible",
+  //       "outputs": [
+  //         {
+  //           "internalType": "uint256",
+  //           "name": "",
+  //           "type": "uint256"
+  //         }
+  //       ],
+  //       "stateMutability": "nonpayable",
+  //       "type": "function"
+  //     }
+  //   ]
+            
+  //   const inst = new window.web3.eth.Contract(abi, '0xE2687F6DfB3f330b8b4D2717dF2A3dC3E82531e1')
+  //   inst.methods.createCollectible().send({from: userAddress}).on('receipt', function(){console.log("yuh")});
+   
+  // }
 
   return (
     <div className='navbar'>
       <div className="navbar-links">
         <div className="navbar-links_logo">
-          <img src={logo} alt="logo" />
+          <img src={seller1} alt="logo" />
           <Link to="/"> 
-            <h1>CommuneX</h1>
+            <h1>Silk Road Swag</h1>
           </Link>
         </div>
         <div className="navbar-links_container">
@@ -97,7 +466,7 @@ const Menu = () => (
         </>
       ): (
         <>
-        <button onClick={buyNFT}>Temp</button>
+        {/* <button>Temp</button> */}
         <Link to="/login"> 
          <button type='button' className='primary-btn' onClick={handleLogin} >Sign In</button>
         </Link>

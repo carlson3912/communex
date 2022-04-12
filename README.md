@@ -30,22 +30,6 @@ $ npm start
 
 !["React Movie App"](https://raw.githubusercontent.com/kasim393/NFT-Marketplace/main/src/assets/ss4.png)
 
-# Resource
 
-    Google font: https://fonts.google.com/
-    
-    FontAwesome : https://fontawesome.com/
-    
-    Figma : https://uifreebies.net/figma/cryptoket-app-ui-kit-free
-    
-
-### Task
-- [x] Home page
-- [x] Detail page
-- [x] Login page
-- [x] Register page
-- [x] Create item page
-- [x] Profile page
-- [ ] Payment
 
  

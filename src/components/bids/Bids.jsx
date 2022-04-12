@@ -1,6 +1,7 @@
 import React from 'react'
 import './bids.css'
 import { AiFillHeart,AiOutlineHeart } from "react-icons/ai";
+import item01 from '../../assets/item01.png'
 import bids1 from '../../assets/item1.jpg'
 import bids2 from '../../assets/bids2.png'
 import bids3 from '../../assets/bids3.png'
@@ -36,14 +37,14 @@ const Bids = ({title}) => {
           <div className="card-column" >
             <div className="bids-card">
               <div className="bids-card-top">
-                <img src={bids2} alt="" />
-              <Link to={`/post/123`}>
-              <p className="bids-title">Mountain Landscape</p>
+                <img src={item01} alt="" />
+              <Link to={'Srs1'}>
+              <p className="bids-title">SRS Diagram 1</p>
               </Link>
               </div>
               <div className="bids-card-bottom">
-                <p>0.20 <span>ETH</span></p>
-                <p> <AiFillHeart /> 25</p>
+                <p>2 <span>Matic</span></p>
+                <p> <AiFillHeart /> 13</p>
               </div>
             </div>
           </div>
