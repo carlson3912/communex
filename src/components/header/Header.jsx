@@ -72,85 +72,23 @@ const Header = () => {
   };
   return (
     <div className='header section__padding'>
-      <div className="header-content">
-        <div>
-          <h1>Discover, collect, and sell wearable NFTs that are
-          backed by physical items
-          </h1>
-          <img className='shake-vertical' src={coin} alt="" />
+        <div id="rowR">
+        <div id ="row">
+          <p id ="r">SILK ROAD SWAG</p><br/>
+          <p>Democratic, decentralized, popular fashion.</p>
         </div>
+
+        <div id="row">
+          <p id="r">COLLECT $SILK</p><br/>
+          <p>Become an owner, artist, and entrepenuer.</p>
+        </div>
+        <div id="row">
+          <p id="r">META-FASHION</p><br/>
+          <p>Adorn yourself with only the littest drip.</p>
+        </div>
+
       </div>
-      <div className="header-slider">
-        <h1>Top Stores</h1>
-       <Slider {...settings} className='slider'>
-            <div className='slider-card'>
-              <p className='slider-card-number'>1</p>
-              <div className="slider-img">
-                <img src={seller1} alt="" />
-                <img src={verify} className='verify' alt="" />
-              </div>
-              <Link to={`/profile/Rian`}>
-              <p className='slider-card-name'>Silk Road Swag</p>
-              </Link>
-              <p className='slider-card-price'>10,000 <span>MATIC</span></p>
-            </div>
-            <div className='slider-card'>
-              <p className='slider-card-number'>2</p>
-              <div className="slider-img">
-                <img src={seller2} alt="" />
-                <img src={verify} className='verify' alt="" />
-              </div>
-              <Link to={`/profile/Rian`}>
-              <p className='slider-card-name'>Hype Kills</p>
-              </Link>
-              <p className='slider-card-price'>6,500 <span>MATIC</span></p>
-            </div>
-            <div className='slider-card'>
-              <p className='slider-card-number'>3</p>
-              <div className="slider-img">
-                <img src={seller3} alt="" />
-                <img src={verify} className='verify' alt="" />
-              </div>
-              <Link to={`/profile/Rian`}>
-              <p className='slider-card-name'>Lady Young</p>
-              </Link>
-              <p className='slider-card-price'>4.620 <span>ETH</span></p>
-            </div>
-            <div className='slider-card'>
-              <p className='slider-card-number'>4</p>
-              <div className="slider-img">
-                <img src={seller4} alt="" />
-                <img src={verify} className='verify' alt="" />
-              </div>
-              <Link to={`/profile/Rian`}>
-              <p className='slider-card-name'>Black Glass</p>
-              </Link>
-              <p className='slider-card-price'>4.125 <span>ETH</span></p>
-            </div>
-            <div className='slider-card'>
-              <p className='slider-card-number'>5</p>
-              <div className="slider-img">
-                <img src={seller5} alt="" />
-                <img src={verify} className='verify' alt="" />
-              </div>
-              <Link to={`/profile/Rian`}>
-              <p className='slider-card-name'>Budhiman</p>
-              </Link>
-              <p className='slider-card-price'>3.921 <span>ETH</span></p>
-            </div>
-            <div className='slider-card'>
-              <p className='slider-card-number'>6</p>
-              <div className="slider-img">
-                <img src={seller6} alt="" />
-                <img src={verify} className='verify' alt="" />
-              </div>
-              <Link to={`/profile/Rian`}>
-              <p className='slider-card-name'>Alex</p>
-              </Link>
-              <p className='slider-card-price'>3.548 <span>ETH</span></p>
-            </div>
-        </Slider>
-      </div>
+      
     </div>
   )
 }

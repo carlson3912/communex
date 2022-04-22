@@ -65,19 +65,24 @@ font-weight: normal;
 .bids-card-bottom span{
 font-weight: normal;
 }
+#c{
+color:#ff7cb9;
+}
 .load-more{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 2em;
+  width:5vw;
 }
 .load-more button{
+  text-align: center;
   background: transparent;
   border: 1px solid var(--primary-color);
   margin: 0 1rem;
   color: var(--primary-color);
   border-radius: 10px;
-  padding: 10px 100px;
+  padding: 5px 50px;
   font-family: Poppins;
   font-weight: 600;
   font-size: 14px;

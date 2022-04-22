@@ -9,9 +9,9 @@
   --primary-color: #EB1484;
   --secondary-color: #c81cc5;
 
-  --color-bg: #24252d;
-  --color-card : #2A2D3A;
-  --color-footer : #24252D;
+  --color-bg: #201d22;
+  --color-card : #490b614d;
+  --color-footer : rgba(255, 32, 255, 0.5);
 }
 /* ===== Scrollbar CSS ===== */
   /* Firefox */

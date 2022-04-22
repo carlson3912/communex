@@ -6,4 +6,5 @@ export {default as Create} from './create/Create';
 export {default as Login} from './login/Login';
 export {default as Register} from './register/Register';
 export {default as About} from './about/About';
+export {default as Submit} from './submit/Submit';
 

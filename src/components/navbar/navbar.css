@@ -4,12 +4,14 @@
   align-items: center;
   padding: 2rem 6rem;
   border-bottom: 1px solid rgba(165, 165, 165, 0.1);
+  margin:auto;
 }
 .navbar-links{
   flex: 1;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  
 }
 .navbar-links_logo{
   margin-right: 2rem;
@@ -32,6 +34,8 @@
   flex-direction: row;
   position: relative;
   align-items: center;
+  margin:auto;
+ 
 }
 .navbar-links_container input {
   background: #1B1A21;
@@ -59,6 +63,7 @@
   text-transform: capitalize;
   margin: 0 1rem;
   cursor: pointer;
+   margin-left:2vw;
 }
 .navbar-sign .primary-btn,
 .navbar-menu_container-links-sign .primary-btn
