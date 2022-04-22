@@ -395,9 +395,8 @@ async function buyNFT(){
           "type": "function"
         }
       ]
-      
     if(window.accounts){    
-    const inst = new window.web3.eth.Contract(abi, '0xC730FAE8E7d93D5DB19b9683D726E46Af35Aa422')
+    const inst = new window.web3.eth.Contract(abi, '0x3489c52ebA4b7E70Fb6E7bAff7Fd9E7eb4D2449F')
     inst.methods.createCollectible().send({from: window.accounts[0]}).on('receipt', function(receipt){
         console.log("https://ropsten.etherscan.io/tx/"+receipt.transactionHash);
         console.log(receipt);

@@ -10,7 +10,7 @@ import seller4 from '../../assets/seller4.png'
 import seller5 from '../../assets/seller5.png'
 import seller6 from '../../assets/seller6.jpg'
 import verify from '../../assets/verify.png'
-import coin from '../../assets/coin.png'
+import coin from '../../assets/seller1.png'
 import { Link  } from 'react-router-dom';
 const Header = () => {
   var settings = {
