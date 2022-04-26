@@ -1,0 +1,46 @@
+#form{
+    text-align: center;
+    font-family:var(--font-family);
+    color:white;
+    display:block;
+    margin-right:auto;
+    font-size:2em;
+}
+#in{
+    width:31em;
+    padding:1.5vh;
+    margin-bottom:3vh;
+}
+#t,h1{
+    text-align:center;
+    font-family:var(--font-family);
+    color:white;
+    display:block;
+    margin:auto;
+    font-size:3.4em;
+}
+#n{
+    margin-left:40px;
+    margin-bottom:8vh;
+}
+#s{
+    text-align:center;
+    font-family:var(--font-family);
+    color:white;
+    display:inline-flex;
+    margin-right:.5vw;
+    margin-left:43vw;
+    font-size:1.2em;
+}
+#l{
+    text-align:center;
+    font-family:var(--font-family);
+    color:aquamarine;
+    display:inline-flex;
+    margin-right:auto;
+    font-size:1.2em;
+}
+button{
+    background-color:aquamarine;
+    margin-bottom:5vh;
+}
