@@ -8,6 +8,11 @@
 
 }
 
+#timer{
+  background-color: rgb(159, 70, 172);
+  border-radius: 25px;
+}
+
 #row{
   text-align: center;
   text-justify:auto;
