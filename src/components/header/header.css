@@ -3,7 +3,7 @@
   flex-direction:row;
   background-color: aquamarine;
   width:90vw;
-  height:30vh;
+  height:10vh;
   border-radius: 25px;
 
 }
@@ -11,9 +11,11 @@
 #timer{
   background-color: rgb(159, 70, 172);
   border-radius: 25px;
+  padding-right: 6vw;
+  padding-left:6vw;
 }
 
-#row{
+#row, #row1, #row2{
   text-align: center;
   text-justify:auto;
   display:block;
@@ -187,7 +189,28 @@ border-radius: 50%;
   right: 5px;
   bottom: 2px;
 }
+#rowTop{
+  display:flex;
+}
+#topTitle{
+  flex-direction: column;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size:2em;
+  color: #FFF;}
+#topWinner{
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size:3.4em;
+  width: 30vw;
 
+}
+#topImage{
+  width:45vw;
+  margin-bottom: 5vh;
+  border-radius: 2vw;
+}
+#col{
+  flex-direction: column;
+}
 
 /* media  */
 @media screen and (max-width: 1600px) {
@@ -197,8 +220,22 @@ border-radius: 50%;
   
 }
 @media screen and (max-width: 1350px) {
+  #rowR{
+    flex-direction: column;
+  }
+  #row2{
+    font-size: 1.75em;
+    padding:0vw;
+  }
+  #row1, #row{
+    display:none;
+  }
   .header-slider .slider{
     width: 100%;
+  }
+  #timer{
+    font-size: .5em;
+    padding-bottom: 5vh;
   }
 
   .header-content div{

@@ -44,3 +44,19 @@ button{
     background-color:aquamarine;
     margin-bottom:5vh;
 }
+
+@media screen and (max-width: 1350px) {
+    #t{
+        font-size: 2em;
+    }
+    #form{
+        margin-top: -5vh;
+        margin-bottom:10vh;
+    }
+    #s{
+        margin-left:25vw;
+    }
+    #in{
+        width: 78vw;
+    }
+  }

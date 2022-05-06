@@ -47,6 +47,7 @@ export const Timer = ({date}) => {
 
  return(
     <h1>{days}:{hours}:{minutes}:{seconds}</h1>
+    
  )
 };
 
