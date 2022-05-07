@@ -17,6 +17,6 @@
 }
 
 #big{
-  flex-direction : row;
+  display: flex;
   color : white,
 }

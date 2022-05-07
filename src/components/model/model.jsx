@@ -12,6 +12,7 @@ export const Model = ({salesIn, profitIn, weeksIn}) => {
     const [profit, setProfit] = useState(profitIn);
     const [profitPercentage, setProfitPercentage] = useState(0.90);
     const [profitDecrease, setProfitDecrease] = useState(0.015);
+    const [growth, setGrowth] = useState(0.05);
     const [weeks, setWeeks] = useState(weeksIn);
 
 
@@ -27,7 +28,8 @@ export const Model = ({salesIn, profitIn, weeksIn}) => {
         var totalSilk = sales * 1.1 * 1000;
         var silkValue = totalProfit/totalSilk;
         var silktoMint = profit * percentage / silkValue;
-      
+        var finalgrowth = growth/100/4;
+        var multipler = 1 + finalgrowth;
            answer[0] = silkValue;
            silkD[0] = silktoMint;
         
@@ -38,11 +40,13 @@ export const Model = ({salesIn, profitIn, weeksIn}) => {
             silkD[1] = silktoMint;
         for (var i = 2; i<weeks;i++)
         {  
+           multipler = multipler * (1+ finalgrowth);
            percentage -= profitDecrease;
+           console.log(percentage);
            silkValue = totalProfit/totalSilk;
            silktoMint = profit * percentage / silkValue;
            totalSilk += silktoMint * sales * 1.1;
-           totalProfit += profit * sales;
+           totalProfit += profit * sales * multipler;
 
         //    console.log("TP:"+totalProfit);
         //    console.log("TS:"+totalSilk);
@@ -72,11 +76,15 @@ export const Model = ({salesIn, profitIn, weeksIn}) => {
             <input type="number" id="sales" name="sales" min="0" max="10000" step="100"/>
             <p1>Profit per item</p1>
             <input type="number" id="profit" name="profit" min="0" max="150" step="10"/>
+            <p1>Monthly Growth %</p1>
+            <input type="number" id="growth" name="profit" min="0" max="150" step="11"/>
             <button id = 'primary' value="check" onClick={ () => {
                 const salesnew = document.getElementById('sales').value;
                 const profitnew = document.getElementById('profit').value;
+                const growthnew = document.getElementById('growth').value;
                 setSales(salesnew);
                 setProfit(profitnew);
+                setGrowth(growthnew);
                 setWeeks(53);
             }
             }>
