@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Chart from '../../components/model/chart';
 import './model.css'
-import { NewModel } from "./newmodel";
 import { Line } from "react-chartjs-2";
-
+import Chart from 'chart.js/auto';
 export const Model = ({salesIn, profitIn, weeksIn}) => {
 
     

@@ -1,7 +1,6 @@
 import React, { useEffect, useState }  from 'react';
 import './about.css'
 import Model from '../../components/model/model';
-import { NewModel } from '../../components/model/newmodel';
 
 
 const About = () => {
@@ -19,7 +18,6 @@ const About = () => {
         <p1>Silk Road Swag is focused on organic growth through incentive based tokenomics aimed at growing the number of people who vote and submit designs during our weekly competitions.</p1>
       </div>
     </div>
-  // <NewModel />
   )
 };
 
