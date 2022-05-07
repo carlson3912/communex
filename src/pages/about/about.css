@@ -2,3 +2,21 @@
     color: purple;
     text-align: center;
   }
+
+  #rightbox{
+    float:right;
+    background:rgb(211,161,230);
+    width:50%;
+}
+
+#leftbox{
+  float:left;
+  background:white;
+  width:50%;
+  
+}
+
+#big{
+  flex-direction : row;
+  color : white,
+}

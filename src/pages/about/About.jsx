@@ -1,25 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState }  from 'react';
 import './about.css'
+import Model from '../../components/model/model';
+import { NewModel } from '../../components/model/newmodel';
+
 
 const About = () => {
+
+
   return( 
-    <div className = 'basicText'>
-      <h1 className = 'basicText'>Bringing the benefits of BIG BUSINESS TO SMALL BUSINESSES</h1>
-       <h1 className = 'basicText'>Who are we?</h1>
-       <h1 className = 'basicText'>We are a decentralized group of pioneers in the fashion metaverse. This platform is 100% owned by the different 
-       artists and stores that have sold items on our marketplace. By forming this DAO, our platform provides an extremely unqiue opportunity for creators to have
-       their NFTs backed by IRL, redeemable clothes. </h1>
-       <h1>Functionality of CommuneX:</h1>
-      <ul>
-        <li>Smart contract backend for marketplace, item orders, security and payment</li>
-        <li>API for sellers, maufacturers and warehouses</li>
-        <li>Protocol for communication between parties</li>
-        <li>Legally secured system</li>
-        <li>Collective bargaining with suppliers</li>
-        <li>Collective audience for launchpad</li>
-        <l1>Connect artists to vetted network of 3d animators and suppliers</l1>
-      </ul>
+    <div id='big'>
+      <div id='leftbox'>
+        <Model profitIn='30' salesIn='1000'/>
+      </div>
+      <div id="rightbox">
+        <h1>Information</h1>
+        <p1>How many Silk Roaders do we need for the brand to take off?</p1>
+        <p1>Once Silk Road Swag breaks 20,000 sales, tokens cease to be given out</p1>
+        <p1>Silk Road Swag is focused on organic growth through incentive based tokenomics aimed at growing the number of people who vote and submit designs during our weekly competitions.</p1>
+      </div>
     </div>
+  // <NewModel />
   )
 };
 
