@@ -10,7 +10,7 @@ const Menu = () => (
      <Link to="/"><p>Explore</p> </Link>
      <Link to ="Vote"><p>Vote</p></Link>
      <Link to ="Submit"><p>Submit</p></Link>
-     <Link to ="About"><p>Whitepaper</p></Link>
+     <Link to ="About"><p>About Us</p></Link>
   </>
  )
 

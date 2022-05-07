@@ -1,3 +1,8 @@
+@font-face {
+  font-family: impactFont;
+  src: url(/src/assets/fonts/REDFIVE_.TTF);
+}
+
 #rowR{
   display:flex;
   flex-direction:row;
@@ -20,7 +25,8 @@
   text-justify:auto;
   display:block;
   margin:auto;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: impactFont;
+  /* font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
   font-size:2em;
 }
 #r{
@@ -32,6 +38,7 @@
   align-items: center;
   justify-content: center;
   margin: auto;
+  
 }
 .header-content div{
   background: var(--primary-btn);
@@ -194,12 +201,14 @@ border-radius: 50%;
 }
 #topTitle{
   flex-direction: column;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: impactFont;
+  /* font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
   font-size:2em;
   color: #FFF;}
 #topWinner{
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  /* font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
   font-size:3.4em;
+  font-family: impactFont;
   width: 30vw;
 
 }

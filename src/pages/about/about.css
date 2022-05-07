@@ -1,3 +1,8 @@
+@font-face {
+  font-family: impactFont;
+  src: url(/src/assets/fonts/REDFIVE_.TTF);
+}
+
 .basicText{
     color: purple;
     text-align: center;
@@ -5,18 +10,94 @@
 
   #rightbox{
     float:right;
-    background:rgb(211,161,230);
+    background-color: #e4a2e9;
     width:50%;
+    text-align: center;
+    font-family: impactFont;
+    
+    border-width: 10px;
+    border-left-style: solid;
+    border-left: purple;
 }
 
 #leftbox{
   float:left;
   background:white;
   width:50%;
+  border-right: purple;
+  border-width: 10px;
+  border-right-style: solid;
   
 }
 
 #big{
   display: flex;
-  color : white,
+  color: purple;
 }
+
+#big2{
+  display: flex;
+  color: purple;
+}
+
+#bigtitle{
+  font-family: impactFont;
+  color: purple;
+}
+
+#product{
+  font-family: impactFont;
+  color: purple;
+}
+
+h2{
+  color: purple;
+  text-align: center;
+  
+}
+h1{
+  font-family: impactFont;
+   text-align: center;
+  color: purple;
+  background-color: #e4a2e9;
+}
+
+p1{
+  font-family: roboto;
+}
+
+#right2{
+  float:right;
+  background-color: #e4a2e9;
+  width:50%;
+  text-align: center;
+  font-family: impactFont;
+  
+  border-width: 10px;
+  border-left-style: solid;
+  border-left: purple;
+}
+
+#left2{
+color: purple;
+float:left;
+font-family: impactFont;
+background-color: #e4a2e9;
+width:50%;
+border-right: purple;
+border-width: 10px;
+border-right-style: solid;
+
+}
+
+#why{
+  color: purple;
+  font-family: impactFont;
+}
+
+p{
+  text-align: center;
+  font-family: roboto;
+}
+
+

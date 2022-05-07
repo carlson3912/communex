@@ -86,11 +86,11 @@ export const Model = ({salesIn, profitIn, weeksIn}) => {
                 setWeeks(53);
             }
             }>
-                Simulate
+                Simulate Tokenomics
             </button>
-            <h1>{sales}</h1>
+
+       
         </div>
-            {/* <Chart chartData={answer} totalData={total} silkData={silkD}/> */}
             <Line data={
                 {
                     labels: ['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52'],
@@ -128,6 +128,11 @@ export const Model = ({salesIn, profitIn, weeksIn}) => {
                   }
 
                 } />
+         <div id='explain'>
+            <h3>Silk Value: the value of $SILK after each week of sales</h3>
+            <h3>Silk Given: the amount of $SILk given to each customer from week X</h3>
+            <h3>Total Value: the total value of $SILK given to each customer during week X (value after simulating 53 weeks)</h3>
+        </div>
         </div> 
     );
 }
