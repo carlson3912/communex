@@ -1,6 +1,16 @@
+
 @font-face {
-  font-family: impactFont;
-  src: url(/src/assets/fonts/REDFIVE_.TTF);
+  font-family: kumar;
+  src: url(/src/assets/fonts/KumarOne-Regular.ttf);
+}
+@font-face {
+  font-family: kumarOutline;
+  src: url(/src/assets/fonts/kumar-one-outline/KumarOneOutline-Regular.ttf);
+}
+
+@font-face {
+  font-family: specMED;
+  src: url(/src/assets/fonts/spectral/Spectral-Medium.ttf);
 }
 
 #rowR{
@@ -8,29 +18,27 @@
   flex-direction:row;
   background-color: aquamarine;
   width:90vw;
-  height:10vh;
-  border-radius: 25px;
+  height:5vh;
+  border-radius: 0px;
 
 }
 
 #timer{
+  width:66%;
   background-color: rgb(159, 70, 172);
   border-radius: 25px;
-  padding-right: 6vw;
-  padding-left:6vw;
-}
+  padding: 25px;}
 
 #row, #row1, #row2{
   text-align: center;
   text-justify:auto;
   display:block;
   margin:auto;
-  font-family: impactFont;
-  /* font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
-  font-size:2em;
+  font-size:2.5vw;
+  font-family: kumar;
 }
 #r{
-  font-size:2.5em;
+  padding:0px;
 }
 .header{
   display: flex;
@@ -38,20 +46,13 @@
   align-items: center;
   justify-content: center;
   margin: auto;
+  padding:0px;
   
 }
-.header-content div{
-  background: var(--primary-btn);
-  width: 100%;
-  height: 300px;
-  border-radius: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin: auto;
+#time{
+ font-family:kumarOutline;
 }
 .header-content div h1{
-  font-family: var(--font-family);
   width: 70%;
   font-weight: bold;
   font-size: 48px;
@@ -75,10 +76,9 @@
   align-items: center;
 }
 .header-slider .slider{
-  width: 70%;
+  width: 100%;
 }
 .header-slider h1 {
-  font-family: var(--font-family);
   font-weight: 600;
   font-size: 28px;
   line-height: 42px;
@@ -116,7 +116,6 @@ border-radius: 50%;
   justify-content: center;
 }
 .slider-card p{
-  font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -201,21 +200,19 @@ border-radius: 50%;
 }
 #topTitle{
   flex-direction: column;
-  font-family: impactFont;
-  /* font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
   font-size:2em;
   color: #FFF;}
 #topWinner{
-  /* font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
-  font-size:3.4em;
-  font-family: impactFont;
+ font-family: kumar;
+  font-size:2.4em;
   width: 30vw;
 
 }
 #topImage{
-  width:45vw;
+  font-family: spectralMed;
+
+  width:33vw;
   margin-bottom: 5vh;
-  border-radius: 2vw;
 }
 #col{
   flex-direction: column;
@@ -242,10 +239,7 @@ border-radius: 50%;
   .header-slider .slider{
     width: 100%;
   }
-  #timer{
-    font-size: .5em;
-    padding-bottom: 5vh;
-  }
+
 
   .header-content div{
     height: 200px;

@@ -1,31 +1,38 @@
 #form{
     text-align: center;
-    font-family:var(--font-family);
-    color:white;
+font-family:spectralMed;    color:white;
     display:block;
     margin-right:auto;
-    font-size:2em;
+    font-size:1.5em;
+    margin-bottom:9vh;
+
 }
 #in{
     width:31em;
     padding:1.5vh;
     margin-bottom:3vh;
+    border-radius: 25px;
 }
 #t,h1{
+    font-family: kumar;
     text-align:center;
-    font-family:var(--font-family);
     color:white;
     display:block;
     margin:auto;
     font-size:3.4em;
 }
+#t{
+    font-family:kumarOutline;
+}
 #n{
+
     margin-left:40px;
     margin-bottom:8vh;
 }
 #s{
+    font-family: spectralMed;
+
     text-align:center;
-    font-family:var(--font-family);
     color:white;
     display:inline-flex;
     margin-right:.5vw;
@@ -33,8 +40,8 @@
     font-size:1.2em;
 }
 #l{
+    font-family: spectralMed;
     text-align:center;
-    font-family:var(--font-family);
     color:aquamarine;
     display:inline-flex;
     margin-right:auto;
