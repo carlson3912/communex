@@ -17,6 +17,7 @@ import ItemCard from "../itemCard/productCard";
 import item01 from '../../assets/item01.png'
 import { RiH1 } from 'react-icons/ri';
 
+import resp from "../../components/navbar/Navbar"
 var votes = "5";
 
 // const [hours, setHours] = useState("00");
@@ -99,22 +100,23 @@ const Header = () => {
       <br/>
         <div id="timer">
         <h1>Winner announced in:</h1>
-        <Timer date="May 9, 2022 15:00 PST"/>
+        <Timer date="May 4, 2022 15:00 PST"/>
         <div id ="rowTop">
             <div id ="col">
-            <p id ="topWinner">CURRENT WINNING SUBMISSION</p>
-            <Link to={'Srs1'}><p id ="topTitle">
+            <p id ="topWinner">CURRENT WINNING SUBMISSION   <br/> <br/></p><br/>
+            <p id ="topTitle">
             SRS Diagram 1 <br/>
             Jack Carlson & Tristen Gann <br></br>
-            2 <span>Votes</span></p><br/></Link>
+            2 <span>Votes</span></p><br/>
             </div>
     <img id ="topImage" src={item01}alt="" />
-
+    <Link to={'Srs1'}>
+  </Link>
   </div>
     <p></p>
       <ItemCard id="1"/>
     </div></div>
   )
 }
-
+console.log(resp);
 export default Header

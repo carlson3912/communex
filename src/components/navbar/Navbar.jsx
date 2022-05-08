@@ -5,7 +5,7 @@ import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import seller1 from '../../assets/seller1.png'
 import {  Link } from "react-router-dom";
 import Web3 from "web3";
-
+import axios from "./axios";
 const Menu = () => (
   <>
      <Link to="/"><p>Explore</p> </Link>
@@ -21,19 +21,34 @@ const Menu = () => (
    const [user,setUser] = useState(false)
    const [userAddress, setUserAddress] = useState(null)
    const [userID, setUserID] = useState("Connect Wallet")
-
+   const [wallet, setWallet] = useState('');
+   const [username, setUsername] = useState('');
+   const [link, setLink] = useState('Connect');
+    const handleSubmit = async (e) => {
+         e.preventDefault();
+         const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
+         console.log(accounts)
+         setUserAddress(accounts[0])
+         window.accounts = accounts
+         setWallet(accounts[0]);
+         setLink("Log In");
+         connectionProxy();
+     }
+     const connectionProxy = async () => {connection()}
+     const connection = async () => {
+       const response = await axios.post("http://localhost:3500/auth",
+                    JSON.stringify({wallet}),
+                   JSON.stringify({
+                       headers: { 'Content-Type': 'text/plain'},
+                       withCredentials: true
+                   })
+                   );
+           console.log(response);
+         await setUsername(response.data.name);
+         setLink("Connected");
+     }
   const handleLogout = () => {
     setUser(false);
-  }
-  async function handleLogin(){
-    console.log("Login started")
-    if(!window.ethereum){console.log("Window.ethereum error")}
-    const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
-    console.log(accounts)
-    setUserAddress(accounts[0])
-    window.accounts = accounts
-    setUserID(accounts[0][0] + accounts[0][1] + accounts[0][2]+ + accounts[0][3]+accounts[0][4]+accounts[0][5]+"..."+accounts[0][38]+accounts[0][39]+accounts[0][40]+accounts[0][41])
-    window.web3 = new Web3(window.ethereum)
   }
 
   return (
@@ -49,36 +64,30 @@ const Menu = () => (
           <input type="text" placeholder='Search Item Here' autoFocus={true} />
          <Menu />
          {user && <Link to="/"><p onClick={handleLogout}>Logout</p></Link> }
-        
         </div>
       </div>
       <div className="navbar-sign">
-      {user ? (
-        <>
-         <Link to="/create"> 
-          <button type='button' className='primary-btn' >Create</button>
-        </Link>
-        <button type='button' className='secondary-btn'>Connect</button>
-        </>
-      ): (
+      {!username ? (
         <>
         {/* <button>Temp</button> */}
-         <button type='button' className='primary-btn' onClick={handleLogin} >Connect</button>
+        
+         <button type='button' className='primary-btn' onClick={handleSubmit} >{link}</button>
         <Link to="/register">
             <button className='login-reg-writeButton' type='submit'>Register</button>
           </Link>
-        </>
-      )}
-       
+        </>) : <Link to="/profile">
+            <button className='primary-btn' type='submit'>{username+"'s profile"}</button>
+          </Link>
 
-       
+
+  }
       </div>
       <div className="navbar-menu">
         {toggleMenu ? 
         <RiCloseLine  color="#fff" size={27} onClick={() => setToggleMenu(false)} /> 
         : <RiMenu3Line color="#fff" size={27} onClick={() => setToggleMenu(true)} />}
         {toggleMenu && (
-          <div className="navbar-menu_container scale-up-center" >
+         <div className="navbar-menu_container scale-up-center" >
             <div className="navbar-menu_container-links">
              <Menu />
             </div>
@@ -91,16 +100,14 @@ const Menu = () => (
               </>
             ): (
               <>
-            
               {/* <Link to="/login">  */}
-              <button type='button' className='primary-btn' onClick={handleLogin} >Sign In</button>
+              <button type='button' className='primary-btn' onClick={handleSubmit} >Sign In</button>
               {/* </Link> */}
               <Link to="/register"> 
-                <button type='button' className='secondary-btn'>Sign Up</button>
+                <button type='button' className='secondary-btn'>Register</button>
               </Link>
               </>
             )}
-           
             </div>
             </div>
         )}
@@ -109,4 +116,4 @@ const Menu = () => (
   )
 }
 
-export default Navbar
+export default Navbar 

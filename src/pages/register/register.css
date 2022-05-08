@@ -1,7 +1,7 @@
 .register{
   display: flex;
-  font-family: var(--font-family);
   color: white;
+  font-family:specMed;
   justify-content: center;
   align-items: center;
   width: 100%;
