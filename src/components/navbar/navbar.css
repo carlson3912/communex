@@ -19,6 +19,17 @@ h1{
 h2{
   font-family: kumarOutline;
 }
+#navTitle{
+  font-family: kumar;
+}
+
+#navItems{
+  font-family: kumar;
+}
+
+#navItems2{
+  font-family: kumarOutline;
+}
 .navbar{
   display: flex;
   justify-content: space-between;

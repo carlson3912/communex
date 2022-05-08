@@ -1,0 +1,28 @@
+#smalldata{
+    background-color: purple;
+    width: 25%;
+    margin-left:2%;
+    margin-right:2%;
+}
+
+#bigdata{
+    margin-left:10%;
+    margin-right:10%;
+    margin-top:5%;
+   
+    display: flex;
+    text-align: center;
+}
+
+#bigdata2{
+    margin-left:10%;
+    margin-right:10%;
+    margin-bottom:5%;
+   
+    display: flex;
+    text-align: center;
+   
+    
+}
+
+

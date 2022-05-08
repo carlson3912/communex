@@ -86,28 +86,34 @@ const Header = () => {
   return (
     <div className='header'>
         <div id="rowR">
-          <div id ="row">
-            <p id ="r">SILK ROAD SWAG</p><br/>
-          </div>
+        
+            <div id ="row">
+              <p id ="r">SILK ROAD SWAG</p><br/>
+            </div>
 
-          <div id="row1">
-            <p id="r">COLLECT $SILK</p><br/>
-          </div>
-          <div id="row2">
-            <p id="r">META-FASHION</p><br/>
-          </div>
+            <div id="row1">
+              <p id="r">COLLECT $SILK</p><br/>
+            </div>
+            <div id="row2">
+              <p id="r">META-FASHION</p><br/>
+            </div>
       </div>
       <br/>
         <div id="timer">
-        <h1>Winner announced in:</h1>
-        <Timer date="May 4, 2022 15:00 PST"/>
+        <h1>Voting Opens In:</h1>
+        <Timer date="May 15, 2022 15:00 PST"/>
+        
         <div id ="rowTop">
             <div id ="col">
-            <p id ="topWinner">CURRENT WINNING SUBMISSION   <br/> <br/></p><br/>
+            <p id ="topWinner">CURRENT PRODUCT FOR SALE</p>
+            <p>buy an item to vote for future drops</p><br/><br/>
+            
+        
+        <br />
             <p id ="topTitle">
-            SRS Diagram 1 <br/>
-            Jack Carlson & Tristen Gann <br></br>
-            2 <span>Votes</span></p><br/>
+            Title: OG NFT<br/>
+            
+           </p><br/>
             </div>
     <img id ="topImage" src={item01}alt="" />
     <Link to={'Srs1'}>

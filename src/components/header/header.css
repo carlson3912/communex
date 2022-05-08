@@ -39,6 +39,7 @@
 }
 #r{
   padding:0px;
+  font-family: kumar;
 }
 .header{
   display: flex;

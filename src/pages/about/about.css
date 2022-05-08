@@ -18,8 +18,9 @@
 
 #aboutist{
   justify-content: center;
-
 }
+
+
 
 #connectingc{
   
@@ -48,6 +49,7 @@
   background-color: #b33cbc;
   border-radius: 15px;
   margin-bottom: 5%;
+
 }
 
 #connectingc3{
@@ -176,6 +178,17 @@ margin-left: 5%;
 
   #flexfire{
     display: flex;
+  }
+
+  #tokenInfo{
+    display: flex;
+    background-color: purple;
+    width:50%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-right:auto;
+    margin-left:auto;
+    border-radius: 15px;
   }
 
 
