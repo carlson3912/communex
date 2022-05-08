@@ -1,6 +1,5 @@
 import React, { useEffect, useState }  from 'react';
 import './about.css'
-import Model from '../../components/model/model';
 import discord from '../../assets/discord-mascot.png';
 import drawing from '../../assets/tradedrawing.png';
 
@@ -14,9 +13,7 @@ const About = () => {
 
       </div>
     <div id='big'>
-      <div id='leftbox'>
-        <Model profitIn='30' salesIn='1000'/>
-      </div>
+      <div id='leftbox'>      </div>
       <div id="rightbox">
         <h1 id='bigtitle'>Our Mission</h1>
         <h2>Connecting with Customers</h2>

@@ -1,4 +1,5 @@
-import React,{ useState} from 'react'
+import React from 'react';
+import {useState} from 'react';
 import './navbar.css'
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import seller1 from '../../assets/seller1.png'
@@ -23,13 +24,7 @@ const Menu = () => (
   const handleLogout = () => {
     setUser(false);
   }
-  const handleLogin = () => {
-    setUser(true);
-  }
-
-  //const NFTabi = require('./nft.json')
-  
-  async function metamaskLogin(){
+  async function handleLogin(){
     console.log("Login started")
     if(!window.ethereum){console.log("Window.ethereum error")}
     const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
@@ -37,12 +32,8 @@ const Menu = () => (
     setUserAddress(accounts[0])
     window.accounts = accounts
     setUserID(accounts[0][0] + accounts[0][1] + accounts[0][2]+ + accounts[0][3]+accounts[0][4]+accounts[0][5]+"..."+accounts[0][38]+accounts[0][39]+accounts[0][40]+accounts[0][41])
-    // setUserID(userAddress.slice(0,6) +'...'+userAddress.slice(38,41))
     window.web3 = new Web3(window.ethereum)
-   
-    // console.log(result)
-  //     })
-   }
+  }
 
   return (
     <div className='navbar'>
@@ -71,12 +62,10 @@ const Menu = () => (
       ): (
         <>
         {/* <button>Temp</button> */}
-        <Link to="/login"> 
-         <button type='button' className='primary-btn' onClick={handleLogin} >Sign In</button>
-        </Link>
-        {/* <Link to="/register">  */}
-          <button type='button' className='secondary-btn' onClick={metamaskLogin}>{userID}</button>
-        {/* </Link> */}
+         <button type='button' className='primary-btn' onClick={handleLogin} >Connect</button>
+        <Link to="/register">
+            <button className='login-reg-writeButton' type='submit'>Register</button>
+          </Link>
         </>
       )}
        
@@ -98,7 +87,6 @@ const Menu = () => (
               <Link to="/create"> 
                 <button type='button' className='primary-btn' >Create</button>
               </Link>
-              <button type='button' className='secondary-btn'>Connect</button>
               </>
             ): (
               <>
