@@ -1,3 +1,20 @@
+@font-face {
+  font-family: kumar;
+  src: url(/src/assets/fonts/KumarOne-Regular.ttf);
+}
+@font-face {
+  font-family: kumarOutline;
+  src: url(/src/assets/fonts/kumar-one-outline/KumarOneOutline-Regular.ttf);
+}
+
+@font-face {
+  font-family: specMED;
+  src: url(/src/assets/fonts/spectral/Spectral-Medium.ttf);
+}
+
+h1{
+  font-family: kumar;
+}
 .navbar{
   display: flex;
   justify-content: space-between;
