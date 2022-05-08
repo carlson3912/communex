@@ -75,7 +75,7 @@ const Header = () => {
         <div id="rowR">
         <div id ="row">
           <p id ="r">SILK ROAD SWAG</p><br/>
-          <p>Democratic, decentralized, popular fashion.</p>
+          <p>Democratic, decentralized, popular fashion</p>
         </div>
 
         <div id="row">
@@ -88,7 +88,7 @@ const Header = () => {
         </div>
 
       </div>
-      
+      <h1>WORKING</h1>
     </div>
   )
 }
