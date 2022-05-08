@@ -67,7 +67,7 @@
 }
 .register-button{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 .register-writeButton{
@@ -78,7 +78,7 @@
   padding: 12px 30px;
   color: white;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 21px;
 }
 .reg-login-writeButton{

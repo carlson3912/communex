@@ -20,9 +20,7 @@ const Login = () => {
           
          <div className="login-button">
           <button className='login-writeButton' type='submit'>Login</button>
-          <Link to="/register">
-            <button className='login-reg-writeButton' type='submit'>Register</button>
-          </Link>
+         
          </div>
         </form>
       </div>

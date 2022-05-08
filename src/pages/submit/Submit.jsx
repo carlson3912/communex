@@ -15,16 +15,14 @@ const Submit = () => {
         <form id = "form" action="submission.php" method="POST" class="showForm">
           <br />
           <br />
-          <input placeholder="Email:" id = "in" type="email" name="email"></input>
-          <br />
-          <br />
-          <input placeholder="Public Wallet:"id = "in" type="text" name="wallet"></input>
-          <br />
-          <br />
           <input placeholder="Title of your work:" id = "in" type="text" name="designTitle"></input>
           <br />
           <br />
           <input placeholder="IPFS URL:" id = "in" type="url" name="ipfs" ></input>
+          <br />
+          <br/>
+          <input placeholder="Royalty % (1-40):" id = "in" type="number" min="1" max="40" name="designTitle"></input>
+          <br />
           <br />
           Select manufacturer:    
           <input id ="n" type="radio" name="manufacturer_r" value="1" />
