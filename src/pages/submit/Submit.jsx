@@ -1,58 +1,32 @@
 import React from 'react';
 import './submit.css'
+import {  Link } from "react-router-dom";
 const Submit = () => {
     return(
-        <div >
-        <div >
-        <h1 id="t"> Submit your art </h1>
+    <>
+            <div >
+        <h1> Submit your art </h1>
         <p1 id ="t">Receive royalty, publicity, and glory.</p1>
-        <p id = "s">See our submission standards </p><a id = "l"href ="/">here.</a>
-        </div>
-      <form action="submission.php" >
-          <br />
-          Enter your email address:
-          <br />
-          <input type="email" name="email" />
-          <br />
-          Enter your wallet receive address:
-          <br />
-          <input type="text" name="wallet" />
-          <br />
-          Enter your design title:
-          <br />
-          <input type="text" name="designTitle" />
-          <br />
-          Enter your design IPFS URL:
-          <br />
-          <input type="url" name="ipfs" />
-          <br />
-          Enter your desired manufacturer:
-          <br />
-          <input type="radio"  id = "XYZ" name="manufacturer_r" value= '1' />
-          <label for="XYZ" name = "manufacturer_r">SRSDefault</label>
-          <br />
-          Enter your item id:
-          <br />
-          <input type="radio" name="itemID" value = '1' />
-          <label>Graphic-Tee(1)</label>
-          <input type="radio" name="itemID" value = '2' />
-          <label>Baseball Cap(2)</label>
-          <input type="radio" name="itemID" value = '3' />
-          <label>Hoodie(3)</label>  
-          <br />
-          Enter your royalty:
-          <br />
-          
-          
-          <fieldset class="range__field" />
-            <label >Between 1 and 40 %:</label>
-            <br/>
-            <input type="number" step='1' name="royalty" min="1" max="40" />
-           <br/>
-          <input class="second__btn" id = "button_A" type="SUBMIT" value="Submit, and Reap Your Due"/>
-          <br />
-        </form>
+        <Link to='Guidelines'>
+        <div id="linkspecs">
+        <p id = "s">See our submission standards </p>
           </div>
-        
+         </Link>
+        </div>
+        <form id = "form" action="submission.php" method="POST" class="showForm">
+          <br />
+
+          <input placeholder="Title of your work:" id = "in" type="text" name="designTitle"></input>
+          <br />
+          <input placeholder="IPFS URL:" id = "in" type="url" name="ipfs" ></input>
+          <br />
+          <input placeholder="Royalty % (1-40):" id = "in" type="number" min="1" max="40" name="designTitle"></input>
+          <br />
+          Select manufacturer:    
+          <input id ="n" type="radio" name="manufacturer_r" value="1" />
+          <label name = "manufacturer_r">SRSDefault</label><br/>
+          <button id = "in">Submit</button>
+          </form>
+        </>
         )};
 export default Submit

@@ -1,4 +1,194 @@
-.basicText{
-    color: purple;
-    text-align: center;
+#aboutbig{
+  background-color: aquamarine;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+}
+
+/* #rightbox{
+  
+} */
+
+#connectingt{
+  text-align: center;
+  color: #b33cbc;
+ 
+}
+
+#aboutist{
+  justify-content: center;
+}
+
+
+
+#connectingc{
+  
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: #b33cbc;
+  border-radius: 15px;
+  margin-bottom: 5%;
+  
+}
+
+#connectingt2{
+  text-align: center;
+  font-family: kumar;
+  color: black;
+}
+#connectingt3{
+  text-align: center;
+  font-family: kumar;
+  color: black;
+}
+
+#connectingc2{
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: #b33cbc;
+  border-radius: 15px;
+  margin-bottom: 5%;
+
+}
+
+#connectingc3{
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: #b33cbc;
+  border-radius: 15px;
+  margin-bottom: 5%;
+}
+
+#perks{
+  margin-top:5%;
+  display:flex;
+}
+
+#disp{
+  background-color: purple;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 15px;
+  margin-bottom: 5%;
+  text-align: center;
+  
+}
+
+#rewardp{
+  background-color: purple;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 15px;
+  margin-bottom: 5%;
+  text-align: center;
+ 
+}
+
+#votep{
+  background-color: purple;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 15px;
+  margin-bottom: 5%;
+  text-align: center;
+ 
+}
+
+#discordi{
+  margin-top:3%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#cwc{
+  text-align: center;
+  font-family: kumar;
+}
+
+@font-face {
+  font-family: kumar;
+  src: url(/src/assets/fonts/KumarOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: specMED;
+  src: url(/src/assets/fonts/spectral/Spectral-Medium.ttf);
+}
+
+#small1f{
+  font-family: specMED;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#secondabout{
+  display:flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 15px;
+  margin-bottom: 5%;
+}
+
+#trade1{
+background-color: purple;
+margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 15px;
+  margin-bottom: 5%;
+  width:30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#trade2{
+  background-color: purple;
+  margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 15px;
+    margin-bottom: 5%;
+    margin-left: auto;
+    width:30%;
+    margin-right: auto;
   }
+
+  #tradei1{
+    margin-top:3%;
+    display: block;
+
+  }
+
+  #tradei2{
+    margin-top:3%;
+    display: block;
+  
+  }
+
+
+  #fired{
+    background-color: #ff3300;
+    margin-right: 5%;
+    margin-left: 5%;
+    border-radius: 15px;
+    margin-bottom: 5%;
+    display: block;
+   
+  }
+
+  #flexfire{
+    display: flex;
+  }
+
+  #tokenInfo{
+    display: flex;
+    background-color: purple;
+    width:50%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-right:auto;
+    margin-left:auto;
+    border-radius: 15px;
+  }
+
+

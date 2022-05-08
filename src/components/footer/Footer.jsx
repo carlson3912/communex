@@ -22,7 +22,7 @@ const Footer = () => {
         </div>
         </div>
         <div className="footer-links_div">
-          <h4>CryptoKet</h4>
+          <h4>Silk Road Swag</h4>
           <p>Explore</p>
           <p>How it Works</p>
           <p>Counters</p>
@@ -38,7 +38,7 @@ const Footer = () => {
       </div>
       <div className="footer-copyright">
         <div>
-        <p> © {(new Date().getFullYear())} CrpytoKet, Inc. All Rights Reserved</p>
+        <p> © {(new Date().getFullYear())} Silk Road Swag, Inc. All Rights Reserved</p>
         </div>
         <div>
           <AiOutlineInstagram size={25} color='white' className='footer-icon' />

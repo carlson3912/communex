@@ -10,7 +10,6 @@
 
 .footer-btn p{
   box-sizing: border-box;
-  font-family: var(--font-family);
   font-size: 18px;
   line-height: 21px; 
   color: #FFFFFF;
@@ -41,7 +40,6 @@
   position: relative;
 }
 .footer-links_logo div h3{
-  font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -53,7 +51,6 @@
   margin-right: 4px;
 }
 .footer-links_logo p{
-  font-family: var(--font-family);
   font-weight: bold;
   font-size: 18px;
   line-height: 17px;
@@ -65,7 +62,6 @@
   border: none;
   padding: 13px;
   color: #fff;
-  font-family: var(--font-family);
   font-weight: 500;
   font-size: 14px;
   line-height: 105.7%;
@@ -75,7 +71,6 @@
   background: var(--primary-btn);
   border: none;
   border-radius: 10px;
-  font-family: var(--font-family);
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
@@ -92,7 +87,6 @@
   flex-direction: column;
 }
 .footer-links_div h4{
-  font-family: var(--font-family);
   font-weight: 600;
   font-size: 20px;
   line-height: 30px;
@@ -100,7 +94,6 @@
   margin-bottom: 1rem;
 }
 .footer-links_div p{
-  font-family: var(--font-family);
   font-weight: normal;
   font-size: 16px;
   line-height: 26px;
@@ -118,7 +111,6 @@
   padding-top: 2rem;
 }
 .footer-copyright p{
-  font-family: var(--font-family);
   font-weight: 600;
 font-size: 16px;
 line-height: 24px;

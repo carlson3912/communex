@@ -1,0 +1,33 @@
+#ppmain{
+    
+    display: flex;
+    height: 75%;
+}
+#pp1{
+    font-family: kumar;
+    background-color: white;
+    width: 50%;
+    height: 75%;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%; 
+    border-radius: 15px;
+}
+#pp2{
+    color: white;
+    font-family: kumar;
+    background-image: url("../../assets/starback.webp");
+    width: 50%;
+    height: 75%;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 15px; 
+}
+
+#ppbiggest{
+    background-color: purple;
+    margin-left: 5%;
+    margin-right: 5%; 
+    border-radius: 15px;
+}

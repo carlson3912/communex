@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './header.css'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import Timer from "../timer/timer";
 import Slider from "react-slick";
 import seller1 from '../../assets/seller1.png'
 import seller2 from '../../assets/seller2.png'
@@ -12,7 +13,19 @@ import seller6 from '../../assets/seller6.jpg'
 import verify from '../../assets/verify.png'
 import coin from '../../assets/seller1.png'
 import { Link  } from 'react-router-dom';
+import ItemCard from "../itemCard/productCard";
+import item01 from '../../assets/item01.png'
+import { RiH1 } from 'react-icons/ri';
+
+import resp from "../../components/navbar/Navbar"
+var votes = "5";
+
+// const [hours, setHours] = useState("00");
+// const [minutes, setMinutes] = useState("00");
+// const [seconds, setSeconds] = useState("00");
+
 const Header = () => {
+  const [sourced, setSource] = useState("item0");
   var settings = {
     dots: false,
     infinite: false,
@@ -71,26 +84,45 @@ const Header = () => {
     ]
   };
   return (
-    <div className='header section__padding'>
+    <div className='header'>
         <div id="rowR">
-        <div id ="row">
-          <p id ="r">SILK ROAD SWAG</p><br/>
-          <p>Democratic, decentralized, popular fashion</p>
-        </div>
+        
+            <div id ="row">
+              <p id ="r">SILK ROAD SWAG</p><br/>
+            </div>
 
-        <div id="row">
-          <p id="r">COLLECT $SILK</p><br/>
-          <p>Become an owner, artist, and entrepenuer.</p>
-        </div>
-        <div id="row">
-          <p id="r">META-FASHION</p><br/>
-          <p>Adorn yourself with only the littest drip.</p>
-        </div>
-
+            <div id="row1">
+              <p id="r">COLLECT $SILK</p><br/>
+            </div>
+            <div id="row2">
+              <p id="r">META-FASHION</p><br/>
+            </div>
       </div>
-      <h1>WORKING</h1>
-    </div>
+      <br/>
+        <div id="timer">
+        <h1>Voting Opens In:</h1>
+        <Timer date="May 15, 2022 15:00 PST"/>
+        
+        <div id ="rowTop">
+            <div id ="col">
+            <p id ="topWinner">CURRENT PRODUCT FOR SALE</p>
+            <p>buy an item to vote for future drops</p><br/><br/>
+            
+        
+        <br />
+            <p id ="topTitle">
+            Title: OG NFT<br/>
+            
+           </p><br/>
+            </div>
+    <img id ="topImage" src={item01}alt="" />
+    <Link to={'Srs1'}>
+  </Link>
+  </div>
+    <p></p>
+      <ItemCard id="1"/>
+    </div></div>
   )
 }
-
+console.log(resp);
 export default Header

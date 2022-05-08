@@ -1,40 +1,45 @@
 #form{
     text-align: center;
-    font-family:var(--font-family);
-    color:white;
+font-family:spectralMed;    color:white;
     display:block;
     margin-right:auto;
-    font-size:2em;
+    font-size:1.5em;
+    margin-bottom:9vh;
+
 }
 #in{
     width:31em;
     padding:1.5vh;
     margin-bottom:3vh;
+    border-radius: 25px;
 }
 #t,h1{
+    font-family: kumar;
     text-align:center;
-    font-family:var(--font-family);
     color:white;
     display:block;
     margin:auto;
     font-size:3.4em;
 }
+#t{
+    font-family:kumarOutline;
+}
 #n{
+
     margin-left:40px;
     margin-bottom:8vh;
 }
 #s{
+    font-family: spectralMed;
+
     text-align:center;
-    font-family:var(--font-family);
     color:white;
     display:inline-flex;
-    margin-right:.5vw;
-    margin-left:43vw;
     font-size:1.2em;
 }
 #l{
+    font-family: spectralMed;
     text-align:center;
-    font-family:var(--font-family);
     color:aquamarine;
     display:inline-flex;
     margin-right:auto;
@@ -44,3 +49,146 @@ button{
     background-color:aquamarine;
     margin-bottom:5vh;
 }
+
+#totalGuide{
+    display:inline-flex;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: black;
+    border-style: dashed;
+    border-radius:15px;
+    border-width: 10px;
+    border-color: white;
+}
+#ggbiggest{
+    background-color: rgba(165, 165, 165, 0.1);
+}
+
+#secondguide{
+    color: white;
+    display:flex;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    border-style: dotted;
+    border-radius:15px;
+    border-width: 10px;
+    border-color: white;
+    background-color: black;
+}
+
+#g2left{
+    width:50%;
+    margin-left:5%;
+    margin-right: 5%;
+}
+
+#g2right{
+    width:50%;
+    margin-right:5%;
+}
+
+#pinad{
+    background-color: purple;
+    display: flex;
+    text-align: center;
+    border-radius: 15px;
+    margin-right: 5px;
+}
+
+#pppinned{
+    width: 100%;
+}
+
+@font-face {
+    font-family: specMED;
+    src: url(/src/assets/fonts/spectral/Spectral-Medium.ttf);
+  }
+#cch{
+    color: white;
+}
+
+#ccp{
+    color: white;
+}
+
+#ff1{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#ff2{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#creating{
+    color: white;
+    margin-right:5%;
+}
+
+#creating2{
+    color: white;
+    font-family: specMED;
+    width:50%;
+    background-color: black;
+    margin-right:5%;
+    margin-left:5%;
+}
+#whyipfs{
+    text-align: center;
+    background-color: black;
+    color: white;
+    margin-right:5%;
+    margin-left:5%;
+    margin-bottom:3%;
+    border-radius: 15px;
+}
+
+#linkspecs{
+    background-color: aquamarine;
+    width: 50%;
+    margin-left:auto;
+    margin-right: auto;
+    border-radius: 15px;
+}
+#thirdguide{
+    background-color: aquamarine;
+    text-align: center;
+    margin-right: 5%;
+    margin-left: 5%;
+    border-radius: 15px;
+}
+
+#frandb{
+    margin-left:auto;
+    display: flex;
+    margin-right:auto;
+}
+#gleft{
+    width:50%;
+    margin-left:5%;
+}
+
+#folder1{
+    width:100%;
+}
+
+@media screen and (max-width: 1350px) {
+    #t{
+        font-size: 2em;
+    }
+    #form{
+        margin-top: -5vh;
+        margin-bottom:10vh;
+    }
+    #s{
+        text-align: center;
+    }
+    #in{
+        width: 78vw;
+    }
+
+  }
+
+  

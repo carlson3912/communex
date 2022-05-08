@@ -1,3 +1,35 @@
+@font-face {
+  font-family: kumar;
+  src: url(/src/assets/fonts/KumarOne-Regular.ttf);
+}
+@font-face {
+  font-family: kumarOutline;
+  src: url(/src/assets/fonts/kumar-one-outline/KumarOneOutline-Regular.ttf);
+}
+
+@font-face {
+  font-family: specMED;
+  src: url(/src/assets/fonts/spectral/Spectral-Medium.ttf);
+}
+
+h1{
+  font-family: kumar;
+}
+
+h2{
+  font-family: kumarOutline;
+}
+#navTitle{
+  font-family: kumar;
+}
+
+#navItems{
+  font-family: kumar;
+}
+
+#navItems2{
+  font-family: kumarOutline;
+}
 .navbar{
   display: flex;
   justify-content: space-between;

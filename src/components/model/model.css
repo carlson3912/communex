@@ -1,0 +1,26 @@
+#primary{
+
+    background-color: #b33cbc;
+    color: white;
+    border-radius: 25px;
+    height: 50px;
+    width:100px;
+}
+
+#basicText{
+    background-color: #e4a2e9;
+}
+
+#explain{
+    background-color: #e4a2e9;
+    font-family: roboto;
+    font-size: 100;
+}
+
+h3{
+    width: 90%;
+    text-align: center;
+}
+
+
+  

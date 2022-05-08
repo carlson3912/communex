@@ -83,7 +83,7 @@ const Bids = () => {
     <div className='bids section__padding'>
       <div className="bids-container">
         <div className="bids-container-text">
-          <h1 >Top Voted</h1>
+          <h1>Top Voted</h1>
         </div>
         <div className="bids-container-card">
           <div className="card-column" >
@@ -148,7 +148,8 @@ const Bids = () => {
       </div>
       </div>
       <div className="header-slider">
-        <h1>Top $SILK Holders</h1>
+        <div className="bids-container-text"><h1>Top $SILK Holders</h1></div>
+        
        <Slider {...settings} className='slider'>
             <div className='slider-card'>
               <p className='slider-card-number'>1</p>
