@@ -1,12 +1,16 @@
 import React from 'react';
 import './submit.css'
+import {  Link } from "react-router-dom";
 const Submit = () => {
     return(
     <>
             <div >
         <h1 id="t"> Submit your art </h1>
         <p1 id ="t">Receive royalty, publicity, and glory.</p1>
-        <p id = "s">See our submission standards </p><a id = "l"href ="/">here.</a>
+        <p id = "s">See our submission standards </p>
+        <Link to='Guidelines'>
+          <p id = "l">here.</p>
+         </Link>
         </div>
         <form id = "form" action="submission.php" method="POST" class="showForm">
           <br />

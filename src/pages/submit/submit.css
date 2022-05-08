@@ -45,6 +45,10 @@ button{
     margin-bottom:5vh;
 }
 
+#totalGuide{
+    display:inline-flex;
+}
+
 @media screen and (max-width: 1350px) {
     #t{
         font-size: 2em;
@@ -60,3 +64,5 @@ button{
         width: 78vw;
     }
   }
+
+  
