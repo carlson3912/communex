@@ -5,6 +5,11 @@
   margin-right: auto;
   border-radius: 15px;
 }
+
+/* #rightbox{
+  
+} */
+
 #connectingt{
   text-align: center;
   color: #b33cbc;
@@ -17,6 +22,7 @@
 }
 
 #connectingc{
+  
   margin-left: 5%;
   margin-right: 5%;
   background-color: #b33cbc;
@@ -26,8 +32,14 @@
 }
 
 #connectingt2{
-  color: white;
   text-align: center;
+  font-family: kumar;
+  color: black;
+}
+#connectingt3{
+  text-align: center;
+  font-family: kumar;
+  color: black;
 }
 
 #connectingc2{
@@ -118,7 +130,7 @@
 }
 
 #trade1{
-background-color: #b33cbc;
+background-color: purple;
 margin-left: 5%;
   margin-right: 5%;
   border-radius: 15px;
@@ -129,7 +141,7 @@ margin-left: 5%;
 }
 
 #trade2{
-  background-color: #b33cbc;
+  background-color: purple;
   margin-left: 5%;
     margin-right: 5%;
     border-radius: 15px;
@@ -151,5 +163,19 @@ margin-left: 5%;
   
   }
 
+
+  #fired{
+    background-color: #ff3300;
+    margin-right: 5%;
+    margin-left: 5%;
+    border-radius: 15px;
+    margin-bottom: 5%;
+    display: block;
+   
+  }
+
+  #flexfire{
+    display: flex;
+  }
 
 

@@ -6,6 +6,8 @@ import ballot from '../../assets/ballot.png';
 import logo from'../../assets/seller1.png';
 import trade1 from '../../assets/trade1.png';
 import trade2 from '../../assets/trade2.png';
+import fire from '../../assets/fire.png';
+
 const About = () => {
 
 
@@ -29,7 +31,7 @@ const About = () => {
                     90% of all profits go back to our customers through $SILK token distributed during every order.</p1>
                   < br/>
                   <br />
-                  <p1>We turn all our customers into our business partners who are given the chance to talk with other in our vibrant member-only discord community. </p1>
+                  <p1>We turn all our customers into our business partners who are given the chance to join a vibrant global community like no other. </p1>
                   </div>
                   <div id="perks">
                       <div id="disp">
@@ -45,8 +47,7 @@ const About = () => {
                         <h2>Earn % on every sale</h2>
                       </div>
                   </div>
-              </div>
-            <div id="secondabout">
+                  <div id="secondabout">
               <div id="trade1">
                 <img id="tradei1" src={trade1} />
               </div>
@@ -54,36 +55,34 @@ const About = () => {
               <img id="tradei2" src={trade2} />
               </div>
             </div>
+              </div>
+            
             
             <div id="connectingc2">
-            <h1 id="connectingt2">Why Giveaway Tokens?</h1>
-            <p1>By investing into our community </p1>
-            <p1>Make sure you vote for the best clothing to ensure that your tokens go up in value!</p1>
-
-            <p1>As the brand grows and generates more sales, fewer SILK is given out to skew brand ownership towards the earliest customers. After all, they were here when we were less popular.</p1>
+            <br />
+            <h2 id="connectingt2">Finding the Trendiest Clothes Across the Metaverse</h2>
+            <p1>Our one of a kind weekly votes help us find the freshest, most exciting clothes possible. Since voting happens with tokens it is</p1>
+            <li>open/trusted/decentralized so everyone in the world has an equal chance to submit and win</li>
+            <li>efficient because all token holders are directly rewarded based on brand performance </li>
             </div>
             < br/>
             <div id="connectingc3">
-              <h2 id="connectingt3">What's trending?</h2>
-              <p1>Silk Road Swag relies on the premise that as the number of token holders grows, the value of our product also increase due to the fact that more people are voting on and submitting designs.</p1>
+            <br />
+              <h2 id="connectingt3">Popular Fashion and Heat Index</h2>
+              <p>The third core pillar of Silk Road Swag is the idea of Popular Fashion. As the number of token holders grow, our competitions will have more designs, more manufacturing options and most importantly, more voters. </p>
+              <br />
+              <p>More voters will drive up brand egagement, designs will get more likes and SRS will have more buzz in the constantly developing world of Trending Fashion.</p>
+              <div id="flexfire">
+                <img id="firei" src={fire} height='100px'/>
+                <div id="fired">
+                  <p>Our smart contracts constantly calculate brand performance and associate it with a heat index represented by the icon on the left. If the brand is slow, SILK minting rates are increased to drive up popularity. Oppositely if the brand "catches fire", SILK distribution is halted to maximize profits.</p>
+                </div>
+              </div>
+              <br />
             </div>
             <br />
         </div>
       </div>
-        <div id="big2">
-            <div id="left2">
-                <h1 id="why">Why Give Out Tokens?</h1>
-                <br/>
-                <p>Customers can use $SILK as a discount if they burn their tokens in exchange for MATIC.</p>
-                <h2>OR</h2>
-                <p>They can keep their MATIC in our vault and watch it grow as the brand sells more clothes.</p>
-                <p>In exchange, Silk Road Swag looks to benefit from the customer relations by using their insights for future clothing drops during voting competitons.</p>
-                <p>Instead of spending large amount of money of marketing, SRS want to capitalize on organic word-of-mouth growth by investing back into it's customers.</p>
-            </div>
-              <div id="right2">
-                <img src={drawing}></img>
-              </div>
-        </div>
     </div>
   )
 };
