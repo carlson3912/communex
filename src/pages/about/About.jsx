@@ -13,10 +13,6 @@ const About = () => {
 
   return( 
     <div id="aboutist">
-      <div >
-        <h1 id="product">Our Product</h1>
-
-      </div>
     <div id='aboutbig'>
         <div id="rightbox">
             <h1 id="connectingt">Our Mission</h1>
@@ -56,7 +52,7 @@ const About = () => {
               </div>
             </div>
               </div>
-            
+        
             
             <div id="connectingc2">
             <br />
@@ -76,6 +72,8 @@ const About = () => {
                 <img id="firei" src={fire} height='100px'/>
                 <div id="fired">
                   <p>Our smart contracts constantly calculate brand performance and associate it with a heat index represented by the icon on the left. If the brand is slow, SILK minting rates are increased to drive up popularity. Oppositely if the brand "catches fire", SILK distribution is halted to maximize profits.</p>
+                  <br />
+                  <p>The Heat Index is calculated using a combination of sales data, voter engagement and the number of new submissions.</p>
                 </div>
               </div>
               <br />

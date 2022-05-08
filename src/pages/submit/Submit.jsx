@@ -7,9 +7,10 @@ const Submit = () => {
             <div >
         <h1> Submit your art </h1>
         <p1 id ="t">Receive royalty, publicity, and glory.</p1>
-        <p id = "s">See our submission standards </p>
         <Link to='Guidelines'>
-          <p id = "l">here.</p>
+        <div id="linkspecs">
+        <p id = "s">See our submission standards </p>
+          </div>
          </Link>
         </div>
         <form id = "form" action="submission.php" method="POST" class="showForm">
