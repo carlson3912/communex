@@ -5,8 +5,9 @@ import Image from '../../assets/Image.png'
 
 const Vote = () => {
 
-  return (
+  return (<>
     <h1>HELLO</h1>
+    </>
    )
 };
 
