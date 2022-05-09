@@ -16,7 +16,6 @@ import { Link  } from 'react-router-dom';
 import ItemCard from "../itemCard/productCard";
 import item01 from '../../assets/item01.png'
 import { RiH1 } from 'react-icons/ri';
-
 import resp from "../../components/navbar/Navbar"
 var votes = "5";
 
@@ -85,19 +84,22 @@ const Header = () => {
   };
   return (
     <div className='header'>
-        <div id="rowR">
-        
-            <div id ="row">
-              <p id ="r">SILK ROAD SWAG</p><br/>
-            </div>
+        <div id="rowRR">
+            <div id="rowR">
+            
+                <div id ="row">
+                  <p id ="r">SILK ROAD SWAG</p>
+                </div>
 
-            <div id="row1">
-              <p id="r">COLLECT $SILK</p><br/>
+                <div id="row1">
+                  <p id="r">COLLECT $SILK</p>
+                </div>
+                <div id="row2">
+                  <p id="r">META-FASHION</p>
+                </div>
             </div>
-            <div id="row2">
-              <p id="r">META-FASHION</p><br/>
-            </div>
-      </div>
+        </div>
+        
       <br/>
         <div id="timer">
         <h1>Voting Opens In:</h1>

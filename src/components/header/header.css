@@ -16,11 +16,15 @@
 #rowR{
   display:flex;
   flex-direction:row;
-  background-color: aquamarine;
   width:90vw;
-  height:5vh;
   border-radius: 0px;
 
+}
+
+#rowRR{
+  background-color: aquamarine;
+  display: flex;
+  flex-direction:column;
 }
 
 #timer{
@@ -30,9 +34,8 @@
   padding: 25px;}
 
 #row, #row1, #row2{
+  height: 5%;
   text-align: center;
-  text-justify:auto;
-  display:block;
   margin:auto;
   font-size:2.5vw;
   font-family: kumar;

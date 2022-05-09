@@ -6,6 +6,7 @@ import seller1 from '../../assets/seller1.png'
 import {  Link } from "react-router-dom";
 import Web3 from "web3";
 import axios from "./axios";
+
 const Menu = () => (
   <>
     <div>
