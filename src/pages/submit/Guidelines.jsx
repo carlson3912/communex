@@ -59,17 +59,18 @@ export const Guidelines =() =>{
                 </div>
                     < br/>
                     < br/>
+                    <div id="whyipfs">
+                        <h2>Why use IPFS?</h2>
+                        <p>The IPFS CID of every file depends on the content of the file itself, so once a CID is created, it is permanent and immutable. This means no one can change ypur design once its been submitted.</p>
+                        <br />
+                     </div>
                     <Link to="../Submit">
                     <div id="thirdguide">
                             <h1>Return to Submission Page</h1>
                             <p2>You'll need your IPFS CID</p2>
                     </div>
                     </Link>
-                    <div id="whyipfs">
-                        <h2>Why use IPFS?</h2>
-                        <p>The IPFS CID of every file depends on the content of the file itself, so once a CID is created, it is permanent and immutable. This means no one can change ypur design once its been submitted.</p>
-                    <br />
-            </div>
+                    
             <br />
         </div>
     )

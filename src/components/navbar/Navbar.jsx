@@ -8,11 +8,14 @@ import Web3 from "web3";
 import axios from "./axios";
 const Menu = () => (
   <>
-     <Link to="/"><p>Explore</p> </Link>
-     <Link to ="Product"><p>Product</p></Link>
-     <Link to ="Vote"><p>Vote</p></Link>
-     <Link to ="Submit"><p>Submit</p></Link>
-     <Link to ="About"><p>Our Mission</p></Link>
+    <div>
+     <Link to="/"><p id="navItems">Marketplace</p> </Link>
+     <p id="navItems">(Coming Soon)</p>
+     </div>
+     <Link to ="Product"><p id="navItems">Product</p></Link>
+     <Link to ="Vote"><p id="navItems">Vote</p></Link>
+     <Link to ="Submit"><p id="navItems">Submit</p></Link>
+     <Link to ="About"><p id="navItems">Our Mission</p></Link>
   </>
  )
 
@@ -57,11 +60,11 @@ const Menu = () => (
         <div className="navbar-links_logo">
           <img src={seller1} alt="logo" />
           <Link to="/"> 
-            <h1>Silk Road Swag</h1>
+            <h1 id="navTitle">Silk Road Swag</h1>
           </Link>
         </div>
         <div className="navbar-links_container">
-          <input type="text" placeholder='Search Item Here' autoFocus={true} />
+          {/* <input type="text" placeholder='Search Item Here' autoFocus={true} /> */}
          <Menu />
          {user && <Link to="/"><p onClick={handleLogout}>Logout</p></Link> }
         </div>
@@ -71,12 +74,12 @@ const Menu = () => (
         <>
         {/* <button>Temp</button> */}
         
-         <button type='button' className='primary-btn' onClick={handleSubmit} >{link}</button>
+         <button type='button' className='primary-btn' onClick={handleSubmit} id="navItems2">{link}</button>
         <Link to="/register">
-            <button className='login-reg-writeButton' type='submit'>Register</button>
+            <button className='login-reg-writeButton' type='submit' id="navItems2">Register</button>
           </Link>
         </>) : <Link to="/profile">
-            <button className='primary-btn' type='submit'>{username+"'s profile"}</button>
+            <button className='primary-btn' type='submit'id="navItems2">{username+"'s profile"}</button>
           </Link>
 
 

@@ -7,6 +7,7 @@ import logo from'../../assets/seller1.png';
 import trade1 from '../../assets/trade1.png';
 import trade2 from '../../assets/trade2.png';
 import fire from '../../assets/fire.png';
+import question from '../../assets/question.png'
 
 const About = () => {
 
@@ -30,10 +31,10 @@ const About = () => {
                   <p1>We turn all our customers into our business partners who are given the chance to join a vibrant global community like no other. </p1>
                   </div>
                   <div id="perks">
-                      <div id="disp">
-                      <img id="discordi" src={discord} height='50px'width='50px'/>
-                        <h2>Member-only Discord</h2>
-                      </div>
+                        <div id="disp">
+                        <img id="discordi" src={discord} height='50px'width='50px'/>
+                          <h2>Member-only Discord</h2>
+                        </div>
                       <div id="votep">
                       <img id="discordi" src={ballot} height='50px'width='50px'/>
                         <h2>Vote on every drop</h2>
@@ -57,23 +58,25 @@ const About = () => {
             <div id="connectingc2">
             <br />
             <h2 id="connectingt2">Finding the Trendiest Clothes Across the Metaverse</h2>
-            <p1>Our one of a kind weekly votes help us find the freshest, most exciting clothes possible. Since voting happens with tokens it is</p1>
-            <li>open/trusted/decentralized so everyone in the world has an equal chance to submit and win</li>
-            <li>efficient because all token holders are directly rewarded based on brand performance </li>
+            <p  id="small1f">Our one of a kind weekly votes help us find the freshest, most exciting clothes possible. Since voting happens with tokens it is</p>
+            <li  id="small1f" >open/trusted/decentralized so everyone in the world has an equal chance to submit and win</li>
+            <li  id="small1f" >efficient because all token holders are directly rewarded based on brand performance </li>
+            < br/>
             </div>
             < br/>
             <div id="connectingc3">
             <br />
               <h2 id="connectingt3">Popular Fashion and Heat Index</h2>
-              <p>The third core pillar of Silk Road Swag is the idea of Popular Fashion. As the number of token holders grow, our competitions will have more designs, more manufacturing options and most importantly, more voters. </p>
+              <p  id="small1f">The third core pillar of Silk Road Swag is the idea of Popular Fashion. As the number of token holders grow, our competitions will have more designs, more manufacturing options and most importantly, more voters. </p>
               <br />
-              <p>More voters will drive up brand egagement, designs will get more likes and SRS will have more buzz in the constantly developing world of Trending Fashion.</p>
+              <p  id="small1f">More voters will drive up brand egagement, designs will get more likes and SRS will have more buzz in the constantly developing world of Trending Fashion.</p>
+              <br />
               <div id="flexfire">
                 <img id="firei" src={fire} height='100px'/>
                 <div id="fired">
-                  <p>Our smart contracts constantly calculate brand performance and associate it with a heat index represented by the icon on the left. If the brand is slow, SILK minting rates are increased to drive up popularity. Oppositely if the brand "catches fire", SILK distribution is halted to maximize profits.</p>
+                  <p  id="small1f">Our smart contracts constantly calculate brand performance and associate it with a heat index represented by the icon on the left. If the brand is slow, SILK minting rates are increased to drive up popularity. Oppositely if the brand "catches fire", SILK distribution is halted to maximize profits.</p>
                   <br />
-                  <p>The Heat Index is calculated using a combination of sales data, voter engagement and the number of new submissions.</p>
+                  <p  id="small1f">The Heat Index is calculated using a combination of sales data, voter engagement and the number of new submissions.</p>
                 </div>
               </div>
               <br />
@@ -81,6 +84,11 @@ const About = () => {
             <br />
         </div>
       </div>
+      {/* <div id="tokenInfo">
+      <h2>Learn more about Tokenomics</h2>
+        <img src={question} height="150px"/>
+        
+      </div> */}
     </div>
   )
 };

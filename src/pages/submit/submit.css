@@ -79,6 +79,7 @@ button{
     display:flex;
     margin-left: 5%;
     margin-right: 5%;
+    margin-top: 2%;
     border-style: dotted;
     border-radius:15px;
     border-width: 10px;
@@ -155,7 +156,7 @@ button{
     color: white;
     margin-right:5%;
     margin-left:5%;
-    margin-top:3%;
+    margin-bottom:3%;
     border-radius: 15px;
 }
 
