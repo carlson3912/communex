@@ -98,9 +98,10 @@ const Header = () => {
               <p id="r">META-FASHION</p><br/>
             </div>
       </div>
-      <br/>
+
+      
         <div id="timer">
-        <h1>Voting Opens In:</h1>
+                  <h1>Voting Opens In:</h1>
         <Timer date="May 15, 2022 15:00 PST"/>
         
         <div id ="rowTop">

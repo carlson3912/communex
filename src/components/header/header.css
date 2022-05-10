@@ -16,16 +16,16 @@
 #rowR{
   display:flex;
   flex-direction:row;
-  background-color: aquamarine;
   width:90vw;
   height:5vh;
   border-radius: 0px;
+  margin-bottom:1%;
 
 }
 
 #timer{
   width:66%;
-  background-color: rgb(159, 70, 172);
+  background-color: var(--secondary-color);
   border-radius: 25px;
   padding: 25px;}
 

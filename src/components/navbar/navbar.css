@@ -1,16 +1,3 @@
-@font-face {
-  font-family: kumar;
-  src: url(/src/assets/fonts/KumarOne-Regular.ttf);
-}
-@font-face {
-  font-family: kumarOutline;
-  src: url(/src/assets/fonts/kumar-one-outline/KumarOneOutline-Regular.ttf);
-}
-
-@font-face {
-  font-family: specMED;
-  src: url(/src/assets/fonts/spectral/Spectral-Medium.ttf);
-}
 
 h1{
   font-family: kumar;
@@ -21,14 +8,18 @@ h2{
 }
 #navTitle{
   font-family: kumar;
+  color:black;
 }
 
 #navItems{
-  font-family: kumar;
+  font-family: cinzelDec;
+  color:black;
+  text-decoration-line:overline;
 }
 
 #navItems2{
-  font-family: kumarOutline;
+  font-family: kumar;
+  color:black;
 }
 .navbar{
   display: flex;

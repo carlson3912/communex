@@ -1,17 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@font-face {
+  font-family: kumar;
+  src: url(/src/assets/fonts/KumarOne-Regular.ttf);
+}
+@font-face {
+  font-family: kumarOutline;
+  src: url(/src/assets/fonts/kumar-one-outline/KumarOneOutline-Regular.ttf);
+}
+
+@font-face {
+  font-family: specMED;
+  src: url(/src/assets/fonts/spectral/Spectral-Medium.ttf);
+}
+@font-face {
+  font-family: cinzelDec;
+  src: url(/src/assets/fonts/cinzel/Cinzel/Cinzel-Regular.ttf);
+}
+
+
 
 :root {
-  --font-family: 'Poppins', sans-serif;
 
   --gradient2: linear-gradient(89.97deg, #EB1484 1.84%, #c81cc5 102.67%);
-  --primary-btn: linear-gradient(101.12deg, #EB1484 27.35%, #C91CC3 99.99%, #C81CC5 100%, #C81CC5 100%);
+  --primary-btn:var(--secondary-color);
   
-  --primary-color: #EB1484;
-  --secondary-color: #c81cc5;
+  --primary-color: #efb1ff;
+  --secondary-color: #a260f8;
+  --tertiary-color: rgb(252, 130, 205);
 
-  --color-bg: #201d22;
+  --color-bg: linear-gradient(-159deg, #ffe0ff 1.84%, #ff52f9 103%);;
   --color-card : #490b614d;
-  --color-footer : rgba(255, 32, 255, 0.5);
+  --color-footer : var(--secondary-color);
 }
 /* ===== Scrollbar CSS ===== */
   /* Firefox */
@@ -33,6 +51,22 @@
     background: var(--color-card);
     border-radius: 10px;
     border: 3px none #ffffff;
+  }
+  #space{
+    margin:auto;
+    margin-bottom: 2vh;
+    width:90%;
+    background-color: var(--tertiary-color);
+    height: 2vh;
+    transform:skew(40deg);
+  }
+  #space2{
+    margin:auto;
+    margin-top: 2vh;
+    width:90%;
+    background-color: var(--tertiary-color);
+    height: 2vh;
+    transform:skew(-40deg);
   }
 
   

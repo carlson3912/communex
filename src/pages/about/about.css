@@ -1,6 +1,6 @@
 #aboutbig{
-  background-color: aquamarine;
-  width: 50%;
+  background-color: var(--secondary-color); 
+   width: 50%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 15px;
@@ -18,15 +18,14 @@
 
 #aboutist{
   justify-content: center;
+
 }
-
-
 
 #connectingc{
   
   margin-left: 5%;
   margin-right: 5%;
-  background-color: #b33cbc;
+  background-color: var(--primary-color); 
   border-radius: 15px;
   margin-bottom: 5%;
   
@@ -46,16 +45,15 @@
 #connectingc2{
   margin-left: 5%;
   margin-right: 5%;
-  background-color: #b33cbc;
+  background-color: var(--primary-color); 
   border-radius: 15px;
   margin-bottom: 5%;
-
 }
 
 #connectingc3{
   margin-left: 5%;
   margin-right: 5%;
-  background-color: #b33cbc;
+  background-color: var(--primary-color); 
   border-radius: 15px;
   margin-bottom: 5%;
 }
@@ -178,17 +176,6 @@ margin-left: 5%;
 
   #flexfire{
     display: flex;
-  }
-
-  #tokenInfo{
-    display: flex;
-    background-color: purple;
-    width:50%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    margin-right:auto;
-    margin-left:auto;
-    border-radius: 15px;
   }
 
 

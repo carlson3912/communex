@@ -5,8 +5,12 @@ import './home.css'
 const Home = () => {
 
   return <div>
+    <div id="space2"></div>
+    <div id="space"></div>
    <Header />
-   {/* <Bids title="Upcoming Drops"  /> */}
+   <div id="space2"></div>
+   <div id="space"></div>
+   
    <div id="biggestdata">
    <div id="bigdata">
         <div id="smalldata">
@@ -38,7 +42,11 @@ const Home = () => {
         </div>
         
    </div>
+   <div id="space2"></div>
+   <div id="space"></div>
    </div>
+   
+   <Bids title="Upcoming Drops"  />
   </div>;
 };
 

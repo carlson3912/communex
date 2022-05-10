@@ -10,7 +10,6 @@ const Menu = () => (
   <>
     <div>
      <Link to="/"><p id="navItems">Marketplace</p> </Link>
-     <p id="navItems">(Coming Soon)</p>
      </div>
      <Link to ="Product"><p id="navItems">Product</p></Link>
      <Link to ="Vote"><p id="navItems">Vote</p></Link>
