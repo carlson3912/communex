@@ -28,7 +28,7 @@
   width: 20%;
 }
 .bids-card{
-  background: #2A2D3A;
+  background: var(--quadrinary-color);
   border-radius: 20px;
   padding: 11px 12px 19px 11px;
   margin-inline: 10px;
@@ -76,9 +76,9 @@ color:#ff7cb9;
 .load-more button{
   text-align: center;
   background: transparent;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--quadrinary-color);
   margin: 0 1rem;
-  color: var(--primary-color);
+  color: var(--quadrinary-color);
   border-radius: 10px;
   padding: 5px 50px;
   font-weight: 600;

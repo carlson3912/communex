@@ -91,7 +91,7 @@
 .slider .slider-card{
   width: 180px !important;
   height: 200px !important;
-  background: #2A2D3A;
+  background: var(--quadrinary-color);
   border-radius: 20px;
   display: flex !important;
   flex-direction: column;

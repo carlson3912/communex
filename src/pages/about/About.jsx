@@ -35,11 +35,11 @@ const About = () => {
                         <img id="discordi" src={discord} height='50px'width='50px'/>
                           <h2>Member-only Discord</h2>
                         </div>
-                      <div id="votep">
+                      <div id="disp">
                       <img id="discordi" src={ballot} height='50px'width='50px'/>
                         <h2>Vote on every drop</h2>
                       </div>
-                      <div id="rewardp">
+                      <div id="disp">
                       <img id="discordi" src={logo} height='50px'width='50px'/>
                         <h2>Earn % on every sale</h2>
                       </div>

@@ -15,7 +15,10 @@
   font-family: cinzelDec;
   src: url(/src/assets/fonts/cinzel/Cinzel/Cinzel-Regular.ttf);
 }
-
+@font-face {
+  font-family: cinzelBlack;
+  src: url(/src/assets/fonts/cinzel/Cinzel/Cinzel-Black.ttf);
+}
 
 
 :root {
@@ -23,13 +26,14 @@
   --gradient2: linear-gradient(89.97deg, #EB1484 1.84%, #c81cc5 102.67%);
   --primary-btn:var(--secondary-color);
   
-  --primary-color: #efb1ff;
-  --secondary-color: #a260f8;
-  --tertiary-color: rgb(252, 130, 205);
+  --primary-color: #d1a6db;
+  --secondary-color: #bf4fce;
+  --tertiary-color: rgb(162, 221, 219);
+  --quadrinary-color: rgb(49, 47, 58);
 
-  --color-bg: linear-gradient(-159deg, #ffe0ff 1.84%, #ff52f9 103%);;
+  --color-bg: linear-gradient(-159deg, #be96c4 1.84%, #d13bc5 103%);;
   --color-card : #490b614d;
-  --color-footer : var(--secondary-color);
+  --color-footer : var(--quadrinary-color);
 }
 /* ===== Scrollbar CSS ===== */
   /* Firefox */

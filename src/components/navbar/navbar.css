@@ -7,27 +7,27 @@ h2{
   font-family: kumarOutline;
 }
 #navTitle{
-  font-family: kumar;
+  font-family: cinzelBlack;
   color:black;
 }
 
 #navItems{
   font-family: cinzelDec;
   color:black;
-  text-decoration-line:overline;
+  text-decoration-line:none;
 }
 
 #navItems2{
-  font-family: kumar;
+  font-family: cinzelBlack;
   color:black;
 }
 .navbar{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 6rem;
+  padding: 0.5rem 6rem;
   border-bottom: 1px solid rgba(165, 165, 165, 0.1);
-  margin:auto;
+  height:fit-content;
 }
 .navbar-links{
   flex: 1;
@@ -50,7 +50,7 @@ h2{
   line-height: 17px;
 }
 .navbar-links_logo img{
-  margin-right: 5px;
+  margin-top: 0%;
 }
 .navbar-links_container{
   display: flex;
@@ -132,7 +132,6 @@ h2{
   position: absolute;
   top: 40px;
   right: 0;
-  margin-top: 1rem;
   width: 100%;
   min-width: 210px;
   border-radius: 5px;
@@ -145,6 +144,32 @@ h2{
 .navbar-menu_container-links-sign{
   display: none;
 }
+
+
+#navItems::before,
+#navItems::after{
+	content: '';
+	position: absolute;
+	background: transparent;
+	border:none;
+  padding:-22px;
+	/* -webkit-mix-blend-mode: hue; */
+}
+
+#navItems::after {	border-left: 0px none;
+  border-right: 1px solid rgba(255, 255, 255, 0);   text-decoration-line: underline;
+
+}
+
+
+#navItems:hover::before,
+#navItems:hover::after {
+  height: 100%;
+  border-right: 1px solid rgb(0, 0, 0);
+  
+  text-decoration-line: underline;
+}
+
 @media screen and (max-width:1050px) {
   .navbar-links_container{
     display: none;
@@ -152,7 +177,14 @@ h2{
   .navbar-menu{
     display: flex;
   }
- 
+  #navItems:hover::before,
+  #navItems:hover::after {
+    height: 5%;
+    border-right: 1px solid rgb(0, 0, 0);
+    
+    text-decoration-line: underline;
+  }
+  
 }
 
 @media screen and (max-width:700px) {
@@ -178,5 +210,6 @@ h2{
   .navbar-menu_container-links-sign .secondary-btn{
     margin: 1rem 0;
   }
+
 
  }

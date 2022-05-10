@@ -1,6 +1,7 @@
 #form{
     text-align: center;
-font-family:spectralMed;    color:white;
+font-family:spectralMed;  
+  color:var(--tertiary-color);
     display:block;
     margin-right:auto;
     font-size:1.5em;
@@ -28,7 +29,7 @@ font-family:spectralMed;    color:white;
 #t,h1{
     font-family: kumar;
     text-align:center;
-    color:white;
+    color:black;
     display:block;
     margin:auto;
     font-size:3.4em;
@@ -45,26 +46,26 @@ font-family:spectralMed;    color:white;
     font-family: spectralMed;
 
     text-align:center;
-    color:white;
+    color:black;
     display:inline-flex;
     font-size:1.2em;
 }
 #l{
     font-family: spectralMed;
     text-align:center;
-    color:aquamarine;
+    color:var(--tertiary-color);
     font-size:1.2em;
     
 }
 button{
-    background-color:aquamarine;
+    background-color:var(--tertiary-color);
 }
 
 #totalGuide{
     display:inline-flex;
     margin-left: 5%;
     margin-right: 5%;
-    background-color: black;
+    background-color:var(--tertiary-color);
     border-style: dashed;
     border-radius:15px;
     border-width: 10px;
@@ -72,10 +73,10 @@ button{
 }
 #ggbiggest{
     background-color: rgba(165, 165, 165, 0.1);
+    color: black;
 }
 
 #secondguide{
-    color: white;
     display:flex;
     margin-left: 5%;
     margin-right: 5%;
@@ -84,7 +85,7 @@ button{
     border-radius:15px;
     border-width: 10px;
     border-color: white;
-    background-color: black;
+    background-color:var(--tertiary-color);
 }
 
 #g2left{
@@ -99,7 +100,7 @@ button{
 }
 
 #pinad{
-    background-color: purple;
+    background-color:var(--secondary-color);
     display: flex;
     text-align: center;
     border-radius: 15px;
@@ -110,17 +111,6 @@ button{
     width: 100%;
 }
 
-@font-face {
-    font-family: specMED;
-    src: url(/src/assets/fonts/spectral/Spectral-Medium.ttf);
-  }
-#cch{
-    color: white;
-}
-
-#ccp{
-    color: white;
-}
 
 #ff1{
     margin-left:auto;
@@ -138,22 +128,20 @@ button{
 }
 
 #creating{
-    color: white;
     margin-right:5%;
 }
 
 #creating2{
-    color: white;
     font-family: specMED;
     width:50%;
-    background-color: black;
+    background-color:var(--tertiary-color);
     margin-right:5%;
     margin-left:5%;
 }
 #whyipfs{
     text-align: center;
-    background-color: black;
-    color: white;
+    background-color:var(--tertiary-color);
+    
     margin-right:5%;
     margin-left:5%;
     margin-bottom:3%;
@@ -168,7 +156,7 @@ button{
     margin-bottom: 0vh;
 }
 #thirdguide{
-    background-color: aquamarine;
+    background-color:var(--secondary-color);
     text-align: center;
     margin-right: 5%;
     margin-left: 5%;

@@ -6,6 +6,7 @@
   background: var(--color-footer);
   border-top: 1px solid rgba(165, 165, 165, 0.1);
   padding-bottom: 2rem;
+  padding: 0;
 }
 
 .footer-btn p{
@@ -68,7 +69,7 @@
   outline: none;
 }
 .footer-links_logo button{
-  background: var(--primary-btn);
+  background: var(--primary-color);
   border: none;
   border-radius: 10px;
   font-weight: 600;
