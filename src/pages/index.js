@@ -10,5 +10,6 @@ export {default as Submit} from './submit/Submit';
 export {default as Vote} from './vote/v';
 export {default as Guidelines} from './submit/Guidelines';
 export {default as Product} from './product/Product';
+export {default as Design} from './design/design';
 
 

@@ -1,0 +1,106 @@
+#upCanvas{
+    background-color: aquamarine;
+    border: 5px;
+    border-style: solid;
+}
+
+#gameboy{
+    background-color: pink;
+    display:flex;
+}
+
+#leftDesigner{
+    background-color: aquamarine;
+}
+#topDesign{
+    display:flex;
+    background-color: purple;
+}
+#pendingImageOption{
+    display: flex;
+}
+#frontback{
+    margin-right:auto;
+    margin-left:auto;
+    background-color: brown;
+}
+
+#rightDesign{
+    background-color: pink;
+    display:flex;
+    flex-direction: column;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+#uploadLabel{
+    background-color: beige;
+}
+
+#cancelUpload{
+    display: none;
+}
+
+#blueUp{
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-color: aquamarine;
+    border-radius: 15px;
+    border-width: 5px;
+    display: flex;
+}
+
+#downimage{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right:5%;
+}
+
+#downtext{
+    margin-right: auto;
+    margin-left:auto;
+}
+#arrowB{
+    align-items: center;
+    justify-content: center;
+}
+#arrowS{
+    display: flex;
+    margin-top: 0px;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+#arrowU{
+    display: flex;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#arrowSS{
+    background-color: red;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  
+}
+
+#lbut{
+    transform:rotate(270deg)
+}
+
+#rbut{
+    transform:rotate(90deg)
+}
+
+#dbut{
+    transform:rotate(180deg)
+}

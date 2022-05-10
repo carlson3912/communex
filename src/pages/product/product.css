@@ -1,4 +1,4 @@
-#ppmain{
+/* #ppmain{
     
     display: flex;
     height: 75%;
@@ -29,5 +29,109 @@
     background-color: purple;
     margin-left: 5%;
     margin-right: 5%; 
+    border-radius: 15px; */
+/* } */
+
+/* #ppmain{
+    
+    display: flex;
+    height: 75%;
+}
+#pp1{
+    font-family: kumar;
+    background-color: white;
+    width: 50%;
+    height: 75%;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%; 
     border-radius: 15px;
 }
+#pp2{
+    color: white;
+    font-family: kumar;
+    background-image: url("../../assets/starback.webp");
+    width: 50%;
+    height: 75%;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 15px; 
+} */
+
+#ppbiggest{
+    border-radius: 15px;
+}
+
+#purplep{
+    color:purple;
+}
+
+#whitebackground{
+   
+    margin-left: 5%;
+    margin-right: 5%; 
+    border-radius: 15px;
+}
+#rp2{
+    background-color: purple;
+    display: flex;
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+    margin-left: 25%;
+    margin-right: 25%; 
+    margin-top: 2%;
+    margin-bottom: 2%; 
+    
+}
+
+#rp1{
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+    margin-left: 15%;
+    margin-right: 15%; 
+    margin-top: 2%;
+    margin-bottom: 2%; 
+    
+}
+
+#rpp{
+    margin-left:5%;
+    margin-right:5%;
+    font-family: kumarOutline;
+    /* font-size:  */
+  }
+
+  #pben2{
+    background-image: linear-gradient(red, blue);
+      margin-left:5%;
+     margin-right:5%;
+     border-radius: 15px;
+     font-family: kumar;
+  }
+
+  #pben{
+    background-color:aquamarine;
+      margin-left:5%;
+     margin-right:5%;
+     border-radius: 15px;
+     font-family: kumar;
+  }
+
+  #pben3{
+    background-color: purple;
+      margin-left:5%;
+     margin-right:5%;
+     border-radius: 15px;
+     font-family: kumar;
+  }
+
+  #productflex{
+      display: flex;
+  }
+
+#icoi2{
+      margin-left:5%;
+  }
