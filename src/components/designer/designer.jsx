@@ -7,8 +7,32 @@ import { RiImageLine } from 'react-icons/ri';
 import waterMark from "../../assets/srswater.png";
 import down from '../../assets/download.png';
 import arrow from '../../assets/upArrow.png';
+// import {arrayify, hexlify} from "@ethersproject/bytes";
 import 'ipfs-http-client';
+// import { encrypt, decrypt, PrivateKey } from 'eciesjs';
+import "ethereumjs-util";
 import ShowHide from './showandhide';
+// import { keccak256 } from '@ethersproject/keccak256';
+import {encryptString, decryptString, privateToPublicMe, privateToWalletMe} from '../decrypt/eth-encrypt';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const Designer = () =>{
     const [numElements, setNumElements] = useState(0);
@@ -27,8 +51,21 @@ export const Designer = () =>{
     const [ipfs, setIPFS] = useState();
     const [penI, setPendingImage] = useState(false);
     const [pendingIm, setPI] = useState(null);
+//i can turn any private key into a public key and wallet address. i just can't make the right object with
+//a public key input to allow for quick encryption
+    // function encryptOrder(dataIn){
+    //         const data= Buffer.from(dataIn);
+    //         const util  = require('ethereumjs-util')   
+    //         const privateKey = 'ead75d17f3748b52b863f9358cdc9646fa6caf66399919d375ea6339639d909a';
+    //         const privatKeyBuffer = Buffer.from(privateKey,'hex');
+    //         const publicKey = util.privateToPublic(privatKeyBuffer);
+    //         console.log("decrypt started");
+    //         const encrypted_Data = encrypt(hexlify(publicKey), data);
+    //         console.log("encrydata: "+ encrypted_Data)
+    //         console.log(decrypt(hexlify(privatKeyBuffer ),encrypt(hexlify(publicKey), data) ).toString());
+    //         return encrypted_Data;
+    //      }
 
-    
     function deleteImage(){
         console.log("Delete initiated at: "+ pointer )
         var temp = images;
@@ -192,14 +229,39 @@ await client.add(dataURItoBlob(e)).then((res) => {
             str = str+  "Width: " + sizes[i][0] + "\n";
             str = str+ "Height: " + sizes[i][1] + "\n";
         }
-        var blob = new Blob([str],
-        { type: "text/plain;charset=utf-8" });
+        const priv = 'ead75d17f3748b52b863f9358cdc9646fa6caf66399919d375ea6339639d909a';
+        console.log("For this privatekey: " + priv);
+        const pub = privateToPublicMe(priv);
+        console.log("For this public key: " + pub);
+        console.log("Decrypted string: " + decryptString(encryptString(str,pub),priv));
+        console.log("For this wallet: " + privateToWalletMe(priv))
+        var blob = new Blob([encryptString(str,pub)]
+        ,{ type: "text/plain;charset=utf-8" });
         const text = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href=text;
         link.download ="text.txt"
         link.click();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return(
         <div>
@@ -321,6 +383,7 @@ await client.add(dataURItoBlob(e)).then((res) => {
                         }}>
                         <h1>Finish Design</h1>
                         <p>Upload to IPFS</p></button>
+                        <button onClick={designSpecs}>Download Report</button>
                         
                         
                         
