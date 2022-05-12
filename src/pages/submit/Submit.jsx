@@ -20,6 +20,7 @@ const Submit = () => {
     const userRef = useRef();
     const errRef = useRef();
     const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
     const [validTitle, setValidTitle] = useState(false);
 	  const [ipfs, setIpfs] = useState('');
     const [validIpfs, setValidIpfs] = useState(false);
@@ -57,7 +58,7 @@ const Submit = () => {
         setErrMsg("Royalty percentage must be between 1 and 40.");
         return;
     }
-      const reg = window.accounts[0] + "," + title + "," + ipfs + "," + royalty + "," + "1";
+      const reg = window.accounts[0] + "§" + title + "§" + description + "§" + ipfs + "§" + royalty + "§"  + "1";
       const rex = JSON.stringify(reg);
       try {
           const response = await axios.post('http://localhost:3500/submit',
@@ -104,13 +105,13 @@ const Submit = () => {
         <h1> Submit your art </h1>
         <p1 id ="t">Receive royalty, publicity, and glory.</p1>
         <div id = "linkspecs">
-        <p id = "s">See our submission standards  </p>
+        <p id = "sex">See our submission standards  </p>
           <Link to='Guidelines'>
           <span id = "l"> here. </span>
          </Link>
          </div>
         </div>
-        <div id = "linkspecs"><p id = "s">{errMsg} </p></div>
+        <div id = "linkspecs"><p id = "sex">{errMsg} </p></div>
         <form id = "form" autoComplete="off" method="POST" class="showForm">
           <br />
           <input 
@@ -120,6 +121,16 @@ const Submit = () => {
           name="designTitle"
           onChange={(e) => setTitle(e.target.value)}
           value={title}
+          required
+          ></input>
+          <br />
+          <input 
+          placeholder="Short Description:" 
+          id = "in" 
+          type="text" 
+          name="designTitle"
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
           required
           ></input>
           <br />
@@ -145,8 +156,6 @@ const Submit = () => {
           required 
            ></input>
           <br />
-         
-          
           </form>
           <button id = "ni" onClick={() => handleSubmitProxy()}>Submit</button>
            </>
