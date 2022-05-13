@@ -13,6 +13,9 @@ import shirtThree from '../../assets/shirtFour.jpeg'
 import matlab from '../../assets/matlab2.jpeg'
 import wardrobe from '../../assets/model.obj'
 import camel from '../../assets/camelShirt.jpeg'
+import moneyFace from '../../assets/monetFace.JPG'
+import longLine from '../../assets/longLine.JPG'
+import mateoTwo from '../../assets/mateoTwo.jpeg'
 // function ShirtO(props) {
 //     const group = useRef()
 //     const { nodes, materials } = useGLTF(shirt)
@@ -191,9 +194,9 @@ return<Canvas height="100%"camera={{position: [0, 0, 150]}}>
     <SceneThree start='-100' itemt={silk}/>
     <SceneThree start='-200' itemt={matlab}/>
     <SceneThree start='-300' itemt={camel}/>
-    <SceneThree start='-400' itemt={matlab}/>
-    <SceneThree start='-500' itemt={matlab}/>
-    <SceneThree start='-600' itemt={matlab}/>
+    <SceneThree start='-400' itemt={moneyFace}/>
+    <SceneThree start='-500' itemt={longLine}/>
+    <SceneThree start='-600' itemt={mateoTwo}/>
     <SceneThree start='-700' itemt={matlab}/>
     <SceneThree start='-800' itemt={matlab}/>
     <SceneThree start='-900' itemt={matlab}/>
