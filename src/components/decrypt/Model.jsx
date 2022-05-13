@@ -16,6 +16,11 @@ import camel from '../../assets/camelShirt.jpeg'
 import moneyFace from '../../assets/monetFace.JPG'
 import longLine from '../../assets/longLine.JPG'
 import mateoTwo from '../../assets/mateoTwo.jpeg'
+import saleBanner from '../../assets/saleBanner.png'
+import background from '../../assets/backgroundT.png'
+import cylinderC from '../../assets/cylinderC.obj'
+import floor from '../../assets/floor.png'
+import floortity from '../../assets/floortt.png'
 // function ShirtO(props) {
 //     const group = useRef()
 //     const { nodes, materials } = useGLTF(shirt)
@@ -86,6 +91,35 @@ function Scene() {
     )
   }
 
+function CylinderM(prop){
+   const [location, setLocation] = useState(parseInt(prop.start));
+   console.log("scene: "+location)
+ useFrame(() => {
+      setLocation(location+1)
+      if (location>700){
+          setLocation(-700);
+      }
+    })
+   const obj = useLoader(OBJLoader, cylinderC);
+ const geometry = useMemo(() => {
+   let g;
+   obj.traverse((c) => {
+     if (c.type === "Mesh") {
+       const _c = c;
+       g = _c.geometry;
+     }
+   });
+   return g;
+ }, [obj]);
+
+ // I've used meshPhysicalMaterial because the texture needs lights to be seen properly.
+ return (
+   <mesh castShadow position={[location, -80, -20]}geometry={geometry} >
+     <meshStandardMaterial color="purple" opacity="0.5" transparent={true}/>
+   </mesh>
+ )
+}
+
 function Box(){
     // const colorMap = useLoader(TextureLoader, silk)
     const base = new THREE.TextureLoader().load(silk);
@@ -109,8 +143,8 @@ function SceneThree(prop){
     console.log("scene: "+location)
   useFrame(() => {
        setLocation(location+1)
-       if (location>500){
-           setLocation(-500);
+       if (location>700){
+           setLocation(-700);
        }
      })
     const obj = useLoader(OBJLoader, shirtTwo);
@@ -130,6 +164,7 @@ function SceneThree(prop){
     <mesh castShadow position={[location, -80, -20]}geometry={geometry} >
       <meshPhysicalMaterial  map={texture}/>
     </mesh>
+    
   )
 }
 
@@ -157,17 +192,17 @@ function SceneThree(prop){
 
 function GroundPlane() {
     return (
-      <mesh receiveShadow rotation={[5, 0, 0]} position={[0, -1, 0]}>
-        <planeBufferGeometry attach="geometry" args={[500, 500]} />
-        <meshStandardMaterial attach="material" map={useTexture(fire)} />
+      <mesh receiveShadow rotation={[-3.14/2, 0, 0]} position={[0, -150, 0]}>
+        <planeBufferGeometry attach="geometry" args={[1000, 1000]} />
+        <meshStandardMaterial attach="material"  transparent={true} map={useTexture(floortity)} />
       </mesh>
     );
   }
   function BackDrop() {
     return (
-      <mesh receiveShadow position={[0, -1, -5]}>
-        <planeBufferGeometry attach="geometry" args={[500, 500]} />
-        <meshStandardMaterial attach="material" color="blue" />
+      <mesh receiveShadow position={[0, 0, -150]}>
+        <planeBufferGeometry attach="geometry" args={[2200, 500]} />
+        <meshStandardMaterial attach="material" map={useTexture(background)}/>
       </mesh>
     );
   }
@@ -186,23 +221,43 @@ function GroundPlane() {
     );
   }
 export function Model(){
-return<Canvas height="100%"camera={{position: [0, 0, 150]}}>
+return<Canvas height="100%"camera={{position: [0, 0, 300]}}>
     
     <Suspense fallback={null}>
-    
     <SceneThree start='0' itemt={shirtThree}/>
+    <CylinderM start='0'/>
     <SceneThree start='-100' itemt={silk}/>
+    <CylinderM start='-100'/>
     <SceneThree start='-200' itemt={matlab}/>
+    <CylinderM start='-200'/>
     <SceneThree start='-300' itemt={camel}/>
+    <CylinderM start='-300'/>
     <SceneThree start='-400' itemt={moneyFace}/>
+    <CylinderM start='-400'/>
     <SceneThree start='-500' itemt={longLine}/>
+    <CylinderM start='-500'/>
     <SceneThree start='-600' itemt={mateoTwo}/>
+    <CylinderM start='-600'/>
     <SceneThree start='-700' itemt={matlab}/>
+    <CylinderM start='-700'/>
     <SceneThree start='-800' itemt={matlab}/>
+    <CylinderM start='-800'/>
     <SceneThree start='-900' itemt={matlab}/>
+    <CylinderM start='-900'/>
+    <SceneThree start='-1000' itemt={moneyFace}/>
+    <CylinderM start='-1000'/>
+    <SceneThree start='-1100' itemt={longLine}/>
+    <CylinderM start='-1100'/>
+    <SceneThree start='-1200' itemt={mateoTwo}/>
+    <CylinderM start='-1200'/>
+    <SceneThree start='-1300' itemt={matlab}/>
+    <CylinderM start='-1300'/>
+    <SceneThree start='-1400' itemt={matlab}/>
+    <CylinderM start='-1400'/>
+  
     
-    {/* <GroundPlane /> */}
-    {/* <BackDrop /> */}
+    <GroundPlane />
+    <BackDrop />
     {/* <Sphere /> */}
     {/* <mesh receiveShadow position={[0, 0, 0]}>
       <planeBufferGeometry attach="geometry" args={[500, 500]} />
@@ -210,6 +265,7 @@ return<Canvas height="100%"camera={{position: [0, 0, 150]}}>
     </mesh> */}
     {/* <Sky /> 
     <Stage /> */}
+    <Stars />
    
     </Suspense>
     <OrbitControls />
