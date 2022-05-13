@@ -2,36 +2,16 @@ import './designer.css';
 import React, {useState, useEffect, useRef} from 'react'
 import logo from '../../assets/seller1.png';
 import shirttemplate from '../../assets/shirttemplate.png'
-import { Link } from 'react-router-dom';
-import { RiImageLine } from 'react-icons/ri';
 import waterMark from "../../assets/srswater.png";
 import down from '../../assets/download.png';
 import arrow from '../../assets/upArrow.png';
 // import {arrayify, hexlify} from "@ethersproject/bytes";
-import 'ipfs-http-client';
+import {create} from 'ipfs-http-client';
 // import { encrypt, decrypt, PrivateKey } from 'eciesjs';
 import "ethereumjs-util";
 import ShowHide from './showandhide';
 // import { keccak256 } from '@ethersproject/keccak256';
 import {encryptString, decryptString, privateToPublicMe, privateToWalletMe} from '../decrypt/eth-encrypt';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 export const Designer = () =>{
@@ -67,19 +47,22 @@ export const Designer = () =>{
     //      }
 
     function deleteImage(){
-        console.log("Delete initiated at: "+ pointer )
+        console.log("Delete initiated at: "+ pointer );
+        setNumElements(numElements-1);
+        console.log("num elements decreased")
         var temp = images;
         temp.pop(pointer);
         setImages(temp);
-        setNumElements(numElements-1);
-        temp = pos
-        temp.pop(pointer);
-        setPos(temp);
-        temp = sizes
-        temp.pop(pointer);
-        setSizes(temp);
+        var tempP = pos
+        tempP.pop(pointer);
+        setPos(tempP);
+        var tempS = sizes
+        tempS.pop(pointer);
+        console.log("popped pointer at")
+        setSizes(tempS);
         setPointer(pointer - 1);
         setPendingImage(false);
+        setTop(top+1)
     }
     function dataURItoBlob(dataURI) {
         // convert base64/URLEncoded data component to raw binary data held in a string
@@ -158,12 +141,9 @@ export const Designer = () =>{
         if(numElements>0 && canvas){
             console.log("REDRAW STARTED")
             const ctx=canvas.current.getContext("2d");
-            ctx.clearRect(0, 0, 800, 800);
-            ctx.drawImage(shirt,70,0,700,800);
+            ctx.clearRect(0, 0, 2000, 2000);
+            // ctx.drawImage(shirt,70,0,700,800);
             for(var i = 0; i<numElements; i++){
-                console.log("Drawing source" + i);
-                console.log("Pointer: "+pointer);
-                console.log("Source: "+ images[pointer].src);
                 ctx.drawImage(images[i],pos[i][0],pos[i][1], sizes[i][0],sizes[i][1]);
             }
             if (water){
@@ -185,23 +165,15 @@ export const Designer = () =>{
                 }
             }
         }
-        // console.log("pointer: "+pointer)
-        // var temp = pos;
-        // console.log("xmove: "+nativeEvent.pageX);
-        // console.log("ymove: "+nativeEvent.pageY);
-        // temp[pointer][0] =temp[pointer][0] + nativeEvent.pageX; 
-        // temp[pointer][0] =temp[pointer][1] + nativeEvent.pageY; 
-        // setPos(temp);
-        // setTop(top+1);
         
     }
 
     async function infura(e){
-        const ipfsClient = require('ipfs-http-client');
+        // const ipfsClient = require('ipfs-http-client');
         const projectId = '28zAasknKw7w7ViLtFtNtxkNdCz';
         const projectSecret = 'ca916af6aecabd19b54015a2661681c4';
         const auth ='Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
-        const client = ipfsClient.create({
+        const client = create({
             host: 'ipfs.infura.io',
             port: 5001,
             protocol: 'https',
@@ -223,23 +195,20 @@ await client.add(dataURItoBlob(e)).then((res) => {
         console.log("test: "+pos[0][0].toString())
         for (var i = 0; i<numElements; i++){
             str = str + "**** NEW IMAGE ****" + "\n";
-            str = str+ "Image source: " + images[i].src + "\n";
-            str = str+ "xPos: " + pos[i][0] + "\n";
-            str = str+  "yPos: " + pos[i][1] + "\n";
-            str = str+  "Width: " + sizes[i][0] + "\n";
-            str = str+ "Height: " + sizes[i][1] + "\n";
+            str = str + "Image source: " + images[i].src + "\n";
+            str = str + "xPos: " + pos[i][0] + "\n";
+            str = str +  "yPos: " + pos[i][1] + "\n";
+            str = str +  "Width: " + sizes[i][0] + "\n";
+            str = str + "Height: " + sizes[i][1] + "\n";
         }
         const priv = 'ead75d17f3748b52b863f9358cdc9646fa6caf66399919d375ea6339639d909a';
-        console.log("For this privatekey: " + priv);
         const pub = privateToPublicMe(priv);
-        console.log("For this public key: " + pub);
-        console.log("Decrypted string: " + decryptString(encryptString(str,pub),priv));
-        console.log("For this wallet: " + privateToWalletMe(priv))
-        var blob = new Blob([encryptString(str,pub)]
-        ,{ type: "text/plain;charset=utf-8" });
+        var blob = new Blob(
+            [encryptString(str,pub)],
+            { type: "text/plain;charset=utf-8" });
         const text = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
-        link.href=text;
+        link.href = text;
         link.download ="text.txt"
         link.click();
         }
@@ -277,7 +246,7 @@ await client.add(dataURItoBlob(e)).then((res) => {
                             Back
                         </div>
                     </div>
-                    <canvas ref={canvas} id="upCanvas" height="800px" width="800px" onMouseDown={click}><h1>Hello</h1></canvas>
+                    <canvas ref={canvas} id="upCanvas" height="1080px" width="920px" onMouseDown={click}><h1>Hello</h1></canvas>
                 </div>
                 <div id="rightDesign">
                     <div id="rdco">

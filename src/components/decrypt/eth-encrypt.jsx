@@ -18,6 +18,42 @@ export function decryptString(str, key){
     return result;
 }
 
+export function privateToWalletMe(privateK){
+
+    const util  = require('ethereumjs-util')
+
+    // const privateKey = 'ead75d17f3748b52b863f9358cdc9646fa6caf66399919d375ea6339639d909a';
+    const privatKeyBuffer = Buffer.from(privateK,'hex');
+
+    var isValidPrivate = util.isValidPrivate(privatKeyBuffer);
+
+
+    const publicKey = util.privateToPublic(privatKeyBuffer);
+
+    const isValidPublic = util.isValidPublic(publicKey);
+
+    var address = util.pubToAddress(publicKey);
+    const answer = util.addHexPrefix(address).toString('hex');	
+    return answer;
+}
+
+export function privateToPublicMe(privateK){
+
+    const util  = require('ethereumjs-util')
+
+    // const privateKey = 'ead75d17f3748b52b863f9358cdc9646fa6caf66399919d375ea6339639d909a';
+    const privatKeyBuffer = Buffer.from(privateK,'hex');
+
+    var isValidPrivate = util.isValidPrivate(privatKeyBuffer);
+
+
+    const publicKey = util.privateToPublic(privatKeyBuffer);
+
+    const isValidPublic = util.isValidPublic(publicKey);
+
+    return publicKey.toString("hex");
+}
+
 // export function 
 
 
@@ -62,38 +98,3 @@ export function decryptString(str, key){
     // }
 
 
-export function privateToWalletMe(privateK){
-
-    const util  = require('ethereumjs-util')
-
-    // const privateKey = 'ead75d17f3748b52b863f9358cdc9646fa6caf66399919d375ea6339639d909a';
-    const privatKeyBuffer = Buffer.from(privateK,'hex');
-
-    var isValidPrivate = util.isValidPrivate(privatKeyBuffer);
-
-
-    const publicKey = util.privateToPublic(privatKeyBuffer);
-
-    const isValidPublic = util.isValidPublic(publicKey);
-
-    var address = util.pubToAddress(publicKey);
-    const answer = util.addHexPrefix(address).toString('hex');	
-    return answer;
-}
-
-export function privateToPublicMe(privateK){
-
-    const util  = require('ethereumjs-util')
-
-    // const privateKey = 'ead75d17f3748b52b863f9358cdc9646fa6caf66399919d375ea6339639d909a';
-    const privatKeyBuffer = Buffer.from(privateK,'hex');
-
-    var isValidPrivate = util.isValidPrivate(privatKeyBuffer);
-
-
-    const publicKey = util.privateToPublic(privatKeyBuffer);
-
-    const isValidPublic = util.isValidPublic(publicKey);
-
-    return publicKey.toString("hex");
-}
