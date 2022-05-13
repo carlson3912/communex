@@ -1,10 +1,13 @@
 import React from 'react';
 import {Bids, Header, } from '../../components'
 import './home.css'
-
+import Model from '../../components/decrypt/Model'
 const Home = () => {
 
   return <div>
+    <div id="animated">
+    <Model/>
+    </div>
     <div id="space2"></div>
     <div id="space"></div>
    <Header />
