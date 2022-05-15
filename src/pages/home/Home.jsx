@@ -1,7 +1,7 @@
 import React from 'react';
 import {Bids, Header, } from '../../components'
 import './home.css'
-import Model from '../../components/decrypt/Model'
+import Model from '../../components/three/Model'
 const Home = () => {
 
   return <div>

@@ -282,7 +282,7 @@ await client.add(dataURItoBlob(e)).then((res) => {
                         <div id="arrowS2">
                        <button id="arrowU"onClick={e=>{
                                 var temp = pos
-                                temp[pointer][1] = pos[pointer][1] - 50;
+                                temp[pointer][1] = pos[pointer][1] - 10;
                                 setPos(temp);
                                 setTop(top+1);
                                 }}><img src={arrow} height="50px"></img></button>
@@ -291,20 +291,20 @@ await client.add(dataURItoBlob(e)).then((res) => {
                            <div id="arrowS">
                        <        button onClick={e=>{
                         var temp = pos
-                        temp[pointer][0] = pos[pointer][0] - 50;
+                        temp[pointer][0] = pos[pointer][0] - 10;
                         setPos(temp);
                         setTop(top+1);
                                 }} id="lbut"><img width="50px"src={arrow}></img></button>
                                 
                                 <button onClick={e=>{
                                     var temp = pos
-                                    temp[pointer][1] = pos[pointer][1] + 50;
+                                    temp[pointer][1] = pos[pointer][1] + 10;
                                     setPos(temp);
                                     setTop(top+1);
                                 }}><img id="dbut"src={arrow} height="50px"></img></button>
                                 <button onClick={e=>{
                                     var temp = pos;
-                                    temp[pointer][0] = pos[pointer][0] + 50;
+                                    temp[pointer][0] = pos[pointer][0] + 10;
                                     console.log(temp[pointer][0]);
                                     setPos(temp);
                                     setTop(top+1);
