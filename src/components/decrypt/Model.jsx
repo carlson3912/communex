@@ -294,7 +294,7 @@ return<Canvas height="100%"camera={{position: [0, 0, 300]}}>
   
 
     <OrbitControls />
-    {/* <ambientLight intensity={0.5} /> */}
+    <ambientLight intensity={3} />
     <rectAreaLight
       width={700}
       height={500}

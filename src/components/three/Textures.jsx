@@ -13,16 +13,23 @@ import longLine from '../../assets/longLine.JPG'
 import mateoTwo from '../../assets/mateoTwo.jpeg'
 import visten from '../../assets/manu1.jpg'
 import joker from '../../assets/jokerdiscord.jpeg'
-
+import slaughter from '../../assets/slaughtergang.jpeg'
+import poole from '../../assets/pooleparty.jpeg'
+import poole2 from '../../assets/pooleparty2.jpeg'
+// import sandbox from '../../assets/srssandbox.jpeg'
 export const listShirts = new Array(
     shirtThree,
     matlab,
     camel,
+    slaughter,
     moneyFace,
     longLine,
     mateoTwo,
     visten,
-    joker
+    joker,
+    slaughter,
+    poole,
+    poole2
   
 );
 
@@ -30,11 +37,14 @@ export const listNames= new Array(
     "Blue Token",
     "Navy Skeleton",
     "Glitched Camel",
+    "Composed of Early SRS Assets",
     "Money Face Wrap",
     "Alaskan",
     "Money Face Mateo",
     "Visten Launch",
-    "Joker OG"
+    "Joker OG",
+    "Composed of Early SRS Assets",
+    "Poole from Warriors Series 2022 PlayOffs"
 );
 
 export const makeList = () => {

@@ -23,6 +23,7 @@ const Submit = () => {
     const [description, setDescription] = useState('');
     const [validTitle, setValidTitle] = useState(false);
 	  const [ipfs, setIpfs] = useState('');
+    const [ipfsBool, setIpfsBool] = useState(false);
     const [validIpfs, setValidIpfs] = useState(false);
     const [royalty, setRoyalty] = useState('');
     const [manufacturer, setManufacturer] = useState('');
@@ -99,7 +100,7 @@ const Submit = () => {
       }
   }
 
-
+    console.log(sessionStorage.getItem("designSubmission"));
     return(
     <>{success ?(<div>
       <div id ="spacer"></div>
@@ -157,9 +158,10 @@ const Submit = () => {
           <br />
           </form>
           <div id="submissionDisplayedInPageDiv">    
-                  <img onLoad = { () => setIpfs(sessionStorage.getItem("designSubmission"))} id = "submissionDisplayedInSubmitPage" src = { "https://ipfs.io/ipfs/" + sessionStorage.getItem("designSubmission")}></img>
+                  <img onLoad = { () =>setIpfs(sessionStorage.getItem("designSubmission"))} id = "submissionDisplayedInSubmitPage" src = { "https://ipfs.io/ipfs/" + sessionStorage.getItem("designSubmission")}></img>
           </div>
           <button id = "ni" onClick={() => handleSubmitProxy()}>Submit</button>
+          <h1>Your Link: https://ipfs.io/ipfs/{ipfs}</h1> 
            </>
     )}
         </>

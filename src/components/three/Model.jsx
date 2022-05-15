@@ -16,7 +16,7 @@ import floortity from '../../assets/floortt.png'
 
 import {BasicShirtDisplay}  from './Shirts'
 import { makeList } from './Textures';
-
+import {Camel} from './Assets';
 
 // function ShirtO(props) {
 //     const group = useRef()
@@ -199,6 +199,7 @@ export function Model(){
       <Suspense fallback={null}>
       <Bounds fit clip margin={0.25}>   
       <SelectToZoom>
+        <Camel />
       {/* <SceneThree start='0' name = "shirt1" itemt={shirtThree}/> */}
       {
         // setPosi(posi-100),
@@ -214,7 +215,7 @@ export function Model(){
       }
 
     
-    
+  
     <GroundPlane />
     <BackDrop />
     {/* <Sphere /> */}

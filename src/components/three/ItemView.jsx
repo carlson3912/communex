@@ -38,7 +38,7 @@ export function BasicShirtDisplaySill(prop){
        <>
      <mesh name={prop.name} castShadow position={[0, -80, 0]}geometry={geometry} >
          {/* <Sky /> */}
-       <meshPhysicalMaterial name="donald" map={texture}/>
+       <meshPhysicalMaterial map={texture}/>
      </mesh>
      </>
    )
@@ -51,6 +51,7 @@ export const ItemView = (props) => {
         <BasicShirtDisplaySill  name={props.name} start ={0} itemt={props.src}/>
         <ambientLight intensity={1} />
         <OrbitControls />
+        <Stars />
     </Canvas>
     </Suspense>
 

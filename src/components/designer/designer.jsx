@@ -34,6 +34,7 @@ export const Designer = () =>{
     const [pendingIm, setPI] = useState(null);
     const[doneD, setDoneD] = useState(false);
     const[threedmock, set3dmock] = useState(visten);
+    const [shirtColor, setShirtColor] = useState("white");
 //i can turn any private key into a public key and wallet address. i just can't make the right object with
 //a public key input to allow for quick encryption
     // function encryptOrder(dataIn){
@@ -131,20 +132,24 @@ export const Designer = () =>{
         // setPI(event.target.files[0]);
       }
 
-    useEffect(()=>{
-        if(canvas){
-            const ctx=canvas.current.getContext("2d");
-            ctx.drawImage(shirt,70,0,700,800);
+    // useEffect(()=>{
+    //     if(canvas){
+    //         const ctx=canvas.current.getContext("2d");
+    //         ctx.drawImage(shirt,70,0,700,800);
             
-        }
+    //     }
   
-    },[])
+    // },[])
 
     useEffect(() =>{
-        if(numElements>0 && canvas){
+        if(canvas){
             console.log("REDRAW STARTED")
             const ctx=canvas.current.getContext("2d");
             ctx.clearRect(0, 0, 2000, 2000);
+            // ctx.clearRect(0, 0, 2000, 2000);
+            console.log("SHIRT COLOR: " + shirtColor);
+            ctx.fillStyle = shirtColor;
+            ctx.fillRect(0, 0, 2000, 2000);
             // ctx.drawImage(shirt,70,0,700,800);
             for(var i = 0; i<numElements; i++){
                 ctx.drawImage(images[i],pos[i][0],pos[i][1], sizes[i][0],sizes[i][1]);
@@ -152,10 +157,10 @@ export const Designer = () =>{
             if (water){
                 ctx.drawImage(waterImage,-500,-500,2000,2000);
             }
-            set3dmock(canvas.current.toDataURL('image/jpeg'));
+            set3dmock(canvas.current.toDataURL('image/jpeg',1));
 
         }
-    },[top, pos, water])
+    },[top, pos, water, shirtColor])
 
 
     const click = ({nativeEvent}) => {
@@ -224,6 +229,16 @@ await client.add(dataURItoBlob(e)).then((res) => {
     return(
         <div>
              <h1>Welcome to the Design Studio</h1>
+             <div>
+                 <div id="shirtColorPicker2">
+                <h1 id="colorPickerWords">Color Picker</h1>
+                    <div id="shirtColorPicker">
+                        <input id="shirtColorPicker3" type="color" name="head" value={shirtColor} onChange={e=>{setShirtColor(e.target.value)}}/>
+                    </div>
+                    </div>
+                    <label for="head">Pick Your Shirt CColor</label>
+              
+            </div>
             <div id="gameboy">
            
                 <div id="leftDesigner">
@@ -238,7 +253,7 @@ await client.add(dataURItoBlob(e)).then((res) => {
                     <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click}><h1>Hello</h1></canvas>
                 </div>
                 <div id="modelviewdesign">
-                { !doneD ?     
+                {/* { !doneD ?     
                 <button id="seeModelButton"onClick={e=>{
                             setDoneD(true);
                             const canvas = document.getElementById("upCanvas");
@@ -246,11 +261,11 @@ await client.add(dataURItoBlob(e)).then((res) => {
 
                             }}>See Design</button>
                             : null }
-                { doneD ? 
+                { doneD ?  */}
                 
                 <ItemView src={threedmock} name="visten item view"/>
                 
-                        : null }
+                        {/* : null } */}
                         </div>
                 <div id="rightDesign">
                     <div id="rdco">
@@ -351,6 +366,7 @@ await client.add(dataURItoBlob(e)).then((res) => {
                             const canvas = document.getElementById("upCanvas");
                             const image = canvas.toDataURL('image/jpeg');
                             infura(image);
+                            console.log(image.src)
                             // const link = document.createElement("a");
                             // link.href=image;
                             // link.download ="main.jpg"
