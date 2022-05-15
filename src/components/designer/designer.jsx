@@ -218,7 +218,7 @@ await client.add(dataURItoBlob(e)).then((res) => {
 
     return(
         <div>
-             <h1>Welcome to the Design Studio</h1>
+             <h1>Designer Studio</h1>
             <div id="gameboy">
            
                 <div id="leftDesigner">

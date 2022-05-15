@@ -6,14 +6,17 @@
 #gameboy{
     font-family: specMED;
     display:flex;
+    color:white;
+    border:none;
 }
 
 #leftDesigner{
-    background-color: var(--secondary-color);
+    border:none;
+    background-color: var(--quadrinary-color);
 }
 #topDesign{
     display:flex;
-    background-color: var(--tertiary-color);
+    background-color: var(--quadrinary-color);
 }
 #pendingImageOption{
     display: flex;
@@ -41,12 +44,14 @@
 }
 
 #blueUp{
-    background-color: rgb(255, 255, 255);
+    background-color: var(--quadrinary-color);
     border-style: solid;
-    border-color: var(--secondary-color);
+    border-color: var(--black-color);
     border-radius: 15px;
     border-width: 5px;
     display: flex;
+    color:var(--tertiary-color);
+    margin-bottom:1vh;
 }
 
 #downimage{

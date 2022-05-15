@@ -221,19 +221,16 @@ function GroundPlane() {
         />
       </mesh>
     );
-  }
-export function Model(){
-  
-  const listItems = makeList();
-  
+  } 
+
+ async function Model() {
+  const listItems = await makeList();
   return<Canvas height="100%"camera={{position: [0, 0, 300]}}>
       
       <Suspense fallback={null}>
       <Bounds fit clip margin={1.2}>
-      <SelectToZoom x="">
-      {/* <SceneThree start='0' name = "shirt1" itemt={shirtThree}/> */}
+      <SelectToZoom>
       {
-        // setPosi(posi-100),
         
         listItems.map(shirt=>{
           const name = shirt.name;

@@ -2,18 +2,53 @@ import React from 'react';
 import {Bids, Header, } from '../../components'
 import './home.css'
 import Model from '../../components/three/Model'
+import Timer from "../../components/timer/timer";
+import { Link  } from 'react-router-dom';
+import ItemCard from "../../components/itemCard/productCard";
+import item01 from '../../assets/item01.png'
+
+
+
 const Home = () => {
 
   return <div>
-    <div id="stars"></div>
+        <div id="stars"></div>
     <div id="stars2"></div>
     <div id="stars3"></div>
+       <div className='header'>
+        <div id="rowR">
+        
+            <div id ="row">
+              <p id ="r">POP-FASHION</p><br/>
+            </div>
+
+            <div id="row1">
+              <p id="r">COLLECT $SILK</p><br/>
+            </div>
+            <div id="row2">
+              <p id="r">POP-FASHION</p><br/>
+            </div>
+      </div>
+      </div>
+      <div id="space"></div>
     <div id="animated">
-    {/*<Model/>*/}
+    <Model/>
     </div>
-    <div id="space2"></div>
-    <div id="space"></div>
-   <Header />
+    <div className='header'>
+        <div id="rowR">
+        
+            <div id ="row">
+              <p id ="r">POP-FASHION</p><br/>
+            </div>
+
+            <div id="row1">
+              <p id="r">COLLECT $SILK</p><br/>
+            </div>
+            <div id="row2">
+              <p id="r">POP-FASHION</p><br/>
+            </div>
+      </div>
+      </div>
    <div id="space2"></div>
    <div id="space"></div>
    

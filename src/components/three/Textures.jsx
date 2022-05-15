@@ -3,7 +3,7 @@ import { Bounds, useBounds,OrbitControls, Stars, useTexture, useGLTF, Sky, SpotL
 import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader';
 import shirtTwo from '../../assets/tshirt_obj.obj'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
-
+import axios from "../../axios/axios";
 
 import shirtThree from '../../assets/shirtFour.jpeg'
 import matlab from '../../assets/matlab2.jpeg'
@@ -12,7 +12,7 @@ import moneyFace from '../../assets/monetFace.JPG'
 import longLine from '../../assets/longLine.JPG'
 import mateoTwo from '../../assets/mateoTwo.jpeg'
 
-export const listShirts = new Array(
+ const listShirts = new Array(
     shirtThree,
     matlab,
     camel,
@@ -27,16 +27,25 @@ export const listShirts = new Array(
     // mateoTwo.toString()
 );
 
-export const makeList = () => {
+export const makeList = async () => {
     var answer = []
-    for(let i = 0; i<listShirts.length;i++){
-        var stringIN = "design "+i;
-        answer.push({
-            src: listShirts[i],
-            name: stringIN,
-            posi: i
-        });
 
-    }
+        const response = await axios.post("http://localhost:3500/submissions",
+                     JSON.stringify({}),
+                    JSON.stringify({
+                        headers: { 'Content-Type': 'text/plain'},
+                        withCredentials: true
+                    })
+                    );
+            var m = 0;
+            for (let i = 0; i <response.data.length; i++){
+                const temp = "https://ipfs.io/ipfs/" + response.data[i].ipfs
+               answer.push({
+                   src: temp,
+                   name: response.data[i].title,
+                   posi: i });
+  
+            }
+
     return answer
 }

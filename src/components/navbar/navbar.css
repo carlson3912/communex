@@ -1,6 +1,7 @@
 
 h1{
   font-family: kumar;
+  color:white;
 }
 
 h2{
@@ -10,8 +11,16 @@ h2{
 #navTitle{
   font-family: cinzelBlack;
   color:white;
+  text-align: left;
+  margin-left:1vw;  
 }
-
+#navSubTitle{
+  margin-left:1vw;
+  display:block;
+  font-family: cinzelDEC;
+  color:white;
+  font-size: .8em;
+}
 #navItems{
   font-family: cinzelDec;
   color:white;
@@ -171,6 +180,48 @@ h2{
   text-decoration-line: underline;
 }
 
+.glitch {
+  font-size: 8.125em;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  color: #fff;
+  letter-spacing: 5px;
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both 5;
+}
+.glitch:before, .glitch:after {
+  display: block;
+  content: attr(data-glitch);
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+}
+.glitch:after {
+  color: #f0f;
+  z-index: -2;
+}
+.glitch:before {
+  color: #0ff;
+  z-index: -1;
+}
+.glitch:hover:before {
+  -webkit-animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 5;
+          animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 5;
+}
+.glitch:hover:after {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both 5;
+}
+
+
+
 @media screen and (max-width:1050px) {
   .navbar-links_container{
     display: none;
@@ -214,3 +265,4 @@ h2{
 
 
  }
+

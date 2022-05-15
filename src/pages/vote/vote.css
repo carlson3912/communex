@@ -20,7 +20,7 @@
 #title{
     text-align: center;
     margin-top: 0px;
-    color:var(--secondary-color);
+    color:var(--primary-color);
     font-family: specMED;
 }
 #artist{
@@ -29,16 +29,13 @@
     font-family: specMED;
 }
 #voteButton{
-    border:2px solid ;
-    border-color:var(--primary-color);
-    border-radius:2vw;
+    color:black;
+  border-radius:2vw;
     position:absolute;
     margin-left: 9%;
     margin-top: -1.7%;
-    background-color:var(--transparent-color);
-    color:var(--primary-color);
+    background-color:var(--secondary-color);
     font-family: specMED;
-
 }
 
 h1{
