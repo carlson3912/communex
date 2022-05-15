@@ -36,7 +36,8 @@ export function BasicShirtDisplaySill(prop){
    // I've used meshPhysicalMaterial because the texture needs lights to be seen properly.
    return (
        <>
-     <mesh name={prop.name} castShadow position={[0, -80, -20]}geometry={geometry} >
+     <mesh name={prop.name} castShadow position={[0, -80, 0]}geometry={geometry} >
+         {/* <Sky /> */}
        <meshPhysicalMaterial name="donald" map={texture}/>
      </mesh>
      </>
@@ -45,7 +46,8 @@ export function BasicShirtDisplaySill(prop){
 
 export const ItemView = (props) => {
 
-    return<Suspense fallback={null}><Canvas height="500px"camera={{position: [0, 0, 100]}}>
+    return<Suspense fallback={null}>
+        <Canvas height="500px"camera={{position: [0, 0, 150]}}>
         <BasicShirtDisplaySill  name={props.name} start ={0} itemt={props.src}/>
         <ambientLight intensity={1} />
         <OrbitControls />
