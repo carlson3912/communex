@@ -4,9 +4,9 @@ import Web3 from "web3";
 
 import './submit.css'
 import {  Link } from "react-router-dom";
-const TITLE_REGEX = /^[A-z][A-z0-9- ]{2,40}$/;
+const TITLE_REGEX = /^[A-z][A-z0-9- ]{2,32}$/;
 const IPFS_REGEX = /^Qm[1-9A-HJ-NP-Za-km-z]{44,}|b[A-Za-z2-7]{58,}|B[A-Z2-7]{58,}|z[1-9A-HJ-NP-Za-km-z]{48,}|F[0-9A-F]{50,}$/;
-
+const DESCRIPTION_REGEX = /^[A-z][A-z0-9- ]{2,99}$/;
 const Submit = () => {
   const [wallet, setWallet, setHandle] = useState();
   const handleSubmitProxy= async() => {
@@ -20,6 +20,7 @@ const Submit = () => {
     const userRef = useRef();
     const errRef = useRef();
     const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
     const [validTitle, setValidTitle] = useState(false);
 	  const [ipfs, setIpfs] = useState('');
     const [validIpfs, setValidIpfs] = useState(false);
@@ -45,8 +46,10 @@ const Submit = () => {
       const v1 = TITLE_REGEX.test(title);
       const v2 = IPFS_REGEX.test(ipfs);
       const v3 = !(parseInt(royalty) > 40 || parseInt(royalty) <= 0);
+      const v4 = DESCRIPTION_REGEX.test(description);
+
       if (!v1) {
-          setErrMsg("Title must begin with a letter, and be at least 3 characters. Numbers, spaces, and hyphens are allowed.");
+          setErrMsg("Title must begin with a letter, and be at least 3 characters, and up to 40. Numbers, spaces, and hyphens are allowed.");
           return;
       }
   else if (!v2) {
@@ -57,7 +60,12 @@ const Submit = () => {
         setErrMsg("Royalty percentage must be between 1 and 40.");
         return;
     }
-      const reg = window.accounts[0] + "," + title + "," + ipfs + "," + royalty + "," + "1";
+    else if (!v4) {
+      setErrMsg("Description must begin with a letter, and be at least 3 characters, and up to 100. Numbers, spaces, and hyphens are allowed.");
+      return;
+  }
+  console.log(sessionStorage.getItem("designSubmission"));
+      const reg = window.accounts[0] + "§" + title + "§" + description + "§" + ipfs + "§" + royalty + "§"  + "1";
       const rex = JSON.stringify(reg);
       try {
           const response = await axios.post('http://localhost:3500/submit',
@@ -91,6 +99,7 @@ const Submit = () => {
       }
   }
 
+
     return(
     <>{success ?(<div>
       <div id ="spacer"></div>
@@ -104,13 +113,13 @@ const Submit = () => {
         <h1> Submit your art </h1>
         <p1 id ="t">Receive royalty, publicity, and glory.</p1>
         <div id = "linkspecs">
-        <p id = "s">See our submission standards  </p>
+        <p id = "sex">See our submission standards  </p>
           <Link to='Guidelines'>
           <span id = "l"> here. </span>
          </Link>
          </div>
         </div>
-        <div id = "linkspecs"><p id = "s">{errMsg} </p></div>
+        <div id = "linkspecs"><p id = "sex">{errMsg} </p></div>
         <form id = "form" autoComplete="off" method="POST" class="showForm">
           <br />
           <input 
@@ -123,16 +132,17 @@ const Submit = () => {
           required
           ></input>
           <br />
-          <input
-           placeholder="IPFS URL:" 
-           id = "in" 
-           type="text" 
-           name="ipfs"
-           onChange={(e) => setIpfs(e.target.value)}
-          value={ipfs}
-          required 
-           ></input>
+          <input 
+          placeholder="Short Description:" 
+          id = "in" 
+          type="text" 
+          name="designTitle"
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
+          required
+          ></input>
           <br />
+          
           <input
            placeholder="Royalty % (1-40):" 
            id = "in" 
@@ -145,9 +155,10 @@ const Submit = () => {
           required 
            ></input>
           <br />
-         
-          
           </form>
+          <div id="submissionDisplayedInPageDiv">    
+                  <img onLoad = { () => setIpfs(sessionStorage.getItem("designSubmission"))} id = "submissionDisplayedInSubmitPage" src = { "https://ipfs.io/ipfs/" + sessionStorage.getItem("designSubmission")}></img>
+          </div>
           <button id = "ni" onClick={() => handleSubmitProxy()}>Submit</button>
            </>
     )}

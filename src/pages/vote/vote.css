@@ -1,0 +1,46 @@
+#thumbnail{
+    margin-top:0vh;
+    height: 80%;
+    border-radius: 25px;
+}
+#items{
+    height:30vh;
+    margin:auto;
+    border-radius: 25px;
+    background:var(--quadrinary-color);
+    padding:2.8vh;
+    padding-bottom:3.8vh;
+    min-width:14vw;
+    max-width:14vw;
+}
+#html-data-table{
+   margin:auto;
+
+}
+#title{
+    text-align: center;
+    margin-top: 0px;
+    color:var(--secondary-color);
+    font-family: specMED;
+}
+#artist{
+    margin-top: 0px;
+    color:var(--tertiary-color);
+    font-family: specMED;
+}
+#voteButton{
+    border:2px solid ;
+    border-color:var(--primary-color);
+    border-radius:2vw;
+    position:absolute;
+    margin-left: 9%;
+    margin-top: -1.7%;
+    background-color:var(--transparent-color);
+    color:var(--primary-color);
+    font-family: specMED;
+
+}
+
+h1{
+    color:var(--primary-color);
+}

@@ -75,18 +75,7 @@ button{
     background-color: rgba(165, 165, 165, 0.1);
     color: black;
 }
-#submissionDisplayedInSubmitPage{
-    background-image:url("../../assets/loading.png");
-    background-size:500px;
-    width:500px;
-    height:500px;
-}
-#submissionDisplayedInSubmitPage{
-    margin:auto;
-        padding:1vh;
-    background-color: var(--secondary-color);
-    margin-bottom: 3vh;
-}
+
 #secondguide{
     display:flex;
     margin-left: 5%;
@@ -202,7 +191,6 @@ button{
     #in{
         width: 78vw;
     }
-
   }
 
   

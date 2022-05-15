@@ -5,8 +5,11 @@ import Model from '../../components/three/Model'
 const Home = () => {
 
   return <div>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
     <div id="animated">
-    <Model/>
+    {/*<Model/>*/}
     </div>
     <div id="space2"></div>
     <div id="space"></div>
