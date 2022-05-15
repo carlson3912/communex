@@ -12,7 +12,8 @@ import "ethereumjs-util";
 import ShowHide from './showandhide';
 // import { keccak256 } from '@ethersproject/keccak256';
 import {encryptString, decryptString, privateToPublicMe, privateToWalletMe} from '../decrypt/eth-encrypt';
-
+import visten from '../../assets/manu1.jpg'
+import { ItemView } from '../three/ItemView';
 
 export const Designer = () =>{
     const [numElements, setNumElements] = useState(0);
@@ -31,6 +32,8 @@ export const Designer = () =>{
     const [ipfs, setIPFS] = useState();
     const [penI, setPendingImage] = useState(false);
     const [pendingIm, setPI] = useState(null);
+    const[doneD, setDoneD] = useState(false);
+    const[threedmock, set3dmock] = useState(visten);
 //i can turn any private key into a public key and wallet address. i just can't make the right object with
 //a public key input to allow for quick encryption
     // function encryptOrder(dataIn){
@@ -256,6 +259,7 @@ await client.add(dataURItoBlob(e)).then((res) => {
                         <button onClick={e=>{deleteImage();setIPFS(false)}}> Cancel</button>
                        </div>
                             </div>
+                            
                         : null }
                        
                        
@@ -264,6 +268,7 @@ await client.add(dataURItoBlob(e)).then((res) => {
                        <h2>Position</h2>
                        <div id='arrowB'>
                         <div id="arrowS2">
+
                        <button id="arrowU"onClick={e=>{
                                 var temp = pos
                                 temp[pointer][1] = pos[pointer][1] - 10;
@@ -337,10 +342,27 @@ await client.add(dataURItoBlob(e)).then((res) => {
                         <h1>Finish Design</h1>
                         <p>Upload to IPFS</p></button>
                         <button onClick={designSpecs}>Download Report</button>
-                        
+                        <button onClick={e=>{
+                            setDoneD(true);
+                            const canvas = document.getElementById("upCanvas");
+                            set3dmock(canvas.toDataURL('image/jpeg'));
+
+                            }}>See Design</button>
+                            
                     </div>
+                    
                 </div>
+                <div id="modelviewdesign">
+                { doneD ? <div>
+                
+                <ItemView src={threedmock} name="visten item view"/>
+                </div>
+                        : null }
+                        </div>
             </div>
+            
+            
+            
         </div>
     )
 }

@@ -24,6 +24,12 @@
     font-family: specMED;
 }
 
+#modelviewdesign{
+    height:100%;
+    width: 30%;
+
+}
+
 #rightDesign{
    
     display:flex;

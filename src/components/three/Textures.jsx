@@ -11,6 +11,7 @@ import camel from '../../assets/camelShirt.jpeg'
 import moneyFace from '../../assets/monetFace.JPG'
 import longLine from '../../assets/longLine.JPG'
 import mateoTwo from '../../assets/mateoTwo.jpeg'
+import visten from '../../assets/manu1.jpg'
 
 export const listShirts = new Array(
     shirtThree,
@@ -18,22 +19,28 @@ export const listShirts = new Array(
     camel,
     moneyFace,
     longLine,
-    mateoTwo
-    // shirtThree.toString(),
-    // matlab.toString(),
-    // camel.toString(),
-    // moneyFace.toString(),
-    // longLine.toString(),
-    // mateoTwo.toString()
+    mateoTwo,
+    visten
+  
+);
+
+export const listNames= new Array(
+    "Blue Token",
+    "Navy Skeleton",
+    "Glitched Camel",
+    "Money Face Wrap",
+    "Alaskan",
+    "Money Face Mateo",
+    "Visten Launch"
 );
 
 export const makeList = () => {
     var answer = []
     for(let i = 0; i<listShirts.length;i++){
-        var stringIN = "design "+i;
+        // var stringIN = "design "+i;
         answer.push({
             src: listShirts[i],
-            name: stringIN,
+            name: listNames[i],
             posi: i
         });
 
