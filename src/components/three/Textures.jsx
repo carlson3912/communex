@@ -12,6 +12,7 @@ import moneyFace from '../../assets/monetFace.JPG'
 import longLine from '../../assets/longLine.JPG'
 import mateoTwo from '../../assets/mateoTwo.jpeg'
 import visten from '../../assets/manu1.jpg'
+import joker from '../../assets/jokerdiscord.jpeg'
 
 export const listShirts = new Array(
     shirtThree,
@@ -20,7 +21,8 @@ export const listShirts = new Array(
     moneyFace,
     longLine,
     mateoTwo,
-    visten
+    visten,
+    joker
   
 );
 
@@ -31,7 +33,8 @@ export const listNames= new Array(
     "Money Face Wrap",
     "Alaskan",
     "Money Face Mateo",
-    "Visten Launch"
+    "Visten Launch",
+    "Joker OG"
 );
 
 export const makeList = () => {

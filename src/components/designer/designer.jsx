@@ -152,6 +152,8 @@ export const Designer = () =>{
             if (water){
                 ctx.drawImage(waterImage,-500,-500,2000,2000);
             }
+            set3dmock(canvas.current.toDataURL('image/jpeg'));
+
         }
     },[top, pos, water])
 
@@ -235,6 +237,21 @@ await client.add(dataURItoBlob(e)).then((res) => {
                     </div>
                     <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click}><h1>Hello</h1></canvas>
                 </div>
+                <div id="modelviewdesign">
+                { !doneD ?     
+                <button id="seeModelButton"onClick={e=>{
+                            setDoneD(true);
+                            const canvas = document.getElementById("upCanvas");
+                            set3dmock(canvas.toDataURL('image/jpeg'));
+
+                            }}>See Design</button>
+                            : null }
+                { doneD ? 
+                
+                <ItemView src={threedmock} name="visten item view"/>
+                
+                        : null }
+                        </div>
                 <div id="rightDesign">
                     <div id="rdco">
                         <h2>Source Images</h2>
@@ -342,23 +359,12 @@ await client.add(dataURItoBlob(e)).then((res) => {
                         <h1>Finish Design</h1>
                         <p>Upload to IPFS</p></button>
                         <button onClick={designSpecs}>Download Report</button>
-                        <button onClick={e=>{
-                            setDoneD(true);
-                            const canvas = document.getElementById("upCanvas");
-                            set3dmock(canvas.toDataURL('image/jpeg'));
-
-                            }}>See Design</button>
+                        
                             
                     </div>
                     
                 </div>
-                <div id="modelviewdesign">
-                { doneD ? <div>
                 
-                <ItemView src={threedmock} name="visten item view"/>
-                </div>
-                        : null }
-                        </div>
             </div>
             
             
