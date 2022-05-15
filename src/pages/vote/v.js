@@ -2,7 +2,7 @@ import {useState, React} from 'react';
 import './vote.css'
 import {Link} from 'react-router-dom'
 import Timer from '../../components/timer/timer'
-import axios from "./axios"
+import axios from "../../axios/axios"
 import shit from "../../assets/shirttemplate.png"
 
 export const Vote = () => {
@@ -34,11 +34,13 @@ export const Vote = () => {
            }
 
   return (
-    <div >
+    <div onSeeked={() => connection()}>
       <h1>Voting has not started yet</h1>
       <h1>It will open up in:</h1>
-      <Timer date="May 15, 2022 15:00 PST"/>
-      <h1 onClick={connection}>Load Submissions</h1>
+
+      <Timer  date="May 15, 2022 15:00 PST"/>
+      <img onLoad={() => connection()} src="https://c.tenor.com/Z2f9SbnfmwcAAAAi/gigachat-gigachatter.gif"></img>
+
         <table id ="html-data-table">
         </table>
         </div>

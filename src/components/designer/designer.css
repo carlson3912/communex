@@ -1,20 +1,19 @@
 #upCanvas{
-    background-color: aquamarine;
     border: 5px;
     border-style: solid;
 }
 
 #gameboy{
-
+    font-family: specMED;
     display:flex;
 }
 
 #leftDesigner{
-    background-color: aquamarine;
+    background-color: var(--secondary-color);
 }
 #topDesign{
     display:flex;
-    background-color: purple;
+    background-color: var(--tertiary-color);
 }
 #pendingImageOption{
     display: flex;
@@ -22,7 +21,7 @@
 #frontback{
     margin-right:auto;
     margin-left:auto;
-    background-color: brown;
+    font-family: specMED;
 }
 
 #rightDesign{
@@ -44,7 +43,7 @@
 #blueUp{
     background-color: rgb(255, 255, 255);
     border-style: solid;
-    border-color: aquamarine;
+    border-color: var(--secondary-color);
     border-radius: 15px;
     border-width: 5px;
     display: flex;

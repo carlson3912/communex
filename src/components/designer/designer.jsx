@@ -186,8 +186,10 @@ export const Designer = () =>{
         // link.download ="text.txt"
 console.log("Right before server add")
 await client.add(dataURItoBlob(e)).then((res) => {
-    console.log("https://ipfs.io/ipfs/"+res.path);
+    console.log("https://ipfs.io/ipfs/"+res.path)
+    sessionStorage.setItem("designSubmission", res.path)
 });
+    window.location.href = "../Submit"
     }
 
     const designSpecs = () => {
@@ -201,6 +203,7 @@ await client.add(dataURItoBlob(e)).then((res) => {
             str = str +  "Width: " + sizes[i][0] + "\n";
             str = str + "Height: " + sizes[i][1] + "\n";
         }
+
         const priv = 'ead75d17f3748b52b863f9358cdc9646fa6caf66399919d375ea6339639d909a';
         const pub = privateToPublicMe(priv);
         var blob = new Blob(
@@ -212,25 +215,6 @@ await client.add(dataURItoBlob(e)).then((res) => {
         link.download ="text.txt"
         link.click();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     return(
         <div>
@@ -246,7 +230,7 @@ await client.add(dataURItoBlob(e)).then((res) => {
                             Back
                         </div>
                     </div>
-                    <canvas ref={canvas} id="upCanvas" height="1080px" width="920px" onMouseDown={click}><h1>Hello</h1></canvas>
+                    <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click}><h1>Hello</h1></canvas>
                 </div>
                 <div id="rightDesign">
                     <div id="rdco">
@@ -354,9 +338,6 @@ await client.add(dataURItoBlob(e)).then((res) => {
                         <p>Upload to IPFS</p></button>
                         <button onClick={designSpecs}>Download Report</button>
                         
-                        
-                        
-                         
                     </div>
                 </div>
             </div>

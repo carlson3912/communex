@@ -5,21 +5,22 @@ h1{
 
 h2{
   font-family: kumarOutline;
+
 }
 #navTitle{
   font-family: cinzelBlack;
-  color:black;
+  color:white;
 }
 
 #navItems{
   font-family: cinzelDec;
-  color:black;
+  color:white;
   text-decoration-line:none;
 }
 
 #navItems2{
   font-family: cinzelBlack;
-  color:black;
+  color:white;
 }
 .navbar{
   display: flex;
@@ -165,7 +166,7 @@ h2{
 #navItems:hover::before,
 #navItems:hover::after {
   height: 100%;
-  border-right: 1px solid rgb(0, 0, 0);
+  border-right: 1px solid rgb(255, 255, 255);
   
   text-decoration-line: underline;
 }
@@ -180,7 +181,7 @@ h2{
   #navItems:hover::before,
   #navItems:hover::after {
     height: 5%;
-    border-right: 1px solid rgb(0, 0, 0);
+    border-right: 1px solid rgb(255, 255, 255);
     
     text-decoration-line: underline;
   }

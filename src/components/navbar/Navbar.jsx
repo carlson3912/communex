@@ -6,16 +6,17 @@ import seller1 from '../../assets/seller1.png'
 import {  Link } from "react-router-dom";
 import Web3 from "web3";
 import axios from "./axios";
+
+
 const Menu = () => (
   <>
     <div>
-     <Link to="/"><p id="navItems">Marketplace</p> </Link>
+     <Link to="/"><p id="navItems"> Marketplace </p> </Link>
      </div>
-     <Link to ="Product"><p id="navItems">Product</p></Link>
-     <Link to ="Vote"><p id="navItems">Vote</p></Link>
-     <Link to ="Design"><p id="navItems">Design Studio</p></Link>
-     <Link to ="Submit"><p id="navItems">Submit</p></Link>
-     <Link to ="About"><p id="navItems">Our Mission</p></Link>
+     <Link to ="Product"><p id="navItems"> Product </p></Link>
+     <Link to ="Vote"><p id="navItems"> Vote </p></Link>
+     <Link to ="Design"><p id="navItems"> Design Studio </p></Link>
+     <Link to ="About"><p id="navItems"> Our Mission </p></Link>
   </>
  )
 
