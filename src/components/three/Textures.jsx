@@ -37,15 +37,12 @@ export const makeList = async () => {
                         withCredentials: true
                     })
                     );
-            var m = 0;
             for (let i = 0; i <response.data.length; i++){
                 const temp = "https://ipfs.io/ipfs/" + response.data[i].ipfs
                answer.push({
                    src: temp,
                    name: response.data[i].title,
                    posi: i });
-  
             }
-
     return answer
 }
