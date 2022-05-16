@@ -8,11 +8,69 @@ import trade1 from '../../assets/trade1.png';
 import trade2 from '../../assets/trade2.png';
 import fire from '../../assets/fire.png';
 import question from '../../assets/question.png'
-
+import Product from '../../pages/product/Product.jsx'
 const About = () => {
-
+  const [sourced, setSource] = useState("item0");
+  var settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    swipeToSlide:true,
+    responsive: [
+      {
+        breakpoint: 1160,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          swipeToSlide:true,
+        }
+      },
+      {
+        breakpoint: 950,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          swipeToSlide:true,
+        }
+      },
+      {
+        breakpoint: 750,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        }
+      },
+      {
+        breakpoint: 550,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 470,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          variableWidth: true,
+        }
+      }
+    ]
+  };
 
   return( 
+    <>
     <div id="aboutist">
     <div id='aboutbig'>
         <div id="rightbox">
@@ -90,6 +148,8 @@ const About = () => {
         
       </div> */}
     </div>
+    <Product/>
+    </>
   )
 };
 

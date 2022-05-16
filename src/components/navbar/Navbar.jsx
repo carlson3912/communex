@@ -11,12 +11,11 @@ import axios from "./axios";
 const Menu = () => (
   <>
     <div>
-     <Link to="/"><p id="navItems"> Marketplace </p> </Link>
+     <Link to="/"><p className = "glitch" data-glitch="MarketPlace" id="navItems"> Marketplace </p> </Link>
      </div>
-     <Link to ="Product"><p id="navItems"> Product </p></Link>
-     <Link to ="Vote"><p id="navItems"> Vote </p></Link>
-     <Link to ="Design"><p id="navItems"> Design Studio </p></Link>
-     <Link to ="About"><p id="navItems"> Our Mission </p></Link>
+     <Link to ="Vote"><p className = "glitch" data-glitch="Vote" id="navItems"> Vote </p></Link>
+     <Link to ="Design"><p className = "glitch" data-glitch="Design Studio" id="navItems"> Design Studio </p></Link>
+     <Link to ="About"><p className = "glitch" data-glitch="Our Mission" id="navItems"> Our Mission </p></Link>
   </>
  )
 
@@ -61,7 +60,10 @@ const Menu = () => (
         <div className="navbar-links_logo">
           <img src={seller1} alt="logo" />
           <Link to="/"> 
+          <div id="col">
             <h1 id="navTitle">Silk Road Swag</h1>
+            <h1 id="navSubTitle">from the Metaverse to your wardrobe</h1>
+            </div>
           </Link>
         </div>
         <div className="navbar-links_container">

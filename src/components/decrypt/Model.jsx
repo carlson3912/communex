@@ -3,21 +3,26 @@ import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { Bounds, useBounds,OrbitControls, Stars, useTexture, useGLTF, Sky, SpotLight, Stage} from "@react-three/drei";
 import * as THREE from "three";
-
+import fire from '../../assets/fire.png'
 import silk from '../../assets/tryshirt3.jpeg'
 import shirt from '../../assets/doubleshirts.gltf'
 import { GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
-
+import shirtTwo from '../../assets/tshirt_obj.obj'
+import shirtThree from '../../assets/shirtFour.jpeg'
+import matlab from '../../assets/matlab2.jpeg'
+import wardrobe from '../../assets/model.obj'
+import camel from '../../assets/camelShirt.jpeg'
+import moneyFace from '../../assets/monetFace.JPG'
+import longLine from '../../assets/longLine.JPG'
+import mateoTwo from '../../assets/mateoTwo.jpeg'
+import saleBanner from '../../assets/saleBanner.png'
 import background from '../../assets/backgroundT.png'
-
-
+import cylinderC from '../../assets/cylinderC.obj'
+import floor from '../../assets/floor.png'
 import floortity from '../../assets/floortt.png'
-import { DownCylinder, PurpCyliner } from './Assets';
-import {BasicShirtDisplay}  from './Shirts'
-import { makeList } from './Textures';
-import {Camel} from './Assets';
-
+import realShirt from '../../assets/firstreal.jpeg'
+import secondreal from '../../assets/secondreal.png'
 // function ShirtO(props) {
 //     const group = useRef()
 //     const { nodes, materials } = useGLTF(shirt)
@@ -56,31 +61,23 @@ import {Camel} from './Assets';
 //     </mesh>
 //   )
 // }
-
 function ItemBoard(props){
-  console.log(props.name)
- 
   return (
     <mesh receiveShadow position={props.loc}>
       <planeBufferGeometry attach="geometry" args={[200, 200]} />
-      <meshStandardMaterial color="purple"attach="material"/>
+      <meshStandardMaterial attach="material"/>
     </mesh>
   );
 }
 
 function SelectToZoom({ children }) {
   const [loc, setLoc] = useState([0,0,0])
-  const[nameProduct, setNameProduct] = useState("unknown")
   const api = useBounds()
-  
   return (
-    <group onClick={e => (e.stopPropagation(),
-    setNameProduct(e.object.name),
-    // console.log(e.object),
-     setLoc([e.object.position.x, e.object.position.y+220,e.object.position.z+200]))} onPointerMissed={(e) => e.button === 0 && api.refresh().fit()}>
+    <group onClick={e => (e.stopPropagation(), e.delta <= 2 && api.refresh(e.object).fit(), setLoc([e.object.x, e.object.y],e.object.z))} onPointerMissed={(e) => e.button === 0 && api.refresh().fit()}>
       {children}
-       
-      {/* <ItemBoard loc={loc} name={nameProduct}/> */}
+       console.log(loc)
+      <ItemBoard loc={loc}/>
     </group>
   )
 }
@@ -117,7 +114,33 @@ function Scene() {
     )
   }
 
+function CylinderM(prop){
+   const [location, setLocation] = useState(parseInt(prop.start));
+ useFrame(() => {
+      setLocation(location+1)
+      if (location>700){
+          setLocation(-700);
+      }
+    })
+   const obj = useLoader(OBJLoader, cylinderC);
+ const geometry = useMemo(() => {
+   let g;
+   obj.traverse((c) => {
+     if (c.type === "Mesh") {
+       const _c = c;
+       g = _c.geometry;
+     }
+   });
+   return g;
+ }, [obj]);
 
+ // I've used meshPhysicalMaterial because the texture needs lights to be seen properly.
+ return (
+   <mesh castShadow position={[location, -80, -20]}geometry={geometry} >
+     <meshStandardMaterial color="white" opacity="0.1" transparent={true}/>
+   </mesh>
+ )
+}
 
 function Box(){
     // const colorMap = useLoader(TextureLoader, silk)
@@ -136,7 +159,35 @@ return(
 //     return <primitive object={obj} />
 //   }
 
+function SceneThree(prop){
+   const texture = useTexture(prop.itemt);
+    const [location, setLocation] = useState(parseInt(prop.start));
+  useFrame(() => {
+       setLocation(location+1)
+       if (location>700){
+           setLocation(-700);
+       }
+     })
+    const obj = useLoader(OBJLoader, shirtTwo);
+  const geometry = useMemo(() => {
+    let g;
+    obj.traverse((c) => {
+      if (c.type === "Mesh") {
+        const _c = c;
+        g = _c.geometry;
+      }
+    });
+    return g;
+  }, [obj]);
 
+  // I've used meshPhysicalMaterial because the texture needs lights to be seen properly.
+  return (
+    <mesh castShadow position={[location, -80, -20]}geometry={geometry} >
+      <meshPhysicalMaterial  map={texture}/>
+    </mesh>
+    
+  )
+}
 
 // function Ward(){
     
@@ -162,8 +213,8 @@ return(
 
 function GroundPlane() {
     return (
-      <mesh receiveShadow rotation={[-3.14/2, 0, 0]} position={[0, -300, 0]}>
-        <planeBufferGeometry attach="geometry" args={[2000,2000]} />
+      <mesh receiveShadow rotation={[-3.14/2, 0, 0]} position={[0, -150, 0]}>
+        <planeBufferGeometry attach="geometry" args={[1000, 1000]} />
         <meshStandardMaterial attach="material"  transparent={true} map={useTexture(floortity)} />
       </mesh>
     );
@@ -176,38 +227,60 @@ function GroundPlane() {
       </mesh>
     );
   }
-  
-
-
-
-
+  function Sphere() {
+    return (
+      <mesh position={[0, 0, 0]} rotation={[0, 0, 0]}>
+        <sphereGeometry attach="geometry" args={[1, 16, 16]} />
+        <meshStandardMaterial
+          attach="material"
+          color="white"
+          transparent
+          roughness={0.1}
+          metalness={0.1}
+        />
+      </mesh>
+    );
+  }
 export function Model(){
-  
-  const listItems = makeList();
-  
-  return<Canvas height="100%"camera={{position: [0, 0, 100]}}>
-      {/* Change the margin on the bounds in order to alter the zoom on the camera */}
-      <Suspense fallback={null}>
-      <Camel loc={[700,2,310]}/>
-      <Bounds fit clip margin={0.25}>   
-      <SelectToZoom>
-        
-      {/* <SceneThree start='0' name = "shirt1" itemt={shirtThree}/> */}
-      {
-        
-        listItems.map(shirt=>{
-          const name = shirt.name;
-          const posi = shirt.posi;
-          const src = shirt.src;
-          return(
-            <BasicShirtDisplay name={name} start ={posi * -100} itemt={src} />
-          )
-        })
-      }
-    <PurpCyliner />
-    <DownCylinder />
-    {/* <GroundPlane /> */}
-    {/* <BackDrop /> */}
+return<Canvas height="100%"camera={{position: [0, 0, 300]}}>
+    
+    <Suspense fallback={null}>
+    <Bounds fit clip margin={1.2}>
+    <SelectToZoom x="">
+    <SceneThree start='0' itemt={shirtThree}/>
+    <CylinderM start='0'/>
+    <SceneThree start='-100' itemt={silk}/>
+    <CylinderM start='-100'/>
+    <SceneThree start='-200' itemt={matlab}/>
+    <CylinderM start='-200'/>
+    <SceneThree start='-300' itemt={camel}/>
+    <CylinderM start='-300'/>
+    <SceneThree start='-400' itemt={moneyFace}/>
+    <CylinderM start='-400'/>
+    <SceneThree start='-500' itemt={longLine}/>
+    <CylinderM start='-500'/>
+    <SceneThree start='-600' itemt={mateoTwo}/>
+    <CylinderM start='-600'/>
+    <SceneThree start='-700' itemt={realShirt}/>
+    <CylinderM start='-700'/>
+    <SceneThree start='-800' itemt={secondreal}/>
+    <CylinderM start='-800'/>
+    <SceneThree start='-900' itemt={matlab}/>
+    <CylinderM start='-900'/>
+    <SceneThree start='-1000' itemt={moneyFace}/>
+    <CylinderM start='-1000'/>
+    <SceneThree start='-1100' itemt={longLine}/>
+    <CylinderM start='-1100'/>
+    <SceneThree start='-1200' itemt={mateoTwo}/>
+    <CylinderM start='-1200'/>
+    <SceneThree start='-1300' itemt={matlab}/>
+    <CylinderM start='-1300'/>
+    <SceneThree start='-1400' itemt={matlab}/>
+    <CylinderM start='-1400'/>
+    
+    
+    <GroundPlane />
+    <BackDrop />
     {/* <Sphere /> */}
     {/* <mesh receiveShadow position={[0, 0, 0]}>
       <planeBufferGeometry attach="geometry" args={[500, 500]} />
@@ -221,9 +294,9 @@ export function Model(){
   
 
     <OrbitControls />
-    {/* <ambientLight intensity={0.5} /> */}
-    {/* <rectAreaLight
-      width={1000}
+    <ambientLight intensity={3} />
+    <rectAreaLight
+      width={700}
       height={500}
       color="white"
       brightness={100}
@@ -231,7 +304,7 @@ export function Model(){
       lookAt={[0, 0, 0]}
     //   penumbra={1}
     castShadow
-    /> */}
+    />
        </Canvas>
 
 }

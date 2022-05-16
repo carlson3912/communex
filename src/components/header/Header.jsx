@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import './header.css'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import Timer from "../timer/timer";
 import Slider from "react-slick";
 import seller1 from '../../assets/seller1.png'
 import seller2 from '../../assets/seller2.png'
@@ -12,10 +11,15 @@ import seller5 from '../../assets/seller5.png'
 import seller6 from '../../assets/seller6.jpg'
 import verify from '../../assets/verify.png'
 import coin from '../../assets/seller1.png'
+
+import { RiH1 } from 'react-icons/ri';
+
+import Timer from "../timer/timer";
 import { Link  } from 'react-router-dom';
 import ItemCard from "../itemCard/productCard";
+
 import item01 from '../../assets/item01.png'
-import { RiH1 } from 'react-icons/ri';
+
 
 import resp from "../../components/navbar/Navbar"
 var votes = "5";

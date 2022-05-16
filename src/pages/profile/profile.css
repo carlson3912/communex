@@ -6,6 +6,7 @@
   font-family: specMED;
 }
 #three{
+  margin-top:-1em;
   font-size:1.5em;
   font-family: specMED;
 
@@ -22,7 +23,7 @@
   width:30%;
   margin:auto;
   
-  background-color: var(--primary-color);
+  background-color: var(--quadrinary-color);
   margin-bottom:5vw;
 }
 #dos > h1{
@@ -33,10 +34,10 @@
 }
 #negativo{
   font-family: kumarOutline;
-  color:black;
+  color:var(--secondary-color);
 }
 #neg{
-  background-color: var(--secondary-color);
+  background-color: var(--quadrinary-color);
   width:66%;
   margin:auto;
   margin-top:-4vw;

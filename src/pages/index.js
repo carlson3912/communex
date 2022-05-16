@@ -11,5 +11,7 @@ export {default as Vote} from './vote/v';
 export {default as Guidelines} from './submit/Guidelines';
 export {default as Product} from './product/Product';
 export {default as Design} from './design/design';
+export {default as DesignPage} from './designs/DesignPage';
+
 
 
