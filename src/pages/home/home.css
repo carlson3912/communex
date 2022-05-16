@@ -84,48 +84,4 @@
     box-shadow: 11px 31px #FFF , 340vh 51vw #FFF , 374vh 24vw #FFF , 328vh 25vw #FFF , 146vh 87vw #FFF , 57vh 37vw #FFF , 74vh 24vw #FFF , 45vh 30vw #FFF , 199vh 24vw #FFF , 106vh 5vw #FFF , 135vh 58vw #FFF , 271vh 35vw #FFF , 384vh 59vw #FFF , 88vh 39vw #FFF , 35vh 41vw #FFF , 177vh 35vw #FFF , 397vh 42vw #FFF , 161vh 49vw #FFF , 319vh 3vw #FFF , 119vh 88vw #FFF , 149vh 89vw #FFF , 102vh 47vw #FFF , 371vh 41vw #FFF , 130vh 30vw #FFF , 3vh 44vw #FFF , 113vh 34vw #FFF , 2vh 5vw #FFF , 237vh 81vw #FFF , 386vh 31vw #FFF , 312vh 49vw #FFF , 121vh 21vw #FFF , 136vh 79vw #FFF , 233vh 87vw #FFF , 174vh 65vw #FFF , 301vh 82vw #FFF , 68vh 65vw #FFF , 170vh 52vw #FFF , 279vh 89vw #FFF , 90vh 1vw #FFF , 165vh 52vw #FFF , 284vh 42vw #FFF , 288vh 7vw #FFF , 37vh 23vw #FFF , 374vh 33vw #FFF , 60vh 62vw #FFF , 392vh 3vw #FFF , 345vh 75vw #FFF , 84vh 1vw #FFF , 56vh 28vw #FFF , 176vh 68vw #FFF , 319vh 32vw #FFF , 342vh 83vw #FFF , 156vh 52vw #FFF , 367vh 7vw #FFF , 351vh 55vw #FFF , 274vh 82vw #FFF , 84vh 95vw #FFF , 188vh 24vw #FFF , 380vh 19vw #FFF , 228vh 97vw #FFF , 174vh 58vw #FFF , 47vh 75vw #FFF , 373vh 91vw #FFF , 90vh 33vw #FFF , 210vh 65vw #FFF , 265vh 56vw #FFF , 380vh 83vw #FFF , 29vh 4vw #FFF , 3vh 81vw #FFF , 304vh 53vw #FFF , 295vh 32vw #FFF , 153vh 86vw #FFF , 115vh 17vw #FFF , 372vh 76vw #FFF , 28vh 85vw #FFF , 171vh 49vw #FFF , 252vh 60vw #FFF , 237vh 43vw #FFF , 375vh 75vw #FFF , 244vh 13vw #FFF , 193vh 46vw #FFF , 296vh 73vw #FFF , 12vh 84vw #FFF , 230vh 11vw #FFF , 247vh 41vw #FFF , 361vh 8vw #FFF , 139vh 58vw #FFF , 213vh 50vw #FFF , 105vh 66vw #FFF , 225vh 84vw #FFF , 160vh 6vw #FFF , 350vh 72vw #FFF , 23vh 63vw #FFF , 298vh 63vw #FFF , 364vh 69vw #FFF , 250vh 31vw #FFF , 49vh 7vw #FFF , 331vh 42vw #FFF , 280vh 1vw #FFF , 249vh 13vw #FFF;
   }
   
-  @-o-keyframes animStar {
-    0% {
-      opacity: 5%;
-    }
-    50% {
-      opacity: 100%;
-    }
-    100% {
-      opacity: 5%;
-    }
-  }
-  @-moz-keyframes animStar {
-    0% {
-      opacity: 5%;
-    }
-    50% {
-      opacity: 100%;
-    }
-    100% {
-      opacity: 5%;
-    }
-  }
-  @-webkit-keyframes animStar {
-    0% {
-      opacity: 5%;
-    }
-    50% {
-      opacity: 100%;
-    }
-    100% {
-      opacity: 5%;
-    }
-  }
-  @keyframes animStar {
-    0% {
-      opacity: 5%;
-    }
-    50% {
-      opacity: 100%;
-    }
-    100% {
-      opacity: 5%;
-    }
-  }
   

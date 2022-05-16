@@ -35,7 +35,7 @@ export const Wardrobe = () => {
   
 
     <OrbitControls />
-    <ambientLight intensity={0.5} />
+    {/* <ambientLight intensity={0.5} /> */}
     {/* <rectAreaLight
       width={700}
       height={500}

@@ -8,7 +8,7 @@ import silk from '../../assets/tryshirt3.jpeg'
 import shirt from '../../assets/doubleshirts.gltf'
 import { GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
-
+import {DesignThree} from './designthree'
 import background from '../../assets/backgroundT.png'
 
 
@@ -206,6 +206,7 @@ export function Model(){
       }
     <PurpCyliner />
     <DownCylinder />
+    <DesignThree />
     {/* <GroundPlane /> */}
     {/* <BackDrop /> */}
     {/* <Sphere /> */}
