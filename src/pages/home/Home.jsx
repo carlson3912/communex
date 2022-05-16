@@ -2,6 +2,7 @@ import React from 'react';
 import {Bids, Header, } from '../../components'
 import './home.css'
 import Model from '../../components/three/Model'
+import { Wardrobe } from '../../components/three/Wardrobe';
 const Home = () => {
 
   return <div>
@@ -9,7 +10,7 @@ const Home = () => {
     <div id="stars2"></div>
     <div id="stars3"></div>
     <div id="animated">
-    <Model/>
+    <Model />
     </div>
     <div id="space2"></div>
     <div id="space"></div>

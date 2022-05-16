@@ -205,6 +205,11 @@ await client.add(dataURItoBlob(e)).then((res) => {
     const designSpecs = () => {
         var str = "Design Details \n";
         console.log("test: "+pos[0][0].toString())
+        str = str + "Manufacturer: Visten Co.\n";
+        str = str + "Shirt Style: 0x1\n";
+        str = str + "Shirt color: "+shirtColor+"\n";
+        
+
         for (var i = 0; i<numElements; i++){
             str = str + "**** NEW IMAGE ****" + "\n";
             str = str + "Image source: " + images[i].src + "\n";
@@ -218,6 +223,7 @@ await client.add(dataURItoBlob(e)).then((res) => {
         const pub = privateToPublicMe(priv);
         var blob = new Blob(
             [encryptString(str,pub)],
+            // [str],
             { type: "text/plain;charset=utf-8" });
         const text = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
@@ -270,6 +276,7 @@ await client.add(dataURItoBlob(e)).then((res) => {
                 <div id="rightDesign">
                     <div id="rdco">
                         <h2>Source Images</h2>
+                        <div id="textupload"><h3>Upload Text</h3><input type="text"></input></div>
                         <label id="uploadLabel">
                         <div id="blueUp">
                         <input type="file" id="cancelUpload" onChange={handleInputChange} />

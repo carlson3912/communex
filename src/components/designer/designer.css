@@ -77,6 +77,14 @@
     display: none;
 }
 
+#rdco{
+    margin-top: 5%;
+    color: var(--secondary-color);
+    font-size: large;
+}
+#textupload{
+    display: flex;
+}
 #blueUp{
     background-color: rgb(255, 255, 255);
     border-style: solid;

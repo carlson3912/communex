@@ -13,7 +13,7 @@ import background from '../../assets/backgroundT.png'
 
 
 import floortity from '../../assets/floortt.png'
-
+import { DownCylinder, PurpCyliner } from './Assets';
 import {BasicShirtDisplay}  from './Shirts'
 import { makeList } from './Textures';
 import {Camel} from './Assets';
@@ -80,7 +80,7 @@ function SelectToZoom({ children }) {
      setLoc([e.object.position.x, e.object.position.y+220,e.object.position.z+200]))} onPointerMissed={(e) => e.button === 0 && api.refresh().fit()}>
       {children}
        
-      <ItemBoard loc={loc} name={nameProduct}/>
+      {/* <ItemBoard loc={loc} name={nameProduct}/> */}
     </group>
   )
 }
@@ -162,8 +162,8 @@ return(
 
 function GroundPlane() {
     return (
-      <mesh receiveShadow rotation={[-3.14/2, 0, 0]} position={[0, -150, 0]}>
-        <planeBufferGeometry attach="geometry" args={[1000, 1000]} />
+      <mesh receiveShadow rotation={[-3.14/2, 0, 0]} position={[0, -300, 0]}>
+        <planeBufferGeometry attach="geometry" args={[2000,2000]} />
         <meshStandardMaterial attach="material"  transparent={true} map={useTexture(floortity)} />
       </mesh>
     );
@@ -176,20 +176,11 @@ function GroundPlane() {
       </mesh>
     );
   }
-  function Sphere() {
-    return (
-      <mesh position={[0, 0, 0]} rotation={[0, 0, 0]}>
-        <sphereGeometry attach="geometry" args={[1, 16, 16]} />
-        <meshStandardMaterial
-          attach="material"
-          color="white"
-          transparent
-          roughness={0.1}
-          metalness={0.1}
-        />
-      </mesh>
-    );
-  }
+  
+
+
+
+
 export function Model(){
   
   const listItems = makeList();
@@ -197,9 +188,10 @@ export function Model(){
   return<Canvas height="100%"camera={{position: [0, 0, 100]}}>
       {/* Change the margin on the bounds in order to alter the zoom on the camera */}
       <Suspense fallback={null}>
+      <Camel loc={[700,2,310]}/>
       <Bounds fit clip margin={0.25}>   
       <SelectToZoom>
-        <Camel />
+        
       {/* <SceneThree start='0' name = "shirt1" itemt={shirtThree}/> */}
       {
         // setPosi(posi-100),
@@ -213,11 +205,10 @@ export function Model(){
           )
         })
       }
-
-    
-  
-    <GroundPlane />
-    <BackDrop />
+    <PurpCyliner />
+    <DownCylinder />
+    {/* <GroundPlane /> */}
+    {/* <BackDrop /> */}
     {/* <Sphere /> */}
     {/* <mesh receiveShadow position={[0, 0, 0]}>
       <planeBufferGeometry attach="geometry" args={[500, 500]} />
@@ -232,8 +223,8 @@ export function Model(){
 
     <OrbitControls />
     {/* <ambientLight intensity={0.5} /> */}
-    <rectAreaLight
-      width={700}
+    {/* <rectAreaLight
+      width={1000}
       height={500}
       color="white"
       brightness={100}
@@ -241,7 +232,7 @@ export function Model(){
       lookAt={[0, 0, 0]}
     //   penumbra={1}
     castShadow
-    />
+    /> */}
        </Canvas>
 
 }

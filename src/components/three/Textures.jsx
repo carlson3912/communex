@@ -1,8 +1,8 @@
-import {useState, useMemo} from 'react';
-import { Bounds, useBounds,OrbitControls, Stars, useTexture, useGLTF, Sky, SpotLight, Stage} from "@react-three/drei";
-import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader';
-import shirtTwo from '../../assets/tshirt_obj.obj'
-import { Canvas, useLoader, useFrame } from '@react-three/fiber'
+// import {useState, useMemo} from 'react';
+// import { Bounds, useBounds,OrbitControls, Stars, useTexture, useGLTF, Sky, SpotLight, Stage} from "@react-three/drei";
+// import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader';
+// import shirtTwo from '../../assets/tshirt_obj.obj'
+// import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 
 
 import shirtThree from '../../assets/shirtFour.jpeg'
