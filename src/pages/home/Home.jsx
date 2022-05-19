@@ -33,7 +33,7 @@ const Home = () => {
       </div>
       <div id="space"></div>
     <div id="animated">
-    <Model />
+    <Model loc={[0,0,0]} cam={[0, 0, 500]}/>
     </div>
     <div className='header'>
         <div id="rowR">

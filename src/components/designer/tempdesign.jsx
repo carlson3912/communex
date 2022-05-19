@@ -247,6 +247,7 @@ await client.add(dataURItoBlob(e)).then((res) => {
                         <button onClick={e=>{deleteImage();setIPFS(false)}}> Cancel</button>
                        </div>
                             </div>
+                           
                         : null }
                        
                        

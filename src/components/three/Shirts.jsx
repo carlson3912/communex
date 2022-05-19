@@ -72,7 +72,7 @@ export function BasicShirtDisplay(prop){
        <>
      <mesh name={prop.name} castShadow position={[location, locationy, locationz]}geometry={geometry} >
        <meshPhysicalMaterial name="donald" map={texture}/>
-       <pointLight intensity={0.5} location={[720,0,-20]}  />
+       <pointLight intensity={0.01} location={[720,0,-20]}  />
      </mesh>
      
      {/* <CylinderM name={prop.name} start={location}/> */}

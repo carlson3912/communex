@@ -1,10 +1,3 @@
-// import {useState, useMemo} from 'react';
-// import { Bounds, useBounds,OrbitControls, Stars, useTexture, useGLTF, Sky, SpotLight, Stage} from "@react-three/drei";
-// import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader';
-// import shirtTwo from '../../assets/tshirt_obj.obj'
-// import { Canvas, useLoader, useFrame } from '@react-three/fiber'
-
-
 import shirtThree from '../../assets/shirtFour.jpeg'
 import matlab from '../../assets/matlab2.jpeg'
 import camel from '../../assets/camelShirt.jpeg'
@@ -16,7 +9,21 @@ import joker from '../../assets/jokerdiscord.jpeg'
 import slaughter from '../../assets/slaughtergang.jpeg'
 import poole from '../../assets/pooleparty.jpeg'
 import poole2 from '../../assets/pooleparty2.jpeg'
+
 // import sandbox from '../../assets/srssandbox.jpeg'
+// async function conn(){
+// const[cat, setCat] = useState(null);
+// const Http = new XMLHttpRequest();
+// const url='https://api.thecatapi.com/v1/images/search';
+// Http.open("GET", url);
+// Http.send();
+
+// Http.onreadystatechange = (e) => {
+//     setCat(JSON.parse(Http.responseText));
+//     console.log(cat[0].url);
+// }
+// return cat[0].url;
+// }
 export const listShirts = new Array(
     shirtThree,
     matlab,
@@ -29,8 +36,9 @@ export const listShirts = new Array(
     joker,
     slaughter,
     poole,
-    poole2
+    poole2,
   
+    // "https://cdn2.thecatapi.com/images/bif.jpg"
 );
 
 export const listNames= new Array(
@@ -44,11 +52,19 @@ export const listNames= new Array(
     "Visten Launch",
     "Joker OG",
     "Composed of Early SRS Assets",
-    "Poole from Warriors Series 2022 PlayOffs"
+    "Poole from Warriors Series 2022 PlayOffs",
+    "man city"
 );
 
 export const makeList = () => {
-    var answer = []
+    var answer = [];
+    // answer.push({
+    //     src: conn(),
+    //     name: "cat",
+    //     posi: 0
+    // }
+        
+    // )
     for(let i = 0; i<listShirts.length;i++){
         // var stringIN = "design "+i;
         answer.push({

@@ -193,4 +193,10 @@ button{
     }
   }
 
+
+  #designStudio22{
+      display: flex;
+      background-color: aquamarine;
+      flex-direction: column;
+  }
   

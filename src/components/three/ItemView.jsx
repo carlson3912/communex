@@ -18,6 +18,7 @@ import floortity from '../../assets/floortt.png'
 import { makeList } from './Textures';
 
 export function BasicShirtDisplaySill(prop){
+  console.log("itemt:" + prop.itemt);
     const texture = useTexture(prop.itemt);
 
   
@@ -45,7 +46,7 @@ export function BasicShirtDisplaySill(prop){
  }
 
 export const ItemView = (props) => {
-
+  console.log("props:" + props.src);
     return<Suspense fallback={null}>
         <Canvas height="500px"camera={{position: [0, 0, 150]}}>
         <BasicShirtDisplaySill  name={props.name} start ={0} itemt={props.src}/>

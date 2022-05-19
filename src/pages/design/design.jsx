@@ -1,9 +1,10 @@
 import Studio from '../../components/designer/designer'
+import { Designer } from '../../components/designer/newDesigner';
 // import Decrypt from '../../components/decrypt/decrypt';
 export const Design =() =>{
     return(
         <div>
-        <Studio />
+        <Designer />
         {/* <Decrypt /> */}
         </div>
     )
