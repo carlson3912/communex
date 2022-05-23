@@ -55,7 +55,5 @@ export const ItemView = (props) => {
         <Stars />
     </Canvas>
     </Suspense>
-
-    
 }
 

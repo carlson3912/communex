@@ -1,4 +1,6 @@
 #one{
+  font-style: oblique;
+  margin-bottom:.5em;
 }
 #two{
   font-size:1.5em;
@@ -23,7 +25,7 @@
   width:30%;
   margin:auto;
   
-  background-color: var(--quadrinary-color);
+  background:var(--quadrinary-color);
   margin-bottom:5vw;
 }
 #dos > h1{
@@ -35,9 +37,14 @@
 #negativo{
   font-family: kumarOutline;
   color:var(--secondary-color);
+  font-variant: small-caps;
+  font-style:oblique;
+  text-decoration: underline solid var(--tertiary-color);  
+  text-decoration-thickness: 3px;
+   
 }
 #neg{
-  background-color: var(--quadrinary-color);
+  background:var(--quadrinary-color);
   width:66%;
   margin:auto;
   margin-top:-4vw;
