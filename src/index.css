@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: specMED;
-  src: url(/src/assets/fonts/spectral/Spectral-Medium.ttf);
+  src: url(/src/assets/fonts/spectral/Spectral-Light.ttf);
 }
 @font-face {
   font-family: cinzelDec;
@@ -18,6 +18,10 @@
 @font-face {
   font-family: cinzelBlack;
   src: url(/src/assets/fonts/cinzel/Cinzel/Cinzel-Black.ttf);
+}
+@font-face {
+  font-family: cinzelReg;
+  src: url(/src/assets/fonts/cinzel/Cinzel/Cinzel-Regular.ttf);
 }
 @-webkit-keyframes glitch {
   0% {
@@ -90,7 +94,7 @@
   --primary-color: #e46aff;
   --secondary-color: #e00df3;
   --tertiary-color: #92ebee;
-  /*--quadrinary-color: #15181f; */
+  --pentianary-color: #0b0025;
   --quadrinary-color: linear-gradient(-159deg, rgb(77, 0, 73) 10.84%, #1d034e 93%);
 
 

@@ -1,12 +1,10 @@
 import React from 'react'
 import './bids.css'
-
 import { AiFillHeart,AiOutlineHeart } from "react-icons/ai";
 import item01 from '../../assets/item01.png'
 import bids1 from '../../assets/item1.jpg'
 import bids3 from '../../assets/bids3.png'
 import bids4 from '../../assets/bids4.png'
-
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import seller1 from '../../assets/seller1.png'
@@ -142,6 +140,7 @@ const Bids = () => {
         <button>View</button>
       </div>
       </div>
+      {/*
       <div className="header-slider">
         <div className="bids-container-text"><h1>Top $SILK Holders</h1></div>
         
@@ -215,8 +214,10 @@ const Bids = () => {
         </Slider>
         <div className="load-more">
         <button>View</button>
+ 
       </div>
       </div>
+       */}
     </div>
   )
 }

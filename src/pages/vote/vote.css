@@ -13,11 +13,49 @@
     margin-left:10px;
     margin-bottom:10px;
     border-radius: 25px;
+    z-index:-2;
 }
 #html-data-table{
+    z-index:-2;
+    margin-top: 2vh;
    margin:auto;
    word-wrap: break-word;
+}
+#sortingtable{
+    margin-bottom:2vh;
 
+    margin: auto;
+    background: var(--tertiary-color);
+    border-radius: 25px;
+    padding:0px;
+}
+#sortingtable h2{
+    
+    margin: 3.4vw;
+    margin-bottom: 0vw;
+    margin-top: 0vw;
+    font-family: specMED;
+    font-size:17px;
+  background: var(--quadrinary-color);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+    display:inline
+}
+#sortingtable form{
+    line-height: 10px;
+display:inline;
+margin-left:-2.5vw}
+#sortingtable form input{
+    padding-left:5px;
+    border-radius: 15px;
+    background-color: var(--pentianary-color);
+    display:inline;
+    color:var(--primary-color);
+    border-style: solid 1 var(--pentianary-color);
+}
+#sortingtable #sort{
+    margin-right:10vw;
 }
 td{
     margin-right:1vw;
@@ -36,7 +74,7 @@ td{
     color:var(--tertiary-color);
     font-family: specMED;
 }
-#voteButton{
+#items  button{
     color:black;
   border-radius:2vw;
   position:absolute;
@@ -44,9 +82,93 @@ td{
   margin-left:190px;
     background-color:var(--primary-color);
     font-family: specMED;
+    z-index: 0;
 }
 
 h1{
     color:var(--primary-color);
     font-size:xx-large
+}
+#selectedItem{
+    position: absolute;
+    height:min-content;
+    height:120%;
+    width:100%;
+    background: rgba(132, 37, 196, 0.425);
+    z-index: 2;
+}
+#selectedItem button{
+    z-index:2;
+    margin-top:13vh;
+    margin-bottom: -11vh;
+    margin-left:85.5%;
+    background-color: transparent;
+    border:none;
+    font-size:1.4em;
+}
+#selectedItemInner{
+    margin:auto;
+    margin-top:-3vh;
+width:76%;
+height:50%;
+padding:25px;
+background: var(--pentianary-color);
+flex-direction: row;
+display: flex;
+border-radius: 25px;
+}
+#innerLeft{
+display:flex;
+flex-direction: row;
+}
+#innerRight{
+display:flex;
+flex-direction: column;
+padding:40px;
+width:50%;
+}
+#innerRight  #artist{
+    font-size:2em;
+    text-align:center;
+    font-family: specMED;
+}
+#innerRight  #title{
+    font-size:2em;
+    text-align:center;
+}
+#votesInput{
+    border-radius:25px;
+    background: var(--quadrinary-color);
+    border:none;
+    padding-left:5px;
+    color:white;
+    font-family:specMED;
+    text-align: center;
+    font-size: 1.25em;
+    margin-top:1vh;
+    margin-right: 5vw;
+}  
+#votesCast{
+    margin-top: 2vh;
+    text-align: center;
+    font-size: 1em;
+    color:var(--primary-color);
+}
+#formVotes{
+    margin-right: 0vw;
+    margin-top: 2vh;
+}
+
+#description{
+    font-family: specMed;
+    color:white;
+    text-align: center;
+    font-size: 1.23em;
+}
+#date{
+    margin-bottom: 1vh;
+    color:var(--primary-color);
+    font-size: 1em;
+    text-align: center;
+    font-family: cinzelDec;
 }
