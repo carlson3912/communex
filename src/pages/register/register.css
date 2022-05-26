@@ -7,7 +7,7 @@
   width: 100%;
 }
 .register-container {
-  background: #2A2D3A;
+  background: var(--quadrinary-color);
   border-radius: 20px;
   padding: 2rem;
   min-width: 30%;
@@ -35,14 +35,15 @@
   margin-bottom: 15px;
 }
 .register-formGroup input{
-  background: var(white);
+  background: transparent;
   border-radius: 10px;
   padding: 1rem 1.5rem;
   outline: none;
-  border: none;
-  color: black;
+  border: solid;
+  border-color:var(--tertiary-color);
   font-size: 16px;
   line-height: 26px;
+  color:white
 }
 
 .register-formGroup textarea{

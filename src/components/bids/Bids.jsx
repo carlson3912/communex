@@ -1,16 +1,10 @@
 import React from 'react'
 import './bids.css'
-
 import { AiFillHeart,AiOutlineHeart } from "react-icons/ai";
 import item01 from '../../assets/item01.png'
 import bids1 from '../../assets/item1.jpg'
-import bids2 from '../../assets/bids2.png'
 import bids3 from '../../assets/bids3.png'
 import bids4 from '../../assets/bids4.png'
-import bids5 from '../../assets/bids5.png'
-import bids6 from '../../assets/bids6.png'
-import bids7 from '../../assets/bids7.png'
-import bids8 from '../../assets/bids8.png'
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import seller1 from '../../assets/seller1.png'
@@ -20,7 +14,6 @@ import seller4 from '../../assets/seller4.png'
 import seller5 from '../../assets/seller5.png'
 import seller6 from '../../assets/seller6.jpg'
 import verify from '../../assets/verify.png'
-import coin from '../../assets/seller1.png'
 const Bids = () => {
   var settings = {
     dots: false,
@@ -147,6 +140,7 @@ const Bids = () => {
         <button>View</button>
       </div>
       </div>
+      {/*
       <div className="header-slider">
         <div className="bids-container-text"><h1>Top $SILK Holders</h1></div>
         
@@ -220,8 +214,10 @@ const Bids = () => {
         </Slider>
         <div className="load-more">
         <button>View</button>
+ 
       </div>
       </div>
+       */}
     </div>
   )
 }

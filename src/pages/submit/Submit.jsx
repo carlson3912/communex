@@ -15,7 +15,7 @@ const Submit = () => {
     window.accounts = accounts;
   const addy = accounts[0][0] + accounts[0][1] + accounts[0][2]+ + accounts[0][3]+accounts[0][4]+accounts[0][5]+"..."+accounts[0][38]+accounts[0][39]+accounts[0][40]+accounts[0][41];
   setErrMsg(addy +" " + title + " Submitting....");
-  setHandle(handleSubmit());
+  handleSubmit();
 }
     const userRef = useRef();
     const errRef = useRef();
