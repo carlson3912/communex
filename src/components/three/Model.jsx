@@ -1,15 +1,20 @@
-import { Suspense, useState} from 'react'
+import { Suspense, useState, useMemo, useEffect} from 'react'
 import { Canvas,} from '@react-three/fiber'
 import { Html, Bounds, useBounds,OrbitControls, Stars, useTexture, useGLTF, Sky, SpotLight, Stage} from "@react-three/drei";
 // import { GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 // import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
-import {DesignThree} from './designthree'
+import {DesertBiome, DesignThree} from './DesertBiome'
 import background from '../../assets/backgroundT.png'
 import floortity from '../../assets/floortt.png'
 import { DownCylinder, PurpCyliner } from './Assets';
 import {BasicShirtDisplay}  from './Shirts'
 import { makeList } from './Textures';
 import {Camel} from './Assets';
+import * as THREE from "three";
+import camelSRS from'../../assets/Camel.obj'
+import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
+import { useLoader} from '@react-three/fiber'
+import { LightFixt } from './Assets';
 
 function ItemBoard(props){
   console.log(props.name)
@@ -66,11 +71,93 @@ function GroundPlane() {
 
 
 
-export function Model(props){
-  
+export const Model = (props) =>{
+
+  console.log("MODEL REFRESH");
   const listItems = makeList();
-  
-  return<Canvas height="100%"camera={{position: props.cam, rotation:[3.14/2,0,3.14/2]}}>
+  const [camelo, setcamelo] = useState(null);
+  const portalGeo = new THREE.CylinderGeometry( 120, 120, 20, 32 );
+  const[ready, setready] = useState(false);
+  const [randb, setrandb] = useState(1);
+
+//   function bum(){
+//     console.log("bum");
+//   }
+//   useEffect(() => {
+//     console.log("Use effect called");
+//     const loadAll = () =>{
+//     const promise1 = new Promise((resolve, reject) => {
+     
+//             // let onLoad = function () {
+//             //   console.log("about to resolve")
+//             //  resolve(answer);
+//             // };
+//             let onProgress = function () { };
+//             let onError = function () {
+//                 console.log("failure");
+//             };
+//             console.log("loading all")
+//             let manager = new THREE.LoadingManager(bum);
+            
+//             const loader = new OBJLoader( manager );
+// 				loader.load( camelSRS, function ( obj ) {
+//           console.log("inside load");
+//           console.log("object: " +obj)
+// 					setcamelo(obj)
+
+// 				}, onProgress, onError );
+//           //   const answer =loader.loadAsync(camelSRS, onLoad, onProgress, onError).then((value)=>{console.log("async thened:" +answer)});
+//           // console.log("answer: " + answer);
+
+//       // console.log("Loading All");
+      
+//       // // const loader = new OBJLoader();
+//       // // const objCamel = loader.load(camelSRS)
+//       // const objCamel = new useLoader(OBJLoader, camelSRS);
+//       // console.log("Loading All2");
+     
+
+ 
+//       // resolve(objCamel);
+
+      
+//     });
+//     return promise1;
+//   }
+//   loadAll().then((value) => {
+//       console.log("success");
+//       console.log("value:"+ value);
+//       console.log("load all done");
+//       setcamelo(value);
+//       console.log("camelo:" +camelo)
+//       // setready(true);
+//       // expected output: "Success!"
+//     });
+//     // promise1.then((value) => {
+//     //   console.log(value);
+//     //   // expected output: "Success!"
+//     // });
+    
+   
+// }, [])
+  // const objCamel = useLoader(OBJLoader, camelSRS);
+  // const geomCamel = useMemo(() => {
+  //   let g;
+  //   objCamel.traverse((c) => {
+  //     if (c.type === "Mesh") {
+  //       const _c = c;
+  //       g = _c.geometry;
+  //     }
+  //   });
+  //   return g;
+  // }, [objCamel]);
+ 
+  return(
+  <>
+ 
+  <button onClick={e=>setrandb(randb+1)}>Temp</button>
+  {/* { ready ?  */}
+  <Canvas height="100%"camera={{position: props.cam, rotation:[3.14/2,0,3.14/2]}}>
       {/* Change the margin on the bounds in order to alter the zoom on the camera */}
       <Suspense fallback={null}>
       <Camel loc={[700,2,310]} rot={[0,-Math.PI / 1.2,0]}/>
@@ -91,8 +178,8 @@ export function Model(props){
         })
       }
     {/* <PurpCyliner /> */}
-    <DownCylinder />
-    
+    <DownCylinder geom={portalGeo}/>
+    <LightFixt />
     {/* <GroundPlane /> */}
     {/* <BackDrop /> */}
     {/* <Sphere /> */}
@@ -102,7 +189,7 @@ export function Model(props){
     </mesh> */}
     {/* <Sky /> 
     <Stage /> */}
-      <DesignThree />
+      <DesertBiome />
    </SelectToZoom>
    </Bounds>
  
@@ -123,7 +210,9 @@ export function Model(props){
     castShadow
     /> */}
        </Canvas>
-
+       {/* : null } */}
+       </>
+       )
 }
 
 export default Model;

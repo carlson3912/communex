@@ -37,6 +37,7 @@ export const listShirts = new Array(
     slaughter,
     poole,
     poole2,
+    "https://ipfs.io/ipfs/QmVHuEJjYMHG9c1nHpMfK4cB3mebAoqGn4aA62CXojkmup"
   
     // "https://cdn2.thecatapi.com/images/bif.jpg"
 );
@@ -53,7 +54,8 @@ export const listNames= new Array(
     "Joker OG",
     "Composed of Early SRS Assets",
     "Poole from Warriors Series 2022 PlayOffs",
-    "man city"
+    "man city",
+    "birdam"
 );
 
 export const makeList = () => {

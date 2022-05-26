@@ -1,7 +1,7 @@
 import './designer.css';
 import React, {useState, useEffect, useRef} from 'react'
 import logo from '../../assets/seller1.png';
-import shirttemplate from '../../assets/shirttemplate.png'
+
 import waterMark from "../../assets/srswater.png";
 import down from '../../assets/download.png';
 import arrow from '../../assets/upArrow.png';
@@ -14,42 +14,27 @@ import ShowHide from './showandhide';
 import {encryptString, decryptString, privateToPublicMe, privateToWalletMe} from '../decrypt/eth-encrypt';
 import visten from '../../assets/manu1.jpg'
 import { ItemView } from '../three/ItemView';
-import Model from '../../components/three/Model';
+import Model from '../three/Model';
 import { InsideDesigner } from '../three/InsideDesigner';
 export const Designer = () =>{
+    const canvas = useRef(null);
     const [numElements, setNumElements] = useState(0);
     const[images, setImages] = useState([]);
-    const canvas = useRef(null);
     const [top,setTop] = useState('1');
     const [pos, setPos] = useState([]);
-    const shirt = new Image();
     const [sizes, setSizes] = useState([]);
     const [pointer, setPointer] = useState(-1);
     const [water, setWater] = useState(false);
-    const [drag, setDrag] = useState(false);
-    shirt.src=shirttemplate;
-    const waterImage = new Image();
-    waterImage.src = waterMark;
     const [ipfs, setIPFS] = useState();
     const [penI, setPendingImage] = useState(false);
-    const [pendingIm, setPI] = useState(null);
-    const[doneD, setDoneD] = useState(false);
     const[threedmock, set3dmock] = useState(visten);
     const [shirtColor, setShirtColor] = useState("white");
-//i can turn any private key into a public key and wallet address. i just can't make the right object with
-//a public key input to allow for quick encryption
-    // function encryptOrder(dataIn){
-    //         const data= Buffer.from(dataIn);
-    //         const util  = require('ethereumjs-util')   
-    //         const privateKey = 'ead75d17f3748b52b863f9358cdc9646fa6caf66399919d375ea6339639d909a';
-    //         const privatKeyBuffer = Buffer.from(privateKey,'hex');
-    //         const publicKey = util.privateToPublic(privatKeyBuffer);
-    //         console.log("decrypt started");
-    //         const encrypted_Data = encrypt(hexlify(publicKey), data);
-    //         console.log("encrydata: "+ encrypted_Data)
-    //         console.log(decrypt(hexlify(privatKeyBuffer ),encrypt(hexlify(publicKey), data) ).toString());
-    //         return encrypted_Data;
-    //      }
+    const [scene, setScene] = useState(0);
+    const [zcamera, setZCamera] = useState(500);
+    const[move, setMove] = useState(false);
+
+    const waterImage = new Image();
+    waterImage.src = waterMark;
 
     function deleteImage(){
         console.log("Delete initiated at: "+ pointer );
@@ -69,6 +54,7 @@ export const Designer = () =>{
         setPendingImage(false);
         setTop(top+1)
     }
+
     function dataURItoBlob(dataURI) {
         // convert base64/URLEncoded data component to raw binary data held in a string
         var byteString;
@@ -85,7 +71,8 @@ export const Designer = () =>{
         }
         return new Blob([ia], {type:mimeString});
         }
-    const handleInputChangeI = (event) => {
+    
+    const handleInputChangeIPFS = (event) => {
         const temp = event.target.value;
         if (temp.length == 32){
             console.log("IPFS CID detected: " + temp);
@@ -142,18 +129,26 @@ export const Designer = () =>{
   
     // },[])
 
+    function drawRot(canvas,i){
+        canvas.translate(pos[i][0] +  sizes[i][0] / 2, pos[i][1] + sizes[i][1] / 2);
+        canvas.rotate(3.1415/2);
+        canvas.drawImage(images[i],pos[i][1] ,pos[i][0], sizes[i][0], sizes[i][1]);
+        canvas.rotate(-3.1415/2);
+        canvas.translate(pos[i][0] + sizes[i][0] / -2, pos[i][1] + sizes[i][1] / -2);
+    }
     useEffect(() =>{
         if(canvas){
             console.log("REDRAW STARTED")
             const ctx=canvas.current.getContext("2d");
-            ctx.clearRect(0, 0, 2000, 2000);
+            ctx.clearRect(0, 0, 5000, 5000);
             // ctx.clearRect(0, 0, 2000, 2000);
             console.log("SHIRT COLOR: " + shirtColor);
             ctx.fillStyle = shirtColor;
             ctx.fillRect(0, 0, 2000, 2000);
             // ctx.drawImage(shirt,70,0,700,800);
             for(var i = 0; i<numElements; i++){
-                ctx.drawImage(images[i],pos[i][0],pos[i][1], sizes[i][0],sizes[i][1]);
+                // drawRot(ctx,i);
+                ctx.drawImage(images[i],pos[i][0],pos[i][1], sizes[i][0], sizes[i][1]);
             }
             if (water){
                 ctx.drawImage(waterImage,-500,-500,2000,2000);
@@ -195,12 +190,12 @@ export const Designer = () =>{
         // const link = document.createElement("a");
         // link.href=e;
         // link.download ="text.txt"
-console.log("Right before server add")
-await client.add(dataURItoBlob(e)).then((res) => {
-    console.log("https://ipfs.io/ipfs/"+res.path)
-    sessionStorage.setItem("designSubmission", res.path)
-});
-    window.location.href = "../Submit"
+        console.log("Right before server add")
+        await client.add(dataURItoBlob(e)).then((res) => {
+            console.log("https://ipfs.io/ipfs/"+res.path)
+            sessionStorage.setItem("designSubmission", res.path)
+        });
+        window.location.href = "../Submit"
     }
 
     const designSpecs = () => {
@@ -235,11 +230,16 @@ await client.add(dataURItoBlob(e)).then((res) => {
 
     return(
         <div>
+            
             <div id="dd2model">
             {/* <Model loc={[-1500,0,0]} cam={[-1500,0,-2000]}/> */}
-            <InsideDesigner src={threedmock}/>
+            <InsideDesigner src={threedmock} scene={scene} z={zcamera} move={move} color={shirtColor} />
+            
             </div>
+           
+            
              <h1>Welcome to the Design Studio</h1>
+             {scene==0 ?
              <div>
                  <div id="shirtColorPicker2">
                 <h1 id="colorPickerWords">Color Picker</h1>
@@ -247,40 +247,24 @@ await client.add(dataURItoBlob(e)).then((res) => {
                         <input id="shirtColorPicker3" type="color" name="head" value={shirtColor} onChange={e=>{setShirtColor(e.target.value)}}/>
                     </div>
                     </div>
-                    <label for="head">Pick Your Shirt CColor</label>
-              
+                    <label for="head">Pick Your Shirt Color</label>
+                <button onClick={e=>{{setScene(1)};setZCamera(-500);setMove(true)}}>Use Color</button>
             </div>
-            <div id="gameboy">
-           
-                <div id="leftDesigner">
-                    <div id="topDesign">
-                        <div id="frontback">
-                            Front
-                        </div>
-                        <div id="frontback">
-                            Back
-                        </div>
-                    </div>
-                    <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click}><h1>Hello</h1></canvas>
-                </div>
-                <div id="modelviewdesign">
-                {/* { !doneD ?     
-                <button id="seeModelButton"onClick={e=>{
-                            setDoneD(true);
-                            const canvas = document.getElementById("upCanvas");
-                            set3dmock(canvas.toDataURL('image/jpeg'));
+             : null}
+             {/* Hidden 2-D Canvas for designing */}
+                    <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click} hidden={true}><h1>Hello</h1></canvas>
+              
+             
+                {scene==1 ?
+                <>
 
-                            }}>See Design</button>
-                            : null }
-                { doneD ?  */}
                 
-                {/* <ItemView src={threedmock} name="visten item view"/> */}
-                
-                        {/* : null } */}
-                        </div>
-                <div id="rightDesign">
+                <div id="rightDesign2">
+                <div id="rdco" >
+                        <button onClick={e=>setScene(1)}>Back</button>
+                    </div>
                     <div id="rdco">
-                        <h2>Source Images</h2>
+                        
                         <div id="textupload"><h3>Upload Text</h3><input type="text"></input></div>
                         <label id="uploadLabel">
                         <div id="blueUp">
@@ -295,16 +279,18 @@ await client.add(dataURItoBlob(e)).then((res) => {
                             <h3 id="downtext">By IPFS</h3>
                         </div>
                         </label>
-                        { ipfs ?<input type="text" id="ipfsUpload"onChange={handleInputChangeI} /> : null}
-                        { penI ? <div>
-                            <ShowHide source={images[pointer].src} /> 
-                       <div id="pendingImageOption">
-                       <button onClick={e=>{setTop(top+"1");setPendingImage(false);}}>Use picture</button>
-                        <button onClick={e=>{deleteImage();setIPFS(false)}}> Cancel</button>
-                       </div>
-                            </div>
-                            
-                        : null }
+                        { ipfs ?
+                            <input type="text" id="ipfsUpload"onChange={handleInputChangeIPFS} /> 
+                        : null}
+                        { penI ? 
+                            <div>
+                                <ShowHide source={images[pointer].src} /> 
+                                <div id="pendingImageOption">
+                                    <button onClick={e=>{setTop(top+"1");setPendingImage(false);}}>Use picture</button>
+                                    <button onClick={e=>{deleteImage();setIPFS(false)}}> Cancel</button>
+                                </div>
+                            </div> 
+                        : null }           
                        
                        
                     </div>
@@ -366,38 +352,46 @@ await client.add(dataURItoBlob(e)).then((res) => {
                             setTop(top+1);
                         }}>Enlarge</button>
                     </div>
-                    <div id="rdco">
-                        <button onClick={e=>{
-                            if (water){
-                                setWater(false)
-                            }
-                            else{setWater(true);}
-                        }}> Toggle Water Mark</button>
-                        <h2>Complete</h2>
-                        <button onClick={e=>{
-                            const canvas = document.getElementById("upCanvas");
-                            const image = canvas.toDataURL('image/jpeg');
-                            infura(image);
-                            console.log(image.src)
-                            // const link = document.createElement("a");
-                            // link.href=image;
-                            // link.download ="main.jpg"
-                            // link.click();
-                        }}>
-                        <h1>Finish Design</h1>
-                        <p>Upload to IPFS</p></button>
-                        <button onClick={designSpecs}>Download Report</button>
-                        
-                            
+                    <div id="rdco" >
+                        <button onClick={e=>setScene(2)}>Done Editing</button>
+                    </div>
                     </div>
                     
-                </div>
+                    </>
+                : null}
                 
+                {scene==2?
+                    <div id="totalFinishD">
+                        <h2>Complete</h2>
+                        <div id="rightDesign2">
+                            <h1>Finishing Touches</h1>
+                            <button onClick={e=>{
+                                if (water){
+                                    setWater(false)
+                                }
+                                else{
+                                    setWater(true);
+                                }
+                            }}> Toggle Water Mark</button>   
+                            <button onClick={designSpecs}>Download Report</button>
+                        </div>
+                        <div >
+                            <button  id="finishDButton" onClick={e=>{
+                                    const canvas = document.getElementById("upCanvas");
+                                    const image = canvas.toDataURL('image/jpeg');
+                                    infura(image);
+                                    console.log(image.src)
+                                    // const link = document.createElement("a");
+                                    // link.href=image;
+                                    // link.download ="main.jpg"
+                                    // link.click();
+                                }}>
+                            <h1>Finish Design</h1>
+                            <p>Upload to IPFS</p></button>
+                        </div>
+                    </div>
+                : null}     
             </div>
-            
-            
-            
-        </div>
     )
 }
 

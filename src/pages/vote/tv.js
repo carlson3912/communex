@@ -14,29 +14,6 @@ import * as THREE from "three";
 import srs from "../../assets/circle1.png"
 
 
-// class Vote extends React.Component {
-
-//   render() {
-//     return (
-//       <div>
-//         <h1>A user</h1>
-//       </div>
-//     );
-//   }
-// }
-
-// export default Vote;
-
-
-
-
-
-
-
-
-
-
-
 
 
 export function PurpCyliner(){
@@ -49,68 +26,48 @@ export function PurpCyliner(){
       </mesh>
   )
 }
-
-
-// export async function BasicShirtDisplaySill(prop){
-// //   const [ready, setready] = useState(false)
-// //   console.log("SHIRT REFRESHEED: "+prop.text);
-// //   const upImage = new Image();
-// //   upImage.src = prop.text;
-// //   // setImage(upImage);
-// // //   upImage.setAttribute('crossorigin', 'anonymous');
-// // // console.log("NEW IMAGE ORIGIN: "+ upImage.crossOrigin);
-// // // console.log("NEW IMAGE SOURCE: "+ upImage.src);
-// //   var onLoad = function() {
-// //     console.log("onload");
-// //     // callback(null, prop.text);
-// // };
-
-// // var onProgress = function() {
-// //   console.log("onprogres");
-// // };
-
-// // var onError = function(url) {
-// //     console.log("ACTUAL ERROR");
-// // };
-
-// // var manager = new THREE.LoadingManager(onLoad, onProgress, onError);
-
-// // var loader = new THREE.TextureLoader(manager);
-
-// // const texture = loader.loadAsync(shit);
-
-// const geometry = new THREE.CylinderGeometry( 120, 120, 1400, 32 );
-// const texture = await loadText(prop.text);
-// console.log("basic texture:" + texture);
-
-//  // I've used meshPhysicalMaterial because the texture needs lights to be seen properly.
-//  return (
-//      <>
-
-//    <mesh  castShadow position={[0, -80, 0]} geometry={geometry} >
-//        {/* <Sky /> */}
-//      <meshPhysicalMaterial map={texture}/>
-//    </mesh>
-   
-//    </>
-//  )
-// }
-
 export const Vote = () => {
-
-      const [arr, setArr] = useState("");
-      const [src, setSrc] = useState("");
     const[cat, setCat] = useState(null);
     const [ifcat, setifcat] = useState(false);
   const [texture, setTexture] = useState(null);
   const [geometry, setGeometry] = useState(null);
+
+  const [arr, setArr] = useState("");
+  const [src, setSrc] = useState("");
+
+
+ const connection = async () => {
+   const response = await axios.post("http://localhost:3500/submissions",
+                JSON.stringify({}),
+               JSON.stringify({
+                   headers: { 'Content-Type': 'text/plain'},
+                   withCredentials: true
+               })
+               );
+       setArr(response);
+       const mytable = document.getElementById("html-data-table");
+       for (let i = 0; i <response.data.length; i++){
+           if(i % 5 ===0 ) { mytable.appendChild(document.createElement("tr")) }
+          setSrc(src => [...src, "https://ipfs.io/ipfs/"+ response.data[i].ipfs])
+          let newRow = document.createElement("td");
+              newRow.innerHTML = 
+              "<div id='items'> <img id = 'thumbnail' src=https://ipfs.io/ipfs/"+ response.data[i].ipfs+"/>" + 
+               "<h2 id = 'title'>" + response.data[i].title+"</h2>" +
+               "<h2 id = 'artist'>" + response.data[i].artist+"</h2>" +
+               "<button id = 'voteButton'>Vote</button>" +
+                "</div>";
+                  mytable.appendChild(newRow)
+         }    
+       }
+
+
     const loadText = async() =>{
       console.log("loadtext called")
           return new Promise((resolve, reject) => {
             
             let texture;
             let onLoad = function () {
-              const geometry2 = new THREE.CylinderGeometry( 120, 120, 1400, 32 );
+              const geometry2 = new THREE.CylinderGeometry( 120, 120, 100, 32 );
               setGeometry(geometry2);
               setTexture(textureIn);
               setifcat(true);
@@ -123,7 +80,6 @@ export const Vote = () => {
             };
             
             let manager = new THREE.LoadingManager(onLoad, onProgress, onError);
-            
             let loader = new THREE.TextureLoader(manager);
             const textureIn = loader.load(cat);
             
@@ -131,7 +87,11 @@ export const Vote = () => {
 })};
      
     useEffect(()=>{
-    setCat("https://ipfs.io/ipfs/QmfRf7oCaLVgnBkzNWfkGwEiW6A4JCgBMiZc87N8jVDuUu")
+      connection().then(
+        setCat(src[0])
+      )
+    
+    console.log(src[0])
   // const Http = new XMLHttpRequest();
   // const url='https://api.thecatapi.com/v1/images/search';
   // Http.open("GET", url);
@@ -144,47 +104,29 @@ export const Vote = () => {
   //     setCat(jsonc[0].url);
       
   //     console.log("cat: " + jsonc[0].url);
-  
-
 },[])
-
-
-// console.log("basic texture:" + texture);
 
   return (
     <div >
       { ifcat ?
       <>
-      <img src={cat}/>                
+<Suspense fallback={null}>
 
-      
-
-
-    <Suspense fallback={null}>
-
-        <Canvas height="500px"camera={{position: [0, 0, 150]}}>
+        <Canvas height="500px"camera={{position: [0, 0, 50]}}>
             <mesh  castShadow position={[0, -80, 0]} geometry={geometry} >
-              {/* <Sky /> */}
-              <meshPhysicalMaterial map={texture}/>
+            <meshPhysicalMaterial map={texture}/>
           </mesh>
-          <ambientLight intensity={1} />
-          <OrbitControls />
-        </Canvas>
+        <ambientLight intensity={1} />
+        <OrbitControls />
+    </Canvas>
   
     </Suspense>
    
     </>
     : null }
 
-
-
-     
-
-
-
       <h1 >Voting has not started yet</h1>
-      <button onClick={()=>loadText()}>Troll</button>
-      <h1>It will open up in:</h1>
+      <button onClick={()=>loadText()}>Troll</button>      <h1>It will open up in:</h1>
 
       <Timer  date="May 15, 2022 15:00 PST"/>
         <table id ="html-data-table">
@@ -194,6 +136,3 @@ export const Vote = () => {
 };
 
 export default Vote;
-
-
-
