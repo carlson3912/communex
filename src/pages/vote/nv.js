@@ -267,43 +267,6 @@ function sortVote(){
       renderering();
   }
   return (
-<<<<<<< HEAD
-    <div >
-      { ifcat ?
-      <>
-      <img src={cat}/>                
-
-      
-
-
-    <Suspense fallback={null}>
-
-        <Canvas height="500px"camera={{position: [0, 0, 150]}}>
-            <mesh  castShadow position={[0, -80, 0]} geometry={geometry} >
-              {/* <Sky /> */}
-              <meshPhysicalMaterial map={texture}/>
-          </mesh>
-          <ambientLight intensity={1} />
-          <OrbitControls />
-        </Canvas>
-  
-    </Suspense>
-   
-    </>
-    : null }
-
-
-
-     
-
-
-
-      <h1 >Voting has not started yet</h1>
-      <button onClick={()=>loadText()}>Troll</button>
-      <h1>It will open up in:</h1>
-
-      <Timer  date="May 15, 2022 15:00 PST"/>
-=======
     <>
     <div id ="mainDivOfVote">
       </div>
@@ -338,7 +301,6 @@ function sortVote(){
             </td>
           </tr>
         </table>
->>>>>>> 77a6247701cbda2d20c245cee46816079e7ef5d5
         <table id ="html-data-table">
         </table>
         </>
