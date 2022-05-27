@@ -1,22 +1,15 @@
 import { Suspense, useEffect, useMemo, useState} from 'react'
 import { Canvas, useLoader, useFrame, useThree  } from '@react-three/fiber'
-import { TextureLoader } from 'three/src/loaders/TextureLoader'
+// import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { Html, Bounds, useBounds, Stars, useTexture, useGLTF, Sky, SpotLight, Stage, FlyControls} from "@react-three/drei";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import * as THREE from "three";
 import shirtTwo from '../../assets/tshirt_obj.obj'
-import silk from '../../assets/tryshirt3.jpeg'
-import shirt from '../../assets/doubleshirts.gltf'
-import { GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
 import './three.css'
-import background from '../../assets/backgroundT.png'
 import colorBack from '../../assets/colorback.png'
-import joker from '../../assets/jokerdiscord.jpeg'
-import floortity from '../../assets/floortt.png'
-import { LightFixt } from './Assets';
+import { LightFixt, MetalBase, LightFixtB, NeonSign } from './Assets';
 
-import { makeList } from './Textures';
 
 function RGBBars(props){
     const rV = parseInt(props.color[1]+props.color[2],16) / 255.0;
@@ -62,22 +55,27 @@ function GroundPlane() {
     return (
       <mesh receiveShadow rotation={[3.1415/2, 0, 0]} position={[0, 249, 0]}>
         <planeBufferGeometry attach="geometry" args={[2000, 1000]} />
-        <meshStandardMaterial attach="material" color="white"  />
+        <meshStandardMaterial attach="material" color="black"  />
       </mesh>
     );
   }
 
   function BackDrop(props) {
-    var temp = colorBack;
-    if (props.scene == 1){
-        temp = silk;
-      }
-      const colorBackT = useTexture(temp);
+    var colorBackT;
+
+      var temp = colorBack;
+      colorBackT = useTexture(temp);
+    
+
     return (
       <mesh receiveShadow position={[0, 0, 0]}>
         <planeBufferGeometry attach="geometry" args={[1000, 1000]} />
+        { props.scene == 0?
         <meshStandardMaterial attach="material" map={colorBackT} />
-       
+        : null }
+         { props.scene == 1?
+         <meshStandardMaterial attach="material" color="white" />
+         : null }
       </mesh>
     );
   }
@@ -85,7 +83,7 @@ function GroundPlane() {
     return (
       <mesh receiveShadow position={[0, 0, 0]} rotation={[3.14,0,0]}>
         <planeBufferGeometry attach="geometry" args={[1000, 1000]} />
-        <meshStandardMaterial attach="material" color="purple" />
+        <meshStandardMaterial attach="material" color="white" />
       </mesh>
     );
   }
@@ -146,109 +144,89 @@ function GroundPlane() {
 
   function BackDrop3(props) {
     var temp = colorBack;
-    if (props.scene == 1){
-        temp = silk;
-      }
+    // if (props.scene == 1){
+    //     temp = silk;
+    //   }
       const colorBackT = useTexture(temp);
     return (
       <mesh receiveShadow rotation = {[0,3.14/2,3.14/2]}position={[0, 0, 0]}>
         <planeBufferGeometry attach="geometry" args={[1000, 1000]} />
-        <meshStandardMaterial attach="material" map={colorBackT}/>
+        { props.scene == 0?
+        <meshStandardMaterial attach="material" map={colorBackT} />
+        : null }
+         { props.scene == 1?
+         <meshStandardMaterial attach="material" color="white" />
+         : null }
       </mesh>
     );
   }
   function Wallc2r(props) {
-    var temp = colorBack;
-    if (props.scene == 1){
-        temp = silk;
-      }
-      const colorBackT = useTexture(temp);
+    // var temp = colorBack;
+    // if (props.scene == 1){
+    //     temp = silk;
+    //   }
+    //   const colorBackT = useTexture(temp);
     return (
       <mesh receiveShadow rotation = {[0,0,3.14/2]}position={[250, 125, -500]}>
         <planeBufferGeometry attach="geometry" args={[250, 500]} />
-        <meshStandardMaterial attach="material" map={colorBackT}/>
+        <meshStandardMaterial attach="material" color="white"/>
       </mesh>
     );
   }
   function Wallc2b(props) {
-    var temp = colorBack;
-    if (props.scene == 1){
-        temp = silk;
-      }
-      const colorBackT = useTexture(temp);
+    
     return (
       <mesh receiveShadow rotation = {[0,-3.14/2,3.14/2]}position={[500, 125, -250]}>
         <planeBufferGeometry attach="geometry" args={[250, 500]} />
-        <meshStandardMaterial attach="material" map={colorBackT}/>
+        <meshStandardMaterial attach="material" color="white"/>
       </mesh>
     );
   }
   
   function PixelRow(props){
-    const [bum , setbum] = useState([]);
-    // var listItems = ["aquamarine","blue","purple","pink","yellow","green","purple","orange","brown", "green"];
-    // var listItems = [ "black", "black", "black", "black", "black", "black", "black", "black", "black", "black"];
-    var listItems = [ "white",  "white",  "white",  "white",  "white",  "white", "white",  "white",  "white", "white"];
-    const height = 500/listItems.length;
-    //   const [cameraZ, setCameraZ] = useState(0);
+    const [brightness, setBrightness] = useState([0,0,0,0,0,0,0,0,0,0,0]);
+    const height = 500/brightness.length;
     const ycoord = 10;
     const startz = 0;
-    const [eIntent, setEIntent] = useState(0);
-    const [brightness, setBrightness] = useState([0,0,0,0,0,0,0,0,0,0,0]);
+    
     useFrame((state) => {
       const fractionalPos = Math.floor(state.camera.position.z / -height);
       const brightness_temp = brightness;
-        
       for(let i = 0; i<brightness_temp.length; i++){
             if (brightness_temp[i] > 0){
             brightness_temp[i] -= 0.1;
             }
         }
-        setBrightness(brightness_temp);
-    if (props.active){
-        brightness_temp[fractionalPos] = 11;
-         
-          setEIntent(fractionalPos);
-          //   console.log(fractionalPos);
-          //   console.log("bounds: "+(zcoord - height/2)+(zcoord + height/2))
-        //   setCameraZ(fractionalPos);
-        // console.log(listItems[fractionalPos]);
-        if(fractionalPos > 0){
-            listItems[fractionalPos-1] = "red";
-            brightness_temp[fractionalPos-1] = 11;
-        }
-        if(fractionalPos <listItems.length-1){
-            listItems[fractionalPos+1] = "red";
-            brightness_temp[fractionalPos+1] = 11;
-        }
-        listItems[fractionalPos] = "red";
-       
-    } 
-    else{
-        setEIntent(0)
-    }
-        setbum(listItems);
-    
+      if (props.active){
+          brightness_temp[fractionalPos] = 11;
+          if(fractionalPos > 0){
+              brightness_temp[fractionalPos-1] = 6;
+          }
+          if(fractionalPos <brightness.length-1){
+              brightness_temp[fractionalPos+1] = 8;
+          }
+      
+        
+      } 
+      setBrightness(brightness_temp);
       })
-      return(
-          <>
-          {
-        bum.map((color, index)=>{
-            const zcoord = (-height/2)-(index * height);  //zcoord of middle of tile
-            var emit = 0;
-            if (index == eIntent){emit= 1}
-            return(
+    return(
+        <>
+        {
+      brightness.map((color, index)=>{
+          const zcoord = (-height/2)-(index * height);  //zcoord of middle of tile
+          
+          return(
             <mesh key={"pixelMesh" + index}receiveShadow rotation={[-3.1415/2, 0, 0]} position={[props.xcoord, ycoord, zcoord + startz]}>
-                <planeBufferGeometry key={"geometry" + index} attach="geometry" args={[50, height]}  />
+                <planeBufferGeometry key={"geometry" + index} attach="geometry" args={[props.xdir, height]}  />
+                <meshStandardMaterial  key={"standardMesh" + index} attach="material" color={[color+5,0,20]}  />
                 {/* {(zcoord - height/2 < cameraZ < zcoord + height/2) ?  */}
                 {/* <meshStandardMaterial attach="material" color="aquamarine"  />  */}
-                
-                 {/* <meshStandardMaterial emissive={"white"} emissiveIntensity={brightness[index]} key={"standardMesh" + index} attach="material" color={color}  /> */}
-                 <meshStandardMaterial  key={"standardMesh" + index} attach="material" color={[brightness[index]+5,0,20]}  />
-                </mesh>
-            )
-          })}
-       </>
+                {/* <meshStandardMaterial emissive={"white"} emissiveIntensity={brightness[index]} key={"standardMesh" + index} attach="material" color={color}  /> */}
+            </mesh>
+          )
+        })}
+      </>
       )
   }
 
@@ -264,7 +242,7 @@ function GroundPlane() {
         // console.log("length:" +listActive.length)
         if(fractionalPos < listActive.length-1){listActive[fractionalPos+1] = true;}
         setbum(listActive);
-        
+        console.log(listActive);
         // state.camera.position.y = state.camera.position.y+1;
     })
       return(
@@ -272,7 +250,7 @@ function GroundPlane() {
         {
       bum.map((status, index)=>{
           return(
-          <PixelRow key={"pixelRow: "+index}active={status} xcoord={0+ index*50}/>
+          <PixelRow key={"pixelRow: "+index}active={status} xcoord={0+ index*xdir} xdir={xdir}/>
           )
       })
       }
@@ -445,9 +423,6 @@ const CameraController0 = (props) => {
 
 export const InsideDesigner= (props) => {
     const [zinner, zinnerset] = useState(500);
-    // const [cameraTarget, setCameraTarget] = useState([0,0,0])
-//   console.log("props:" + props.src);
-// console.log("props.color: " + props.color);
     var cameraTarget = [0,0,0];
     if (props.z != zinner){
         zinnerset(-500)
@@ -455,79 +430,61 @@ export const InsideDesigner= (props) => {
     if (props.scene == 1){
         cameraTarget = [325,50,-250];
     } 
-//  console.log("z: "+zinner);
-// useFrame(() => {
-   
-// },[])
-// var x = 0;
-// var y = 0;
-// var z = 0;
-// window.addEventListener("keydown", function (event) {
-//     if (event.defaultPrevented) {
-//       return; // Do nothing if the event was already processed
-//     }
-  
-//     switch (event.key) {
-//       case "ArrowDown":
-//           x=x-100
-//         // code for "down arrow" key press.
-//         break;
-//       case "ArrowUp":
-//        x=x+100
-//         // code for "up arrow" key press.
-//         break;
-//       case "ArrowLeft":
-//         y= y -100;
-//         // code for "left arrow" key press.
-//         break;
-//       case "ArrowRight":
-//         y=y+100
-//         // code for "right arrow" key press.
-//         break;
-//       default:
-//         return; // Quit when this doesn't handle the key event.
-//     }
-  
-    // Cancel the default action to avoid it being handled twice
-//     event.preventDefault();
-//   }, true);
-
-
     return<Suspense fallback={null}>
-        <Canvas height="500px"camera={{position:[500,10,props.z]}}>
-       
+      <Canvas height="500px"camera={{position:[500,10,props.z]}}>
+       {/* First Room */}
         {props.scene==0?
         <>
-        <CameraController0 scene={props.scene}/>
-        <ColorMaker color={props.color}/>
-        <Startbuttone />
-        <rectAreaLight
-            width={250}
-            height={700}
-            color={props.color}
-            intensity={1}
-            position={[400,80, 200]}
-            rotation={[0,3.14/4,0]}
-            lookAt={[200, 80, -800]}
-            castShadow
-        />
+          <CameraController0 scene={props.scene}/>
+          <ColorMaker color={props.color}/>
+          <Startbuttone />
+          <rectAreaLight
+              width={250}
+              height={700}
+              color={props.color}
+              intensity={1}
+              position={[400,80, 200]}
+              rotation={[0,3.14/4,0]}
+              lookAt={[200, 80, -800]}
+              castShadow
+          />
         </>
         : null}
         
+      {/* Second Room */}
         {props.scene==1?
             <>
                 <CameraController1 scene={props.scene}/>
-                <LightFixt />
-                <pointLight
+                <LightFixtB />
+                <MetalBase />
+                <NeonSign />
+                {/* <pointLight
                     color="white" 
                     intensity={0.5} 
-                    position={[125, 200, -125]} 
+                    position={[400, 200, -125]} 
+                    castShadow
+                /> */}
+                {/* <pointLight
+                    color="white" 
+                    intensity={0.5} 
+                    position={[250, 350, -255]} 
+                /> */}
+                <rectAreaLight 
+                color="white" 
+                intensity={10} 
+                rotation={[-3.14/2,0,0]}
+                position={[250, 350, -255]} 
+                // lookAt = {[250, 0, -255]}
+                width={50}
+                height={50}
                 />
                 <Startbuttone2 />
                 <PixelScreen />
                 {/* <ambientLight /> */}
             </>
         : null}
+
+        {/* Room Three */}
         {props.scene==2?
             <>
                 <Startbuttone3 />
@@ -537,6 +494,7 @@ export const InsideDesigner= (props) => {
             : null}
         
         <>
+
         {/* Building structure */}
             <GroundPlane />
             <Roof />
@@ -544,7 +502,7 @@ export const InsideDesigner= (props) => {
             <BackDropb />
             <BackDrop3b />
             <Wallc2r />
-            <Wallc2b />
+            {/* <Wallc2b /> */}
             <BackDrop3 scene={props.scene} />
         </>
         
@@ -555,7 +513,7 @@ export const InsideDesigner= (props) => {
         
        {/* <OrbitControls target={cameraTarget} emabled={false}/> */}
     </Canvas>
-    </Suspense>
+  </Suspense>
 
     
 }
