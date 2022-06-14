@@ -132,7 +132,7 @@ const About = () => {
               <div id="flexfire">
                 <img id="firei" src={fire} height='100px'/>
                 <div id="fired">
-                  <p  id="small1f">Our smart contracts constantly calculate brand performance and associate it with a heat index represented by the icon on the left. If the brand is slow, SILK minting rates are increased to drive up popularity. Oppositely if the brand "catches fire", SILK distribution is halted to maximize profits.</p>
+                  <p  id="small1f">Our smart contracts constantly calculate brand performance and associate it with a heat index represented by the icon on the left. If the brand is slow, SILK minting rates are increased to drive up popularity. Oppositely if the brand "catches fire", SILK distribution is halted to maximize profits for current holders.</p>
                   <br />
                   <p  id="small1f">The Heat Index is calculated using a combination of sales data, voter engagement and the number of new submissions.</p>
                 </div>

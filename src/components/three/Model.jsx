@@ -155,7 +155,7 @@ export const Model = (props) =>{
   return(
   <>
  
-  <button onClick={e=>setrandb(randb+1)}>Temp</button>
+ 
   {/* { ready ?  */}
   <Canvas height="100%"camera={{position: props.cam, rotation:[3.14/2,0,3.14/2]}}>
       {/* Change the margin on the bounds in order to alter the zoom on the camera */}

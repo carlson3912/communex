@@ -183,8 +183,14 @@ function GroundPlane() {
     );
   }
   
+  
   function PixelRow(props){
-    const [brightness, setBrightness] = useState([0,0,0,0,0,0,0,0,0,0,0]);
+    const begin = []
+    for (var i = 0; i < props.cols; i++)
+    {
+      begin.push(0);
+    }
+    const [brightness, setBrightness] = useState(begin);
     const height = 500/brightness.length;
     const ycoord = 10;
     const startz = 0;
@@ -194,16 +200,16 @@ function GroundPlane() {
       const brightness_temp = brightness;
       for(let i = 0; i<brightness_temp.length; i++){
             if (brightness_temp[i] > 0){
-            brightness_temp[i] -= 0.1;
+            brightness_temp[i] -= 0.05;
             }
         }
       if (props.active){
           brightness_temp[fractionalPos] = 11;
           if(fractionalPos > 0){
-              brightness_temp[fractionalPos-1] = 6;
+              brightness_temp[fractionalPos-1] = 11;
           }
           if(fractionalPos <brightness.length-1){
-              brightness_temp[fractionalPos+1] = 8;
+              brightness_temp[fractionalPos+1] = 11;
           }
       
         
@@ -231,32 +237,37 @@ function GroundPlane() {
   }
 
   function PixelScreen(props){
-      const listActive = [false, false, false, false, false, false, false, false, false, false, false,false,false, false, false];
+      // const listActive = [false, false, false, false, false, false, false, false, false, false, false,false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+      const listActive =[];
+      for(var i = 0; i < 30; i++ ){
+        listActive.push(false);
+      }
       const xdir = 500 / listActive.length;
-      const [bum, setbum] = useState([]);
+      const [rows, setRows] = useState([]);
       useFrame((state) => {
         const fractionalPos = Math.floor(state.camera.position.x / xdir);
         listActive[fractionalPos] = true;
-        if(fractionalPos > 0){listActive[fractionalPos-1] = true;}
-        // console.log("row: "+fractionalPos)
-        // console.log("length:" +listActive.length)
+        if(fractionalPos > 0){listActive[fractionalPos-1] = true;} 
         if(fractionalPos < listActive.length-1){listActive[fractionalPos+1] = true;}
-        setbum(listActive);
+        setRows(listActive);
         console.log(listActive);
-        // state.camera.position.y = state.camera.position.y+1;
     })
       return(
         <>
-        {
-      bum.map((status, index)=>{
-          return(
-          <PixelRow key={"pixelRow: "+index}active={status} xcoord={0+ index*xdir} xdir={xdir}/>
-          )
-      })
-      }
-      </>
+          {
+            rows.map((status, index)=>{
+              return(
+              <PixelRow key={"pixelRow: "+index}active={status} xcoord={0+ index*xdir} xdir={xdir} cols={30}/>
+              )
+            })
+          }
+        </>
       )
   }
+       
+
+  
+        
   function BackDrop3b() {
     return (
       <mesh receiveShadow rotation = {[0,-3.14/2,3.14/2]}position={[0, 0, 0]}>
