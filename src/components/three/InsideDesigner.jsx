@@ -73,7 +73,7 @@ function GroundPlane() {
         { props.scene == 0?
         <meshStandardMaterial attach="material" map={colorBackT} />
         : null }
-         { props.scene == 1?
+         { props.scene == 1 || props.scene == 3?
          <meshStandardMaterial attach="material" color="white" />
          : null }
       </mesh>
@@ -154,7 +154,7 @@ function GroundPlane() {
         { props.scene == 0?
         <meshStandardMaterial attach="material" map={colorBackT} />
         : null }
-         { props.scene == 1?
+         { props.scene == 1 || props.scene == 3?
          <meshStandardMaterial attach="material" color="white" />
          : null }
       </mesh>
@@ -250,7 +250,7 @@ function GroundPlane() {
         if(fractionalPos > 0){listActive[fractionalPos-1] = true;} 
         if(fractionalPos < listActive.length-1){listActive[fractionalPos+1] = true;}
         setRows(listActive);
-        console.log(listActive);
+        
     })
       return(
         <>
@@ -341,7 +341,7 @@ export function BasicShirtDisplaySill(prop){
             // state.camera.
             // state.camera.updateProjectionMatrix()
           
-        if(prop.scene != 1){setYRot(yrot+1)};
+        if(prop.scene == 0){setYRot(yrot+1)};
         if(prop.move && prop.scene==1 && z>-250){
             setz(z-1);
             setx(50);
@@ -369,9 +369,8 @@ export function BasicShirtDisplaySill(prop){
        <>
      <mesh rotation-y={Math.PI * 0.005*yrot} name={prop.name} castShadow position={[x+200 ,y, z]}geometry={geometry} >
          {/* <Sky /> */}
-       <meshStandardMaterial map={texture} emissive={prop.color}
-        emissiveIntensity={1}
-        side={THREE.DoubleSide}/>
+       <meshStandardMaterial map={texture}
+        />
      </mesh>
      </>
    )
@@ -388,7 +387,7 @@ export function BasicShirtDisplaySill(prop){
     )
 }
 
-const CameraController0 = (props) => {
+const CameraController0 = () => {
     const { camera, gl } = useThree();
     useEffect(
       () => {
@@ -433,20 +432,22 @@ const CameraController0 = (props) => {
   };
 
 export const InsideDesigner= (props) => {
+   
     const [zinner, zinnerset] = useState(500);
-    var cameraTarget = [0,0,0];
+   
     if (props.z != zinner){
         zinnerset(-500)
     };
-    if (props.scene == 1){
-        cameraTarget = [325,50,-250];
-    } 
+
+  
+   
+    
     return<Suspense fallback={null}>
       <Canvas height="500px"camera={{position:[500,10,props.z]}}>
        {/* First Room */}
-        {props.scene==0?
+        {props.scene == 0 ?
         <>
-          <CameraController0 scene={props.scene}/>
+          <CameraController0/>
           <ColorMaker color={props.color}/>
           <Startbuttone />
           <rectAreaLight
@@ -463,32 +464,14 @@ export const InsideDesigner= (props) => {
         : null}
         
       {/* Second Room */}
-        {props.scene==1?
+        {props.scene==1 || props.scene == 3 ?
             <>
-                <CameraController1 scene={props.scene}/>
-                <LightFixtB />
-                <MetalBase />
+                <CameraController1 />
+                <LightFixtB center={[250,100,-250]} scene={props.scene}/>
+                {/* <MetalBase /> */}
                 <NeonSign />
-                {/* <pointLight
-                    color="white" 
-                    intensity={0.5} 
-                    position={[400, 200, -125]} 
-                    castShadow
-                /> */}
-                {/* <pointLight
-                    color="white" 
-                    intensity={0.5} 
-                    position={[250, 350, -255]} 
-                /> */}
-                <rectAreaLight 
-                color="white" 
-                intensity={10} 
-                rotation={[-3.14/2,0,0]}
-                position={[250, 350, -255]} 
-                // lookAt = {[250, 0, -255]}
-                width={50}
-                height={50}
-                />
+                
+              
                 <Startbuttone2 />
                 <PixelScreen />
                 {/* <ambientLight /> */}

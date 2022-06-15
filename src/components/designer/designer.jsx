@@ -358,7 +358,7 @@ export const Designer = () =>{
                         }}>Enlarge</button>
                     </div>
                     <div id="rdco" >
-                        <button onClick={e=>setScene(2)}>Done Editing</button>
+                        <button onClick={e=>setScene(3)}>Done Editing</button>
                     </div>
                     </div>
                     

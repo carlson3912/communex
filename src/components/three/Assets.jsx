@@ -1,7 +1,7 @@
 import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
 import camelSRS from'../../assets/Camel.obj'
 import camelNew from '../../assets/camelNew.json'
-import {useMemo} from 'react'
+import {useEffect, useMemo, useState} from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import * as THREE from "three";
 import palm from "../../assets/Palm1.obj"
@@ -11,33 +11,47 @@ import LightFixture from '../../assets/LightFixture.obj'
 import lightFixtureG from '../../assets/LightFixture.glb'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import metalbase from "../../assets/metalbase.glb"
-import lightB from '../../assets/LightFixtureB.glb'
+import lightB from '../../assets/LightFixture6.glb'
 import neon from '../../assets/neonsign.glb'
 
 export function MetalBase(){
-  console.log("before gtlf: ");
+  
   const {scene} = useLoader(GLTFLoader, metalbase)
   return(
-    
+    <>
     <primitive position={[150,0,-375]}object={scene} scale={[10,10,10]} />
+    {/* <rectAreaLight 
+    color="red" 
+                intensity={5} 
+                rotation={[-3.14/2,0,3.14/4]}
+                position={[150,100,-375]}
+                // lookAt = {[250, 0, -255]}
+                width={50}
+                height={50}
+                visible={true}/*/}
 
+
+    </> 
   )
 }
 
 export function LightFixt(){
-  console.log("before gtlf: ");
-  const {scene} = useLoader(GLTFLoader, lightFixtureG)
-  console.log("gtlf: "+scene);
-  return(
-    
-    <primitive position={[250,200,-250]}object={scene} scale={[10,10,10]} />
 
+  const {scene} = useLoader(GLTFLoader, lightFixtureG)
+
+  return(
+    <>
+    <primitive position={[250,200,-250]}object={scene} scale={[10,10,10]} />
+    
+    
+  </>
   )
+
 }
 export function NeonSign(){
-  console.log("before gtlf: ");
+ 
   const {scene} = useLoader(GLTFLoader, neon)
-  console.log("gtlf: "+scene);
+
   return(
     
     <primitive rotation={[0,-3.14/2,0]} position={[490,150,-250]}object={scene} scale={[5,5,5]} />
@@ -45,14 +59,59 @@ export function NeonSign(){
   )
 }
 
-export function LightFixtB(){
-  console.log("before gtlf: ");
-  const {scene} = useLoader(GLTFLoader, lightB)
-  console.log("gtlf: "+scene);
-  return(
-    
-    <primitive position={[250,100,-250]}object={scene} scale={[5,5,5]} />
+export function LightFixtB(props){
+  const [c1, setc1] = useState("red");
+  const [c2, setc2] = useState("blue");
+  const [c3, setc3] = useState("red");
+  const [c4, setc4] = useState("blue");
+  const {scene} = useLoader(GLTFLoader, lightB);
+  
+  useEffect(()=>{
+    console.log(props.scene);
+  if(props.scene==3){
+    console.log("finished");
+      setc1("red");
+      setc2("blue");
+      setc3("red");
+      setc4("blue");
+}}, [])
 
+  return(
+    <>
+    <rectAreaLight 
+    color={c1}
+    position={[250,175,-325]}
+    rotation={[-3.14/2 * 1.5,0,0]}
+    args={[5, 100]}
+    castShadow
+    
+    />
+    <rectAreaLight 
+    color={c3}
+    rotation={[-3.14/4 + 3.14,3.14,0]} position={[250,175,-200]}
+    args={[5, 100]}
+    castShadow
+    
+    />
+    <rectAreaLight 
+    color={c2}
+    
+    rotation={[0,3.14/2,3.14/4]} position={[310,175,-250]}
+    args={[5, 200]}
+    castShadow
+  
+    />
+
+<rectAreaLight 
+    color={c4}
+    
+    rotation={[0,-3.14/2,3.14/4]} position={[310-140,175,-250]}
+    args={[5, 100]}
+    castShadow
+    />
+      <primitive position={props.center} object={scene} scale={[5,5,5]} />
+    
+    </>
   )
 }
 
@@ -80,19 +139,19 @@ export function PalmTree(props){
 }
 
 export function Camel(props){
-  console.log("camel object is reloaded");
+
   const obj  = useLoader(OBJLoader, camelSRS);
   
   let onLoad = function () {
-   console.log("onload")
+   
   };
   let onProgress = function () { console.log("onprogress")};
   let onError = function () {
-    console.log("fail")
+    
   };
   
   const geometry = useMemo(() => {
-    console.log("camel object is really reloaded");
+    
     let g;
     obj.traverse((c) => {
       if (c.type === "Mesh") {
