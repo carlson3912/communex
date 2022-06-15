@@ -36,8 +36,7 @@ export const listShirts = new Array(
     joker,
     slaughter,
     poole,
-    poole2,
-    "https://ipfs.io/ipfs/QmVHuEJjYMHG9c1nHpMfK4cB3mebAoqGn4aA62CXojkmup"
+    poole2
   
     // "https://cdn2.thecatapi.com/images/bif.jpg"
 );

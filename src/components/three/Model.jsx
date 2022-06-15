@@ -6,7 +6,7 @@ import { Html, Bounds, useBounds,OrbitControls, Stars, useTexture, useGLTF, Sky,
 import {DesertBiome, DesignThree} from './DesertBiome'
 import background from '../../assets/backgroundT.png'
 import floortity from '../../assets/floortt.png'
-import { DownCylinder, PurpCyliner } from './Assets';
+import { DownCylinder, PurpCyliner, LightFixt, MetalBase, LightFixtB } from './Assets';
 import {BasicShirtDisplay}  from './Shirts'
 import { makeList } from './Textures';
 import {Camel} from './Assets';
@@ -14,7 +14,7 @@ import * as THREE from "three";
 import camelSRS from'../../assets/Camel.obj'
 import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
 import { useLoader} from '@react-three/fiber'
-import { LightFixt } from './Assets';
+
 
 function ItemBoard(props){
   console.log(props.name)
@@ -155,13 +155,14 @@ export const Model = (props) =>{
   return(
   <>
  
-  {/*<button onClick={e=>setrandb(randb+1)}>Temp</button>
+ 
   {/* { ready ?  */}
   <Canvas height="100%"camera={{position: props.cam, rotation:[3.14/2,0,3.14/2]}}>
       {/* Change the margin on the bounds in order to alter the zoom on the camera */}
       <Suspense fallback={null}>
       <Camel loc={[700,2,310]} rot={[0,-Math.PI / 1.2,0]}/>
       <Camel loc={[640,2,-330]} rot={[0,-Math.PI /7,0]}/>
+      <MetalBase />
       <Bounds fit clip margin={0.25}>   
       <SelectToZoom>
         
@@ -179,7 +180,7 @@ export const Model = (props) =>{
       }
     {/* <PurpCyliner /> */}
     <DownCylinder geom={portalGeo}/>
-    <LightFixt />
+    <LightFixtB />
     {/* <GroundPlane /> */}
     {/* <BackDrop /> */}
     {/* <Sphere /> */}
@@ -192,7 +193,7 @@ export const Model = (props) =>{
       <DesertBiome />
    </SelectToZoom>
    </Bounds>
- 
+    
     </Suspense>
   
 

@@ -12,4 +12,8 @@ export {default as Guidelines} from './submit/Guidelines';
 export {default as Product} from './product/Product';
 export {default as Design} from './design/design';
 export {default as Opening} from './opening/opening';
+export {default as Redeem} from './redeem/Redeem';
+
+
+
 

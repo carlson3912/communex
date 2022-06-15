@@ -120,14 +120,7 @@ export const Designer = () =>{
         // setPI(event.target.files[0]);
       }
 
-    // useEffect(()=>{
-    //     if(canvas){
-    //         const ctx=canvas.current.getContext("2d");
-    //         ctx.drawImage(shirt,70,0,700,800);
-            
-    //     }
-  
-    // },[])
+ 
 
     function drawRot(canvas,i){
         canvas.translate(pos[i][0] +  sizes[i][0] / 2, pos[i][1] + sizes[i][1] / 2);
@@ -136,6 +129,7 @@ export const Designer = () =>{
         canvas.rotate(-3.1415/2);
         canvas.translate(pos[i][0] + sizes[i][0] / -2, pos[i][1] + sizes[i][1] / -2);
     }
+    
     useEffect(() =>{
         if(canvas){
             console.log("REDRAW STARTED")
@@ -300,33 +294,40 @@ export const Designer = () =>{
                         <div id="arrowS2">
 
                        <button id="arrowU"onClick={e=>{
+                           if (pos.length>0){
                                 var temp = pos
                                 temp[pointer][1] = pos[pointer][1] - 10;
                                 setPos(temp);
                                 setTop(top+1);
-                                }}><img src={arrow} height="50px"></img></button>
+                            }
+                            }}><img src={arrow} height="50px"></img></button>
                         </div>
                         <div id="arrowS2">
                            <div id="arrowS">
-                       <        button onClick={e=>{
-                        var temp = pos
-                        temp[pointer][0] = pos[pointer][0] - 10;
-                        setPos(temp);
-                        setTop(top+1);
-                                }} id="lbut"><img width="50px"src={arrow}></img></button>
-                                
                                 <button onClick={e=>{
-                                    var temp = pos
-                                    temp[pointer][1] = pos[pointer][1] + 10;
-                                    setPos(temp);
-                                    setTop(top+1);
+                                    if (pos.length>0){
+                                        var temp = pos
+                                        temp[pointer][0] = pos[pointer][0] - 10;
+                                        setPos(temp);
+                                        setTop(top+1);
+                                    }
+                                    }} id="lbut"><img width="50px"src={arrow}></img></button>
+                                <button onClick={e=>{
+                                    if (pos.length>0){
+                                        var temp = pos
+                                        temp[pointer][1] = pos[pointer][1] + 10;
+                                        setPos(temp);
+                                        setTop(top+1);
+                                    }
                                 }}><img id="dbut"src={arrow} height="50px"></img></button>
                                 <button onClick={e=>{
-                                    var temp = pos;
-                                    temp[pointer][0] = pos[pointer][0] + 10;
-                                    console.log(temp[pointer][0]);
-                                    setPos(temp);
-                                    setTop(top+1);
+                                    if (pos.length>0){
+                                        var temp = pos;
+                                        temp[pointer][0] = pos[pointer][0] + 10;
+                                        console.log(temp[pointer][0]);
+                                        setPos(temp);
+                                        setTop(top+1);
+                                    }
                                 }}><img id="rbut"src={arrow} width="50px"></img></button>
                             </div>
                             </div>
@@ -338,22 +339,26 @@ export const Designer = () =>{
                         <button onClick={deleteImage}>Clear</button>
                         
                         <button onClick={e=>{
-                            var temp = sizes;
-                            temp[pointer][0] = temp[pointer][0] * 0.8;
-                            temp[pointer][1] = temp[pointer][1] * 0.8;
-                            setSizes(temp);console.log("changedsmall")
-                            setTop(top+1);
+                            if (pos.length>0){
+                                var temp = sizes;
+                                temp[pointer][0] = temp[pointer][0] * 0.8;
+                                temp[pointer][1] = temp[pointer][1] * 0.8;
+                                setSizes(temp);console.log("changedsmall")
+                                setTop(top+1);
+                            }
                             }}>Shrink</button>
                         <button onClick={e=>{
-                            var temp = sizes;
-                            temp[pointer][0] = temp[pointer][0] * 1.2;
-                            temp[pointer][1] = temp[pointer][1] * 1.2;
-                            setSizes(temp);console.log("changedbig")
-                            setTop(top+1);
+                            if (pos.length>0){
+                                var temp = sizes;
+                                temp[pointer][0] = temp[pointer][0] * 1.2;
+                                temp[pointer][1] = temp[pointer][1] * 1.2;
+                                setSizes(temp);console.log("changedbig")
+                                setTop(top+1);
+                            }
                         }}>Enlarge</button>
                     </div>
                     <div id="rdco" >
-                        <button onClick={e=>setScene(2)}>Done Editing</button>
+                        <button onClick={e=>setScene(3)}>Done Editing</button>
                     </div>
                     </div>
                     

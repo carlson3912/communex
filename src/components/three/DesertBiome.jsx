@@ -12,6 +12,7 @@ import fontSRS from "../../assets/fonts/kumar.json";
 import { PalmTree } from './Assets';
 import { WaterA } from './Assets';
 import bird from "../../assets/bird.png"
+
 const TextThree = () =>{
     console.log("dorid: ");
     const [geo, setGeo] = useState(null);
@@ -58,3 +59,5 @@ export const DesertBiome = () => {
        </>
     )
 }
+
+export default DesertBiome;
