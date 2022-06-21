@@ -184,3 +184,29 @@
     margin-left: 40%;
     width: 20%;
 }
+
+#imgselect{
+    background-color:#d71f8107;
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: purple;
+    width:fit-content;
+}
+
+
+
+#imgBox{
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    border-color: purple;
+    border-radius: 15px;
+    border-width: 10px;
+    width:150px;
+}
+/* 
+#imgNum{
+    width: 50px;
+} */

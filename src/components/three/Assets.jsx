@@ -60,21 +60,49 @@ export function NeonSign(){
 }
 
 export function LightFixtB(props){
-  const [c1, setc1] = useState("red");
-  const [c2, setc2] = useState("blue");
-  const [c3, setc3] = useState("red");
-  const [c4, setc4] = useState("blue");
+  const [c1, setc1] = useState("white");
+  const [c2, setc2] = useState("white");
+  const [c3, setc3] = useState("white");
+  const [c4, setc4] = useState("white");
+  const[ct, setct] = useState(0)
+  const [count, setcount] = useState(0);
   const {scene} = useLoader(GLTFLoader, lightB);
   
-  useEffect(()=>{
-    console.log(props.scene);
-  if(props.scene==3){
-    console.log("finished");
-      setc1("red");
-      setc2("blue");
-      setc3("red");
-      setc4("blue");
-}}, [])
+//   useEffect(()=>{
+//     console.log(props.scene);
+//     if(props.scene==3){
+//       console.log("finished");
+//       setc1("red");
+//       setc2("blue");
+//       setc3("red");
+//       setc4("blue");
+// }}, [])
+
+  useFrame((state) => {
+    
+    if(props.scene==2){
+    setcount(count+1);
+    if(count%22==0){
+    console.log("lets goo")
+    if(ct==0){
+    setc1("Blue");
+    setc2("Red");
+    setc3("Blue");
+    setc4("Red");
+    setct(1);
+    }
+  
+  if(ct==1){
+    setc2("Blue");
+    setc1("Red");
+    setc4("Blue");
+    setc3("Red");
+    setct(0);
+    }
+  }
+    }
+  })
+
 
   return(
     <>

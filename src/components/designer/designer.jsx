@@ -16,6 +16,8 @@ import visten from '../../assets/manu1.jpg'
 import { ItemView } from '../three/ItemView';
 import Model from '../three/Model';
 import { InsideDesigner } from '../three/InsideDesigner';
+
+
 export const Designer = () =>{
     const canvas = useRef(null);
     const [numElements, setNumElements] = useState(0);
@@ -36,6 +38,8 @@ export const Designer = () =>{
     const waterImage = new Image();
     waterImage.src = waterMark;
 
+
+
     function deleteImage(){
         console.log("Delete initiated at: "+ pointer );
         setNumElements(numElements-1);
@@ -50,7 +54,11 @@ export const Designer = () =>{
         tempS.pop(pointer);
         console.log("popped pointer at")
         setSizes(tempS);
-        setPointer(pointer - 1);
+        if (pointer != 0){
+            setPointer(pointer - 1);
+        }
+        console.log(pointer);
+        
         setPendingImage(false);
         setTop(top+1)
     }
@@ -99,6 +107,9 @@ export const Designer = () =>{
     }
 
     const handleInputChange = (event) => {
+        if(images.length > 4){
+            return
+        }
         const temp = URL.createObjectURL(event.target.files[0]);
         const upImage = new Image();
         upImage.onload = function(){
@@ -122,27 +133,33 @@ export const Designer = () =>{
 
  
 
-    function drawRot(canvas,i){
-        canvas.translate(pos[i][0] +  sizes[i][0] / 2, pos[i][1] + sizes[i][1] / 2);
-        canvas.rotate(3.1415/2);
-        canvas.drawImage(images[i],pos[i][1] ,pos[i][0], sizes[i][0], sizes[i][1]);
-        canvas.rotate(-3.1415/2);
-        canvas.translate(pos[i][0] + sizes[i][0] / -2, pos[i][1] + sizes[i][1] / -2);
+    function drawRot(ctx,i){
+        // canvas.translate(pos[i][0] +  sizes[i][0] / 2, pos[i][1] + sizes[i][1] / 2);
+        // canvas.rotate(Math.pi/2);
+        // canvas.drawImage(images[i],pos[i][1]/2 * -1 ,pos[i][0]/2*-1, sizes[i][0], sizes[i][1]);
+        // canvas.rotate(-Math.pi/2);
+        // canvas.translate(pos[i][0] + sizes[i][0] / 2 * -1, pos[i][1] + sizes[i][1] / 2 * -1);
+        ctx.save();
+        ctx.translate(500,500);
+        ctx.rotate(Math.PI/2);
+        ctx.translate(0,0); //check
+        ctx.drawImage(images[i],pos[i][0],pos[i][1],sizes[i][0]/2,sizes[i][1]/2);
+        ctx.restore();
     }
     
     useEffect(() =>{
         if(canvas){
-            console.log("REDRAW STARTED")
+            
             const ctx=canvas.current.getContext("2d");
             ctx.clearRect(0, 0, 5000, 5000);
             // ctx.clearRect(0, 0, 2000, 2000);
-            console.log("SHIRT COLOR: " + shirtColor);
+            
             ctx.fillStyle = shirtColor;
             ctx.fillRect(0, 0, 2000, 2000);
             // ctx.drawImage(shirt,70,0,700,800);
             for(var i = 0; i<numElements; i++){
-                // drawRot(ctx,i);
-                ctx.drawImage(images[i],pos[i][0],pos[i][1], sizes[i][0], sizes[i][1]);
+                drawRot(ctx,i);
+                // ctx.drawImage(images[i],pos[i][0],pos[i][1], sizes[i][0], sizes[i][1]);
             }
             if (water){
                 ctx.drawImage(waterImage,-500,-500,2000,2000);
@@ -246,14 +263,36 @@ export const Designer = () =>{
             </div>
              : null}
              {/* Hidden 2-D Canvas for designing */}
-                    <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click} hidden={true}><h1>Hello</h1></canvas>
-              
-             
+             <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click} hidden={true}><h1>Hello</h1></canvas>
                 {scene==1 ?
                 <>
-
+                <h1>Images</h1>
+                <div id="imgselect">
+                    
+                    {
+                        images.map((img, index)=>{
+                            if (index == images.length-1 && penI){
+                                return
+                            }
+                            return(
+                                <div id="imgBox" onClick={e=>setPointer(index)}>
+                
+                                    <img src={img.src} height="100px"/>
+                                    <div id="imgNum">
+                                        <h3>Size: {parseInt(sizes[index][0])}, {parseInt(sizes[index][1])}</h3>
+                                        <h3>Coordinates: {pos[index][0]}, {pos[index][1]} </h3>
+                                        <h1>{index + 1}</h1>
+                                    </div>
+                                </div>
+                                
+                            )
+                        })
+                    }
+                </div>
                 
                 <div id="rightDesign2">
+               
+                
                 <div id="rdco" >
                         <button onClick={e=>setScene(1)}>Back</button>
                     </div>
@@ -262,7 +301,7 @@ export const Designer = () =>{
                         <div id="textupload"><h3>Upload Text</h3><input type="text"></input></div>
                         <label id="uploadLabel">
                         <div id="blueUp">
-                        <input type="file" id="cancelUpload" onChange={handleInputChange} />
+                        <input type="file" id="cancelUpload" onChange={handleInputChange} accept=".jpeg, .jpg, .png"/>
                             <img id="downimage"width="50px"height="50px"src={down}/>
                             <h3 id="downtext">Upload Image</h3>
                         </div>
@@ -358,7 +397,7 @@ export const Designer = () =>{
                         }}>Enlarge</button>
                     </div>
                     <div id="rdco" >
-                        <button onClick={e=>setScene(3)}>Done Editing</button>
+                        <button onClick={e=>setScene(2)}>Done Editing</button>
                     </div>
                     </div>
                     

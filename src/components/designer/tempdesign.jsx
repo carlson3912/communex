@@ -125,7 +125,7 @@ export const Designer = () =>{
 
     useEffect(() =>{
         if(numElements>0 && canvas){
-            console.log("REDRAW STARTED")
+            
             const ctx=canvas.current.getContext("2d");
             ctx.clearRect(0, 0, 800, 800);
             ctx.drawImage(shirt,70,0,700,800);

@@ -73,8 +73,8 @@ function GroundPlane() {
         { props.scene == 0?
         <meshStandardMaterial attach="material" map={colorBackT} />
         : null }
-         { props.scene == 1 || props.scene == 3?
-         <meshStandardMaterial attach="material" color="white" />
+         { props.scene > 0?
+         <meshStandardMaterial attach="material" color="black" />
          : null }
       </mesh>
     );
@@ -83,7 +83,7 @@ function GroundPlane() {
     return (
       <mesh receiveShadow position={[0, 0, 0]} rotation={[3.14,0,0]}>
         <planeBufferGeometry attach="geometry" args={[1000, 1000]} />
-        <meshStandardMaterial attach="material" color="white" />
+        <meshStandardMaterial attach="material" color="black" />
       </mesh>
     );
   }
@@ -154,8 +154,8 @@ function GroundPlane() {
         { props.scene == 0?
         <meshStandardMaterial attach="material" map={colorBackT} />
         : null }
-         { props.scene == 1 || props.scene == 3?
-         <meshStandardMaterial attach="material" color="white" />
+         { props.scene > 0?
+         <meshStandardMaterial attach="material" color="black" />
          : null }
       </mesh>
     );
@@ -169,7 +169,7 @@ function GroundPlane() {
     return (
       <mesh receiveShadow rotation = {[0,0,3.14/2]}position={[250, 125, -500]}>
         <planeBufferGeometry attach="geometry" args={[250, 500]} />
-        <meshStandardMaterial attach="material" color="white"/>
+        <meshStandardMaterial attach="material" color="black"/>
       </mesh>
     );
   }
@@ -178,7 +178,7 @@ function GroundPlane() {
     return (
       <mesh receiveShadow rotation = {[0,-3.14/2,3.14/2]}position={[500, 125, -250]}>
         <planeBufferGeometry attach="geometry" args={[250, 500]} />
-        <meshStandardMaterial attach="material" color="white"/>
+        <meshStandardMaterial attach="material" color="black"/>
       </mesh>
     );
   }
@@ -237,9 +237,8 @@ function GroundPlane() {
   }
 
   function PixelScreen(props){
-      // const listActive = [false, false, false, false, false, false, false, false, false, false, false,false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
       const listActive =[];
-      for(var i = 0; i < 30; i++ ){
+      for(var i = 0; i < 15; i++ ){
         listActive.push(false);
       }
       const xdir = 500 / listActive.length;
@@ -257,7 +256,7 @@ function GroundPlane() {
           {
             rows.map((status, index)=>{
               return(
-              <PixelRow key={"pixelRow: "+index}active={status} xcoord={0+ index*xdir} xdir={xdir} cols={30}/>
+              <PixelRow key={"pixelRow: "+index}active={status} xcoord={0+ index*xdir} xdir={xdir} cols={15}/>
               )
             })
           }
@@ -349,7 +348,7 @@ export function BasicShirtDisplaySill(prop){
             // state.camera.updateProjectionMatrix();
         }
         // if(prop.move && prop.scene==1 && x>-100){setx(-100);}
-        if(prop.move && prop.scene==2 && x>-125){setx(x-1);}
+        // if(prop.move && prop.scene==2 && x>-125){setx(x-1);}
     });
     const texture = useTexture(prop.itemt);
     const obj = useLoader(OBJLoader, shirtTwo);
@@ -464,29 +463,21 @@ export const InsideDesigner= (props) => {
         : null}
         
       {/* Second Room */}
-        {props.scene==1 || props.scene == 3 ?
+        {props.scene > 0  ?
             <>
                 <CameraController1 />
                 <LightFixtB center={[250,100,-250]} scene={props.scene}/>
                 {/* <MetalBase /> */}
                 <NeonSign />
                 
-              
+                <Wallc2b />
                 <Startbuttone2 />
                 <PixelScreen />
                 {/* <ambientLight /> */}
             </>
         : null}
 
-        {/* Room Three */}
-        {props.scene==2?
-            <>
-                <Startbuttone3 />
-                <ambientLight />
-                <LightFixt />
-            </>
-            : null}
-        
+       
         <>
 
         {/* Building structure */}
