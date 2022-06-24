@@ -162,7 +162,6 @@ export const Model = (props) =>{
       <Suspense fallback={null}>
       <Camel loc={[700,2,310]} rot={[0,-Math.PI / 1.2,0]}/>
       <Camel loc={[640,2,-330]} rot={[0,-Math.PI /7,0]}/>
-      <MetalBase />
       <Bounds fit clip margin={0.25}>   
       <SelectToZoom>
         
@@ -180,38 +179,18 @@ export const Model = (props) =>{
       }
     {/* <PurpCyliner /> */}
     <DownCylinder geom={portalGeo}/>
-    <LightFixtB />
-    {/* <GroundPlane /> */}
-    {/* <BackDrop /> */}
-    {/* <Sphere /> */}
-    {/* <mesh receiveShadow position={[0, 0, 0]}>
-      <planeBufferGeometry attach="geometry" args={[500, 500]} />
-      <meshStandardMaterial attach="material" color="white" />
-    </mesh> */}
-    {/* <Sky /> 
-    <Stage /> */}
-      <DesertBiome />
-   </SelectToZoom>
-   </Bounds>
-    
+    <DesertBiome />
+    </SelectToZoom>
+    </Bounds>
     </Suspense>
   
 
     <OrbitControls target={props.loc}/>
     <ambientLight intensity={0.5} />
     <pointLight position={[-2040,0,-20]}/>
-    {/* <rectAreaLight
-      width={100}
-      height={800}
-      color="red"
-      brightness={100}
-      position={[-1140,0,-20]}
-      lookAt={[0, 0, 0]}
-    //   penumbra={1}
-    castShadow
-    /> */}
+
        </Canvas>
-       {/* : null } */}
+      
        </>
        )
 }
