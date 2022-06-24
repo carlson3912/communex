@@ -1,10 +1,9 @@
 import './App.css';
 import {Navbar,Footer} from './components'
-import { About, Home,Profile,Item, Srs1, Create,Login,Register, Submit, Guidelines, Product, Vote, Design, Opening} from './pages'
+import { About, Home,Profile,Item, Srs1, Create,Login,Register, Submit, Guidelines, Product, Vote, Design, Opening, Redeem} from './pages'
 import { Routes, Route } from "react-router-dom";
 
 function App() {
-
   return (
     <div>
       <Navbar />
@@ -29,5 +28,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

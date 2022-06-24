@@ -239,7 +239,7 @@ function GroundPlane() {
   function PixelScreen(props){
       // const listActive = [false, false, false, false, false, false, false, false, false, false, false,false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
       const listActive =[];
-      for(var i = 0; i < 30; i++ ){
+      for(var i = 0; i < 15; i++ ){
         listActive.push(false);
       }
       const xdir = 500 / listActive.length;
@@ -257,7 +257,7 @@ function GroundPlane() {
           {
             rows.map((status, index)=>{
               return(
-              <PixelRow key={"pixelRow: "+index}active={status} xcoord={0+ index*xdir} xdir={xdir} cols={30}/>
+              <PixelRow key={"pixelRow: "+index}active={status} xcoord={0+ index*xdir} xdir={xdir} cols={15}/>
               )
             })
           }
