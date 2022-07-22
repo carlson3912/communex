@@ -1,6 +1,7 @@
 import './designer.css';
 import React, {useState, useEffect, useRef} from 'react'
 import logo from '../../assets/seller1.png';
+import * as THREE from 'three';
 
 import waterMark from "../../assets/srswater.png";
 import down from '../../assets/download.png';
@@ -25,6 +26,7 @@ export const Designer = () =>{
     const [top,setTop] = useState('1');
     const [pos, setPos] = useState([]);
     const [sizes, setSizes] = useState([]);
+    const [rots, setRots] = useState([]);
     const [pointer, setPointer] = useState(-1);
     const [water, setWater] = useState(false);
     const [ipfs, setIPFS] = useState();
@@ -34,11 +36,58 @@ export const Designer = () =>{
     const [scene, setScene] = useState(0);
     const [zcamera, setZCamera] = useState(500);
     const[move, setMove] = useState(false);
-
+    const [ipfsLink, setIpfsLink] = useState("");
     const waterImage = new Image();
+    const [childData, setChildData] = useState("");
+
     waterImage.src = waterMark;
 
 
+    // function saveAsImage() {
+    //     var imgData, imgNode;
+    //     var renderer;
+    //     var strDownloadMime = "image/octet-stream";
+    //     renderer = new THREE.WebGLRenderer({
+    //         preserveDrawingBuffer: true
+    //     });
+    //     renderer.setSize(window.innerWidth, window.innerHeight);
+        
+    //     try {
+    //         var strMime = "image/jpeg";
+    //         imgData = renderer.domElement.toDataURL(strMime);
+
+    //         saveFile(imgData.replace(strMime, strDownloadMime), "test.jpg");
+
+    //     } catch (e) {
+    //         console.log(e);
+    //         return;
+    //     }
+
+    // }
+
+    // var saveFile = function (strData, filename) {
+    //     var link = document.createElement('a');
+    //     if (typeof link.download === 'string') {
+    //         document.body.appendChild(link); //Firefox requires the link to be in the body
+    //         link.download = filename;
+    //         link.href = strData;
+    //         link.click();
+    //         document.body.removeChild(link); //remove the link when done
+    //     } 
+    // }
+
+    function changeRot(direction){
+        console.log("Current rot:  "+rots[pointer]);
+        var tempRot = rots;
+        if (direction == 1) {
+            tempRot[pointer] = tempRot[pointer] + 10;
+        }
+        else{
+            tempRot[pointer] = tempRot[pointer] - 10;
+        }
+        setRots(tempRot);
+        setTop(top+1);
+    }
 
     function deleteImage(){
         console.log("Delete initiated at: "+ pointer );
@@ -127,7 +176,11 @@ export const Designer = () =>{
         var tempPos = pos;
         tempPos.push([0,0]);
         setPos(tempPos);
+        var tempRot = rots
+        tempRot.push(0);
+        setRots(tempRot);
         setPendingImage(true);
+        console.log("Rots: "+ rots);
         // setPI(event.target.files[0]);
       }
 
@@ -140,16 +193,16 @@ export const Designer = () =>{
         // canvas.rotate(-Math.pi/2);
         // canvas.translate(pos[i][0] + sizes[i][0] / 2 * -1, pos[i][1] + sizes[i][1] / 2 * -1);
         ctx.save();
-        ctx.translate(500,500);
-        ctx.rotate(Math.PI/2);
+        ctx.translate(pos[i][0],pos[i][1]);
+        ctx.rotate(Math.PI/180 * rots[i]);
         ctx.translate(0,0); //check
-        ctx.drawImage(images[i],pos[i][0],pos[i][1],sizes[i][0]/2,sizes[i][1]/2);
+        ctx.drawImage(images[i],0-sizes[i][0]/2,0-sizes[i][1]/2,sizes[i][0],sizes[i][1]);
         ctx.restore();
     }
     
     useEffect(() =>{
         if(canvas){
-            
+            console.log("Rots" + rots);
             const ctx=canvas.current.getContext("2d");
             ctx.clearRect(0, 0, 5000, 5000);
             // ctx.clearRect(0, 0, 2000, 2000);
@@ -167,7 +220,7 @@ export const Designer = () =>{
             set3dmock(canvas.current.toDataURL('image/jpeg',1));
 
         }
-    },[top, pos, water, shirtColor])
+    },[top, pos, water, shirtColor, rots])
 
 
     const click = ({nativeEvent}) => {
@@ -203,10 +256,15 @@ export const Designer = () =>{
         // link.download ="text.txt"
         console.log("Right before server add")
         await client.add(dataURItoBlob(e)).then((res) => {
-            console.log("https://ipfs.io/ipfs/"+res.path)
+        //    console.log(res.path);
+        //    metaJson("https://ipfs.io/ipfs/"+res.path);
+            // metaJson("ipfs://"+res.path, shirtColor);
+            metaJson("ipfs://"+childData, shirtColor);
             sessionStorage.setItem("designSubmission", res.path)
         });
-        window.location.href = "../Submit"
+        
+        // window.location.href = "../Submit"
+
     }
 
     const designSpecs = () => {
@@ -238,13 +296,35 @@ export const Designer = () =>{
         link.download ="text.txt"
         link.click();
         }
+    
+    const metaJson = async(input, colorIn) => {
+        const projectId = '28zAasknKw7w7ViLtFtNtxkNdCz';
+        const projectSecret = 'ca916af6aecabd19b54015a2661681c4';
+        const auth ='Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
+        const client = create({
+            host: 'ipfs.infura.io',
+            port: 5001,
+            protocol: 'https',
+            headers: {
+                authorization: auth,
+            },
+        });
+        const answer = JSON.stringify({ dna: "bum1292193", name: "Bummy First Drop", description:"this is a bummy test", image:input,edition:1, date:"bum oclock", attributes:{color: colorIn} });
+        await client.add(answer).then((res) => {
+            //    console.log(res.path);
+               console.log("https://ipfs.io/ipfs/"+res.path);
+               console.log("submitted:" + answer);
 
+               
+            });
+
+    }
     return(
         <div>
             
             <div id="dd2model">
             {/* <Model loc={[-1500,0,0]} cam={[-1500,0,-2000]}/> */}
-            <InsideDesigner src={threedmock} scene={scene} z={zcamera} move={move} color={shirtColor} />
+            <InsideDesigner src={threedmock} scene={scene} z={zcamera} move={move} color={shirtColor} parent={setChildData} />
             
             </div>
            
@@ -253,6 +333,7 @@ export const Designer = () =>{
              {scene==0 ?
              <div>
                  <div id="shirtColorPicker2">
+                    
                 <h1 id="colorPickerWords">Color Picker</h1>
                     <div id="shirtColorPicker">
                         <input id="shirtColorPicker3" type="color" name="head" value={shirtColor} onChange={e=>{setShirtColor(e.target.value)}}/>
@@ -263,7 +344,7 @@ export const Designer = () =>{
             </div>
              : null}
              {/* Hidden 2-D Canvas for designing */}
-             <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click} hidden={true}><h1>Hello</h1></canvas>
+             <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click} hidden={false}><h1>Hello</h1></canvas>
                 {scene==1 ?
                 <>
                 <h1>Images</h1>
@@ -281,6 +362,7 @@ export const Designer = () =>{
                                     <div id="imgNum">
                                         <h3>Size: {parseInt(sizes[index][0])}, {parseInt(sizes[index][1])}</h3>
                                         <h3>Coordinates: {pos[index][0]}, {pos[index][1]} </h3>
+                                        <h3>Rotation: {rots[index]}</h3>
                                         <h1>{index + 1}</h1>
                                     </div>
                                 </div>
@@ -397,6 +479,9 @@ export const Designer = () =>{
                         }}>Enlarge</button>
                     </div>
                     <div id="rdco" >
+                    {/* <button onClick={e => saveAsImage()}> Save 3D Image</button> */}
+                        <button onClick={e => changeRot(1)}> Rotate Right</button>
+                        <button onClick={e => changeRot(-1)} > Rotate Left</button>
                         <button onClick={e=>setScene(2)}>Done Editing</button>
                     </div>
                     </div>
@@ -424,7 +509,8 @@ export const Designer = () =>{
                                     const canvas = document.getElementById("upCanvas");
                                     const image = canvas.toDataURL('image/jpeg');
                                     infura(image);
-                                    console.log(image.src)
+                                    // metaJson();
+                                    console.log(image.src);
                                     // const link = document.createElement("a");
                                     // link.href=image;
                                     // link.download ="main.jpg"
@@ -432,6 +518,7 @@ export const Designer = () =>{
                                 }}>
                             <h1>Finish Design</h1>
                             <p>Upload to IPFS</p></button>
+                            <button>{childData}</button>
                         </div>
                     </div>
                 : null}     

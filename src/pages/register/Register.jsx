@@ -64,7 +64,7 @@ const Register = () => {
       const reg = user + "," + email + "," + wallet;
       const rex = JSON.stringify(reg);
       try {
-          const response = await axios.post('http://localhost:3500/register',
+          const response = await axios.post('http://74.208.187.32/register',
               JSON.stringify(reg),
               JSON.stringify({
                 headers: { 'Content-Type': 'application/json'},

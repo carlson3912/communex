@@ -9,7 +9,79 @@ import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
 import './three.css'
 import colorBack from '../../assets/colorback.png'
 import { LightFixt, MetalBase, LightFixtB, NeonSign } from './Assets';
+import {create} from 'ipfs-http-client';
 
+async function infura(e){
+  // const ipfsClient = require('ipfs-http-client');
+  const projectId = '28zAasknKw7w7ViLtFtNtxkNdCz';
+  const projectSecret = 'ca916af6aecabd19b54015a2661681c4';
+  const auth ='Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
+  const client = create({
+      host: 'ipfs.infura.io',
+      port: 5001,
+      protocol: 'https',
+      headers: {
+          authorization: auth,
+      },
+  });
+  // const link = document.createElement("a");
+  // link.href=e;
+  // link.download ="text.txt"
+  var tempR;
+  console.log("Right before server add")
+  await client.add(e).then((res) => {
+     
+  //    metaJson("https://ipfs.io/ipfs/"+res.path);
+      tempR =  res.path;
+  });
+  
+  return tempR;
+  // window.location.href = "../Submit"
+
+}
+
+function ScreenshotButton({ ...props }) {
+  const { gl, scene, camera } = useThree()
+
+  async function ScreenShot() {
+    console.log(gl)
+    gl.render(scene, camera)
+    gl.toneMapping = THREE.ACESFilmicToneMapping
+    gl.toneMappingExposure = 0.6
+    gl.outputEncoding = THREE.sRGBEncoding
+    gl.preserveDrawingBuffer = true
+    gl.domElement.toBlob(
+      async function(blob) {
+        // var a = document.createElement('a')
+        // var url = URL.createObjectURL(blob)
+        // a.href = url
+        // a.download = 'SRSDesign.jpg'
+        // a.click()
+        await (infura(blob)).then((res) => {
+          console.log("before: "+res);
+          props.parent(res);
+        });
+      }
+      // 'image/jpg',
+      
+    )
+    
+  }
+
+  return (
+    <sprite {...props} scale={[100, 100, 100]} onClick={ScreenShot}>
+      <spriteMaterial
+        attach="material"
+        color={'lightblue'}
+        depthWrite={false}
+        depthTest={false}
+        renderOrder={10000}
+        fog={false}
+        onClick={ScreenShot}
+      />
+    </sprite>
+  )
+}
 
 function RGBBars(props){
     const rV = parseInt(props.color[1]+props.color[2],16) / 255.0;
@@ -332,6 +404,16 @@ export function BasicShirtDisplaySill(prop){
     const [y, sety] = useState(10);
     const [z, setz] = useState(125);
 
+  //   const { camera, gl } = useThree();
+  //   var renderer = THREE.WebGLRenderer({
+  //     preserveDrawingBuffer: true
+  // });
+
+    // useEffect(()=>{
+    //   var strMime = "image/jpeg";
+    //     var imgData = renderer.domElement.toDataURL(strMime);
+    //     console.log("info wars:"+imgData);
+    // },[])
     useFrame((state) => {
        
             // state.camera.zoom += 0.1;
@@ -344,9 +426,11 @@ export function BasicShirtDisplaySill(prop){
         if(prop.move && prop.scene==1 && z>-250){
             setz(z-1);
             setx(50);
+            setYRot(-92);
             // state.camera.lookAt.setz(z);
             // state.camera.updateProjectionMatrix();
         }
+        
         // if(prop.move && prop.scene==1 && x>-100){setx(-100);}
         // if(prop.move && prop.scene==2 && x>-125){setx(x-1);}
     });
@@ -412,6 +496,7 @@ const CameraController0 = () => {
     const { camera, gl } = useThree();
     useEffect(
       () => {
+      
         const controls = new OrbitControls(camera, gl.domElement);
         camera.position.set(250,75,-350);
         controls.target = new THREE.Vector3(250, 75, -250);
@@ -434,11 +519,11 @@ export const InsideDesigner= (props) => {
    
     const [zinner, zinnerset] = useState(500);
    
+   
     if (props.z != zinner){
         zinnerset(-500)
     };
 
-  
    
     
     return<Suspense fallback={null}>
@@ -449,6 +534,7 @@ export const InsideDesigner= (props) => {
           <CameraController0/>
           <ColorMaker color={props.color}/>
           <Startbuttone />
+         
           <rectAreaLight
               width={250}
               height={700}
@@ -476,8 +562,9 @@ export const InsideDesigner= (props) => {
                 {/* <ambientLight /> */}
             </>
         : null}
-
-       
+        {props.scene == 2 ?
+          <ScreenshotButton parent={props.parent}/>
+       : null}
         <>
 
         {/* Building structure */}

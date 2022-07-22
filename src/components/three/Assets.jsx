@@ -82,24 +82,23 @@ export function LightFixtB(props){
     
     if(props.scene==2){
     setcount(count+1);
-    if(count%22==0){
-    console.log("lets goo")
-    if(ct==0){
-    setc1("Blue");
-    setc2("Red");
-    setc3("Blue");
-    setc4("Red");
-    setct(1);
-    }
+  //   if(count%22==0){
+  //   if(ct==0){
+  //   setc1("Blue");
+  //   setc2("Red");
+  //   setc3("Blue");
+  //   setc4("Red");
+  //   setct(1);
+  //   }
   
-  if(ct==1){
-    setc2("Blue");
-    setc1("Red");
-    setc4("Blue");
-    setc3("Red");
-    setct(0);
-    }
-  }
+  // if(ct==1){
+  //   setc2("Blue");
+  //   setc1("Red");
+  //   setc4("Blue");
+  //   setc3("Red");
+  //   setct(0);
+  //   }
+  // }
     }
   })
 
