@@ -15,9 +15,7 @@ const Menu = () => (
      </div>
      <Link to ="Vote"><p className = "glitch" data-glitch="Vote" id="navItems"> Vote </p></Link>
      <Link to ="Design"><p className = "glitch" data-glitch="Design Studio" id="navItems"> Design Studio </p></Link>
-     <Link to ="About"><p className = "glitch" data-glitch="Our Mission" id="navItems"> Our Mission </p></Link>
-     <Link to ="Redeem"><p className = "glitch" data-glitch="Reddem Item" id="navItems"> Redeem Item </p></Link>
-  </>
+     <Link to ="About"><p className = "glitch" data-glitch="Our Mission" id="navItems"> Information </p></Link>  </>
  )
 
  const Navbar = () => {

@@ -1,7 +1,18 @@
 .thumbnail{
     
 }
+#hiddenError{
+    color:red;
+    position:absolute;  
+    width:100%;
+    z-index:9999;
+    margin-top:9%;
+    display:none;
+}
+#red{
+    color:red;
 
+}
 #topCountdown{
     margin-top: 1vh;
     margin-bottom: 1vh;

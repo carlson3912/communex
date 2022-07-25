@@ -4,7 +4,9 @@ import "./opening.css";
 import {Link} from 'react-router-dom'
 import Timer from '../../components/timer/timer'
 import { ItemView } from '../../components/three/ItemView';
-import shirtTwo from '../../assets/tshirt_obj.obj';
+import sun from '../../assets/camelsun.png';
+import floor from '../../assets/floor2.png';
+
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader';
 import * as THREE from "three";
@@ -14,12 +16,11 @@ const Home = () => {
     function intro(){
     const intro = document.getElementById("intro");
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, .5, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, .5, 0.1, 10100);
     const renderer = new THREE.WebGLRenderer({ alpha: true })
     renderer.setClearColor( 0xffffff, 0);
     const controls = new OrbitControls( camera, renderer.domElement );
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.innerWidth/window.innerHeight);
+    renderer.setSize(window.innerWidth -20, window.innerHeight *8 /9);
   intro.appendChild(renderer.domElement) 
   let man;
   var loader = new OBJLoader();
@@ -35,54 +36,39 @@ man.position.z = -10;
 man.position.y = -75;
 man.size = 100;
 scene.add(man);
-})
-loader.load(shirtTwo, function (object, materials) {
-man = object;
-man.traverse(function (child) {
-child.material = new THREE.MeshBasicMaterial({
-});
-child.material.side = THREE.DoubleSide;
-});
-man.position.x = 0;
-man.position.z = -10;
-man.position.y = -75;
-scene.add(man);
 });
   camera.position.z = 135;
   controls.update();
   renderer.render(scene, camera);
+
+	var planeGeometry = new THREE.PlaneGeometry(140, 300);
+
+		var planeMaterial = new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load(sun), transparent: true, side: THREE.DoubleSide }); // NOTE: specify "transparent: true"
+		const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+    plane.position.z = -1000
+    plane.position.y = 100
+		scene.add(plane);
+
+
+
+    var planeGeometry = new THREE.PlaneGeometry(500, 1000);
+
+		var planeMaterial = new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load(floor), transparent: true, side: THREE.DoubleSide }); // NOTE: specify "transparent: true"
+		const plane2 = new THREE.Mesh(planeGeometry, planeMaterial);
+    plane2.rotation.x = 3.14/2
+        plane2.position.y = -100
+        plane2.position.z = -500
+		scene.add(plane2);
+
+
   function animate(){
     requestAnimationFrame(animate)
+    renderer.setPixelRatio(window.innerWidth/window.innerHeight);
     controls.update();
     renderer.render(scene, camera)
   }
   animate()
-  for(let i = 0; i < 100; i ++)
-  {
-    const geometry = new THREE.PlaneGeometry( 5, 5 );
-    const material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
-    const plane = new THREE.Mesh( geometry, material );
-    var geo = new THREE.WireframeGeometry( geometry ); // or WireframeGeometry( geometry )
-    var mat = new THREE.LineBasicMaterial( { color: 0xbb8800, wireframe: true } );
-    var wireframe = new THREE.Mesh(
-        new THREE.PlaneGeometry(200, 200, 50),
-        new THREE.MeshBasicMaterial({
-            color: 0xffffff,
-            wireframe: true
-        }));
-        wireframe.rotation.x = 3.14/2
-        wireframe.position.y = -100
-    scene.add( wireframe );
-    var wireframe = new THREE.Mesh(
-        new THREE.BoxGeometry(100, 100, 100),
-        new THREE.MeshBasicMaterial({
-            color: 0xffffff,
-            wireframe: true
-        }));
-        wireframe.rotation.x = 3.14/4
-        wireframe.rotation.z = 3.14/4
-    scene.add( wireframe );
-  }
+  
 }
 
 

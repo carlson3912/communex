@@ -3,12 +3,12 @@ import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { Bounds, useBounds,OrbitControls, Stars, useTexture, useGLTF, Sky, SpotLight, Stage} from "@react-three/drei";
 import * as THREE from "three";
-import shirtTwo from '../../assets/tshirt_obj.obj'
+
 import silk from '../../assets/tryshirt3.jpeg'
 import shirt from '../../assets/doubleshirts.gltf'
 import { GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
-
+import shirtTwo from '../../assets/tshirt_obj.obj'
 import background from '../../assets/backgroundT.png'
 
 
