@@ -21,10 +21,14 @@ const Home = () => {
   const [orders, setOrders] = useState([]);
   const [submissions, setSubmissions] = useState([]);
   const connection = async () => {
+<<<<<<< HEAD
     const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
 
     const wallet = accounts[0]
     const response = await axios.post("http://localhost:3500/auth",
+=======
+    const response = await axios.post("http://74.208.187.32/auth",
+>>>>>>> 009c3c4c512c7f81f2df185b0c44c16882135544
                  JSON.stringify({wallet}),
                 JSON.stringify({
                     headers: { 'Content-Type': 'text/plain'},

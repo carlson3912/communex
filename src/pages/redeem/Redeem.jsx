@@ -14,13 +14,25 @@ const App = () => {
       
   //   }
   return(
-    <></>
-  //     <div>
-  //       <h1>Fabric.js on React - fabric.Canvas('...')</h1>
-  //       <button onClick={() => addRect(canvas)}>Rectangle</button>
-  // <br/><br/>
-  //      <canvas id="canvas" />
-  //     </div>
+    <>
+    <div id="container">
+      <form>
+      <h2 id="country">Country</h2>
+      <input type="country"/>
+      <h2 id="country">State</h2>
+      <input/>
+      <h2>City</h2>
+      <input/>
+      <h2>Zip Code</h2>
+      <input />
+      <h2>Home Address</h2>
+      <input type="text"/>
+      <button type="Submit">Submit</button>
+      </form>
+      
+    </div>
+    </>
+  
     );
    }
 

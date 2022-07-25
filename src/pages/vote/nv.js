@@ -290,7 +290,7 @@ for( let i = 0; i < siz; i ++)
 }
  const connection = async () => {
   console.log("connection called")
-  const response = await axios.post("http://localhost:3500/submissions",
+  const response = await axios.post("http://74.208.187.32/submissions",
                 JSON.stringify({}),
                JSON.stringify({
                    headers: { 'Content-Type': 'text/plain'},

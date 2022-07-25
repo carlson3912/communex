@@ -69,7 +69,7 @@ const Submit = () => {
       const reg = window.accounts[0] + "§" + title + "§" + description + "§" + ipfs + "§" + royalty + "§"  + "1";
       const rex = JSON.stringify(reg);
       try {
-          const response = await axios.post('http://localhost:3500/submit',
+          const response = await axios.post('http://74.208.187.32/submit',
               JSON.stringify(reg),
               JSON.stringify({
                 headers: { 'Content-Type': 'application/json'},
