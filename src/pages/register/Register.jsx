@@ -10,8 +10,6 @@ import Web3 from "web3";
 const USER_REGEX = /^[A-z][A-z0-9-_]{1,32}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-
-
 const Register = () => {
   const [address, setAddress] = useState("");
   const [connected,setConnected] = useState("Connect Metamask");
@@ -100,10 +98,10 @@ const Register = () => {
     <div className='register section__padding'>
       <div className="register-container">
         <h1>register</h1>
-        {success ? (<div></div>):(<>
+        {success ? (<div><p id = "successReg">Registration Successful</p><p id = "successReg">Welcome to the SRS community!</p></div>):(<>
         <form className='register-writeForm' autoComplete='off' method="POST" action="#" >
           <div className="register-formGroup">
-            <input 
+            <input
             placeholder="Username"
             type="text"
             ref={userRef}
@@ -118,7 +116,7 @@ const Register = () => {
             />
           </div>
           <div className="register-formGroup">
-            <input 
+            <input
             placeholder='Email' 
                             type="text"
                             onChange={(e) => setEmail(e.target.value)}
@@ -137,7 +135,6 @@ const Register = () => {
          </div>
          <p id = "error" ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
 </>)}
-        
       </div>
     </div>
    )

@@ -1,10 +1,10 @@
 import './App.css';
 import {Navbar,Footer} from './components'
-import { About, Home,Profile,Item, Srs1, Create,Login,Register, Submit, Guidelines, Product, Vote, Design, DesignPage, Redeem} from './pages'
-import { Routes, Route } from "react-router-dom";
+import { About, Home,Profile,Item, Srs1, Create,Login,Register, Submit, Guidelines, Product, Vote, Design, Opening, Redeem, PublicProfile, SubmissionPage, PurchasePage} from './pages'
+import { Routes, Route, useParams } from "react-router-dom";
 
 function App() {
-
+  let data = [{name:'fattei'},{},{}]
   return (
     <div>
       <Navbar />
@@ -12,7 +12,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/srs1" element={<Srs1 />} />
             <Route path="/" element={<Home />} />
-            <Route path=":item/:id" element={<Item />} />
+            <Route path="/opening" element={<Opening />} />
             <Route path="/create" element={<Create /> } />
             <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={ <Login />} />
@@ -22,12 +22,13 @@ function App() {
             <Route path="/product" element={ <Product />} />
             <Route path="/vote" element={ <Vote />} />
             <Route path="/design" element={ <Design />} />
-            <Route path="/designpage" element={ <DesignPage />} />
             <Route path="/redeem" element={ <Redeem />} />
+            <Route path="/:userId" element={ <PublicProfile />} />
+            <Route path='/:userId/:submissionPage' element = {<SubmissionPage/>} />
+            <Route path='/drip/:purchasePage' element = {<PurchasePage/>} />
           </Routes>
       <Footer />
     </div>
   );
 }
-
 export default App;

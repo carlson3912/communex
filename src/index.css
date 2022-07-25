@@ -91,11 +91,11 @@
   --gradient2: linear-gradient(89.97deg, #EB1484 1.84%, #c81cc5 102.67%);
   --primary-btn:var(--quadrinary-color);
   
-  --primary-color: #e46aff;
-  --secondary-color: #e00df3;
-  --tertiary-color: #92ebee;
-  --pentianary-color: #0b0025;
-  --quadrinary-color: linear-gradient(-159deg, rgb(77, 0, 73) 10.84%, #1d034e 93%);
+  --primary-color: #f56cec;
+  --secondary-color: #ecf56c;
+  --tertiary-color: #6ce3f5;
+  --pentianary-color: #0b0025;;
+  --quadrinary-color: linear-gradient(11deg, #0f0063 10.84%, #5f0063 83%);
 
 
   --color-bg: linear-gradient(159deg, #0b0025 6.84%, #030003 83%);

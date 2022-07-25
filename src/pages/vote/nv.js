@@ -39,6 +39,20 @@ function nth_occurrence (string, char, nth) {
       }
   }
 }
+
+const voteDB = async (wallet, ipfs, votes) => {
+  console.log("voteDB called")
+  const reg = wallet + '§'  + ipfs +'§' + votes;
+  const response = await axios.post("http://localhost:3500/vote",
+                JSON.stringify(reg),
+                JSON.stringify({
+                   headers: { 'Content-Type': 'text/plain'},
+                   withCredentials: true
+               })
+               );
+       }
+
+
 function votes(){
   var lemma = new Array();
   var j = 0;
@@ -62,8 +76,9 @@ function votes(){
     siz = 15;
   }
   for (let i = 0; i <siz; i++){
-    let added = document.getElementById("mainDivOfVote")
     document.getElementById("voteButton"+i.toString()).addEventListener("click", function(e){
+      let added = document.getElementById("mainDivOfVote")
+
     let addedContent = document.createElement("div");
     let date = new Date(lemma[i].date).toString()
     let index = nth_occurrence(date, " ", 5)
@@ -81,7 +96,7 @@ function votes(){
             "<input id ='votesInput' type = 'number' min='0' max='10256'>" +
             "</input><h2 id = 'votesCast'>Tokens to Stake</h2>" +
             "<input id ='votesInput' type = 'number' min='0' max='10256'>" +
-            "</input><button>Vote</button></form></div></div></div></div>";
+            "</input><button id = 'innerVoteB'>Vote</button></form></div></div></div></div>";
     added.appendChild(addedContent);
     const myTableDivision = document.getElementById("innerLeft");
 
@@ -144,14 +159,33 @@ scene.add( wireframe );
     wireframe2.rotation.y -= 0.0005
   }
   animate()
+
+  document.getElementById('formVotes').addEventListener('submit', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+});
+
     document.getElementById("close").addEventListener("click", function(e){
             const innerSelected = document.getElementById("mainDivOfVote");
+            document.getElementById("hiddenError").style = "display: none;";
   while (innerSelected.hasChildNodes()) {
     innerSelected.removeChild(innerSelected.firstChild);
   renderering();
   }
      })
-  })
+     document.getElementById("innerVoteB").addEventListener("click", async function(e){
+      if(!window.ethereum){
+        document.getElementById("hiddenError").style = "display: block;";
+
+        console.log("Please install Metamask"); console.log("Window.ethereum error")
+      }
+      else{
+        const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
+        voteDB(accounts, lemma[i].ipfs, document.getElementById("votesInput").value);
+      }
+      
+})
+})
 }}
 function renderering(){
   console.log("Source", src)
@@ -193,6 +227,7 @@ for( let i = 0; i < siz; i ++)
          "<div id ='moveLeft'><div class = 'thumbanil' id = 'thumbnail" + i + "'></div></div> <div id ='moveRight'>" + 
          "<h2 id = 'title'>" + lemma[i].title+"</h2>"  +
          "<h2 id = 'artist'>" + lemma[i].artist+"</h2>" +
+         "<h2 id = 'artist'>" + lemma[i].votes+"</h2>" +
          "" +
          "<div id = 'added" + i + "'><a href = '#mainDivOfVote'><button id = 'voteButton" + i+ "'>Vote</button></a></div>" +
           "</div></div></div></div>";
@@ -326,6 +361,7 @@ useEffect(()=>{
   }
   return (
     <>
+    <div id="hiddenError"><h1 id ="red">You must log in using Metamask to vote.</h1></div>
     <div id ="mainDivOfVote">
       </div>
       <div id ="topCountdown">

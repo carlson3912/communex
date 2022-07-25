@@ -1,19 +1,54 @@
 .thumbnail{
-    margin-top:0vh;
-    height: 80%;
-    border-radius: 25px;
+    
+}
+#hiddenError{
+    color:red;
+    position:absolute;  
+    width:100%;
+    z-index:9999;
+    margin-top:9%;
+    display:none;
+}
+#red{
+    color:red;
+
+}
+#topCountdown{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    display:flex;
+}
+#cdwnLeft{
+    flex-direction: row;
+    margin-right:-32vw;
+}
+#cdwnRight{
+    flex-direction: row;
+    margin-left:0;
+}
+#unskew{
+    transform:skewX(-11deg)
+}
+#moveRight{
+    margin-left: 0.5vw;
+}
+#moveLeft{
+    margin-right: 0.5vw;
+}
+#max{
+    width:300px;
 }
 #items{
     margin:auto;
     background:var(--quadrinary-color);
     padding:20px;
     padding-top:0px;
-    padding-bottom:3.8vh;
+    padding-bottom:4.1vh;
     margin-right:10px;
     margin-left:10px;
     margin-bottom:10px;
-    border-radius: 25px;
     z-index:-2;
+    transform:skewX(11deg);
 }
 #html-data-table{
     z-index:-2;
@@ -23,14 +58,10 @@
 }
 #sortingtable{
     margin-bottom:2vh;
-
     margin: auto;
     background: var(--tertiary-color);
-    border-radius: 25px;
-    padding:0px;
 }
 #sortingtable h2{
-    
     margin: 3.4vw;
     margin-bottom: 0vw;
     margin-top: 0vw;
@@ -45,7 +76,8 @@
 #sortingtable form{
     line-height: 10px;
 display:inline;
-margin-left:-2.5vw}
+margin-left:-2.5vw;
+transform:skewX(20deg);}
 #sortingtable form input{
     padding-left:5px;
     border-radius: 15px;
@@ -76,13 +108,16 @@ td{
 }
 #items  button{
     color:black;
-  border-radius:2vw;
+    transform: skewX(11deg);
+    font-style: oblique;
   position:absolute;
-  margin-top: -2em;
-  margin-left:190px;
     background-color:var(--primary-color);
     font-family: specMED;
     z-index: 0;
+    border:none;
+    width:116.5%;
+    margin-top:1vh;
+    margin-left:3px;
 }
 
 h1{
@@ -94,7 +129,7 @@ h1{
     height:min-content;
     height:120%;
     width:100%;
-    background: rgba(132, 37, 196, 0.425);
+    background: rgba(119, 37, 196, 0.288);
     z-index: 2;
 }
 #selectedItem button{
@@ -124,8 +159,8 @@ flex-direction: row;
 #innerRight{
 display:flex;
 flex-direction: column;
+-ms-flex-align: center;
 padding:40px;
-width:50%;
 }
 #innerRight  #artist{
     font-size:2em;
@@ -137,17 +172,20 @@ width:50%;
     text-align:center;
 }
 #votesInput{
-    border-radius:25px;
     background: var(--quadrinary-color);
     border:none;
-    padding-left:5px;
     color:white;
     font-family:specMED;
     text-align: center;
-    font-size: 1.25em;
+    font-size: 1em;
     margin-top:1vh;
-    margin-right: 5vw;
+    width:60%;
+    margin-left: 20%;
 }  
+#auto{
+    margin:auto;
+    display:flex;
+}
 #votesCast{
     margin-top: 2vh;
     text-align: center;
@@ -155,10 +193,18 @@ width:50%;
     color:var(--primary-color);
 }
 #formVotes{
-    margin-right: 0vw;
     margin-top: 2vh;
+    transform:skewX(11deg);
 }
-
+#formVotes  button{
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    margin-top: 4vh;
+    font-size: 1.25em;
+    font-family: kumar;
+}
 #description{
     font-family: specMed;
     color:white;
@@ -171,4 +217,26 @@ width:50%;
     font-size: 1em;
     text-align: center;
     font-family: cinzelDec;
+}
+#next{
+    border:none;
+    align-self: center;
+    font-family: specMED;
+    margin-left: 50%;
+    transform: skewX(11deg);
+    width: 50%;
+    background: var(--tertiary-color);
+      font-size:20px;
+      font-style: oblique;
+
+}
+#prev{
+    border:none;
+    align-self: center;
+    font-family: specMED;
+    transform: skewX(11deg);
+    width: 50%;
+    background: var(--tertiary-color);
+      font-size:20px;
+      font-style: oblique;
 }

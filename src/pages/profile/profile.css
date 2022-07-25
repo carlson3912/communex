@@ -1,17 +1,24 @@
 #one{
   font-style: oblique;
-  margin-bottom:.5em;
+  color:var(--secondary-color)
 }
 #two{
   font-size:1.5em;
-  margin-bottom: 10vh;
   font-family: specMED;
+  margin-bottom:8px;
 }
 #three{
   margin-top:-1em;
-  font-size:1.5em;
+  font-size:1em;
   font-family: specMED;
+  margin-bottom: 15vh;
 
+}
+#four{
+  font-size: 3em;
+  background: var(--quadrinary-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 #uno{
   display:flex;
@@ -26,7 +33,6 @@
   margin:auto;
   
   background:var(--quadrinary-color);
-  margin-bottom:5vw;
 }
 #dos > h1{
   font-size: 2em;
@@ -43,12 +49,41 @@
   text-decoration-thickness: 3px;
    
 }
+#container1{
+  display:flex;
+}
+#nameBox{
+  float:left;
+  background-color: var(--tertiary-color);
+  width: 20vw;
+  margin:30px;
+  padding:10px;
+  margin-bottom: 10vw;
+}
+#wardrobe{
+  float:left;
+  background:var(--quadrinary-color);
+  width:100%;
+  margin:30px;
+  padding:10px;
+  
+}
 #neg{
   background:var(--quadrinary-color);
-  width:66%;
-  margin:auto;
   margin-top:-4vw;
   margin-bottom:5vw;
   padding-bottom:35vh;
   padding-top:2.5vh;
+  height:100%;
+}
+#voteList{
+  font-size: 17px;
+  color:var(--tertiary-color);
+  font-family: specMED;
+}
+
+#notFound{
+  height:65vh;
+  justify-content: center;
+  padding-top:20vh;
 }
