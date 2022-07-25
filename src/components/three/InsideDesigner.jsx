@@ -527,7 +527,7 @@ export const InsideDesigner= (props) => {
    
     
     return<Suspense fallback={null}>
-      <Canvas height="500px"camera={{position:[500,10,props.z]}}>
+      <Canvas height="500px" width="600px"camera={{position:[500,10,props.z]}}>
        {/* First Room */}
         {props.scene == 0 ?
         <>

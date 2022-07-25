@@ -344,7 +344,7 @@ export const Designer = () =>{
             </div>
              : null}
              {/* Hidden 2-D Canvas for designing */}
-             <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click} hidden={false}><h1>Hello</h1></canvas>
+             <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click} hidden={true}><h1>Hello</h1></canvas>
                 {scene==1 ?
                 <>
                 <h1>Images</h1>
@@ -518,7 +518,9 @@ export const Designer = () =>{
                                 }}>
                             <h1>Finish Design</h1>
                             <p>Upload to IPFS</p></button>
-                            <button>{childData}</button>
+                            {childData!=''?
+                                <img src={"https://ipfs.io/ipfs/"+childData}/>
+                            : null}   
                         </div>
                     </div>
                 : null}     
