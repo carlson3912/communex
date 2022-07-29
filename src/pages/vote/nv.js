@@ -43,7 +43,7 @@ function nth_occurrence (string, char, nth) {
 const voteDB = async (wallet, ipfs, votes) => {
   console.log("voteDB called")
   const reg = wallet + '§'  + ipfs +'§' + votes;
-  const response = await axios.post("http://localhost:3500/vote",
+  const response = await axios.post("http://74.208.187.32//vote",
                 JSON.stringify(reg),
                 JSON.stringify({
                    headers: { 'Content-Type': 'text/plain'},
@@ -114,7 +114,7 @@ loader.load(shirtTwo, function (object, materials) {
 man = object;
 man.traverse(function (child) {
 child.material = new THREE.MeshBasicMaterial({
-map: new THREE.TextureLoader().load("https://ipfs.io/ipfs/"+ lemma[i].ipfs)
+map: new THREE.TextureLoader().load("https://gateway.pinata.cloud/ipfs/"+ lemma[i].ipfs)
 });
 child.material.side = THREE.DoubleSide;
 });

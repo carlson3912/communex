@@ -39,6 +39,7 @@ export const Designer = () =>{
     const [ipfsLink, setIpfsLink] = useState("");
     const waterImage = new Image();
     const [childData, setChildData] = useState("");
+    
 
     waterImage.src = waterMark;
 
@@ -75,6 +76,11 @@ export const Designer = () =>{
     //         document.body.removeChild(link); //remove the link when done
     //     } 
     // }
+    function submitPage(){
+        sessionStorage.setItem("designSubmission", childData)
+        sessionStorage.setItem("mapSubmission", threedmock)
+        window.location.href = "../Submit"
+    }
 
     function changeRot(direction){
         console.log("Current rot:  "+rots[pointer]);
@@ -156,6 +162,7 @@ export const Designer = () =>{
     }
 
     const handleInputChange = (event) => {
+        //doesnt allow more than 4 images to be uploaded to a shirt
         if(images.length > 4){
             return
         }
@@ -211,13 +218,14 @@ export const Designer = () =>{
             ctx.fillRect(0, 0, 2000, 2000);
             // ctx.drawImage(shirt,70,0,700,800);
             for(var i = 0; i<numElements; i++){
-                //drawRot(ctx,i);
-                ctx.drawImage(images[i],pos[i][0],pos[i][1], sizes[i][0], sizes[i][1]);
+                drawRot(ctx,i);
+                // ctx.drawImage(images[i],pos[i][0],pos[i][1], sizes[i][0], sizes[i][1]);
             }
             if (water){
                 ctx.drawImage(waterImage,-500,-500,2000,2000);
             }
             set3dmock(canvas.current.toDataURL('image/jpeg',1));
+            
 
         }
     },[top, pos, water, shirtColor, rots])
@@ -260,10 +268,11 @@ export const Designer = () =>{
         //    metaJson("https://ipfs.io/ipfs/"+res.path);
             // metaJson("ipfs://"+res.path, shirtColor);
             metaJson("ipfs://"+childData, shirtColor);
-            sessionStorage.setItem("designSubmission", res.path)
+            sessionStorage.setItem("designSubmission", childData)
+            // sessionStorage.setItem("jsonFile", "ipfs://"+childData)
         });
         
-        // window.location.href = "../Submit"
+        window.location.href = "../Submit"
 
     }
 
@@ -519,7 +528,11 @@ export const Designer = () =>{
                             <h1>Finish Design</h1>
                             <p>Upload to IPFS</p></button>
                             {childData!=''?
-                                <img src={"https://ipfs.io/ipfs/"+childData}/>
+                                <div>
+                                    <h1>Your image:</h1>
+                                    <img src={childData}/>
+                                    <button onClick={e=>{submitPage()}}>I'm happy with how it looks</button>
+                                </div>
                             : null}   
                         </div>
                     </div>

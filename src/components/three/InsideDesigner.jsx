@@ -57,10 +57,12 @@ function ScreenshotButton({ ...props }) {
         // a.href = url
         // a.download = 'SRSDesign.jpg'
         // a.click()
-        await (infura(blob)).then((res) => {
-          console.log("before: "+res);
-          props.parent(res);
-        });
+        // await (infura(blob)).then((res) => {
+        //   console.log("before: "+res);
+        var image = new Image();
+        image.src = URL.createObjectURL(blob);
+        props.parent(image.src);
+        // });
       }
       // 'image/jpg',
       
