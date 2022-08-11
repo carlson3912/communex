@@ -13,7 +13,7 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
 const Register = () => {
   const [address, setAddress] = useState("");
   const [connected,setConnected] = useState("Connect Metamask");
-  const [wallet, setWallet] = useState();
+  const [wallet, setWallet] = useState("undefined");
   async function getAccount(){
     if(!window.ethereum){setConnected("Please install Metamask"); console.log("Window.ethereum error")}
     const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
@@ -51,6 +51,7 @@ const Register = () => {
       // if button enabled with JS hack
       const v1 = USER_REGEX.test(user);
       const v2 = EMAIL_REGEX.test(email);
+      const v3 = wallet == "undefined";
       if (!v1) {
           setErrMsg("Username must begin with a letter. Letters, numbers, underscores, and hyphens are allowed.");
           return;
@@ -59,10 +60,15 @@ const Register = () => {
           setErrMsg("Invalid Email");
           return;
       }
+      if (v3) {
+        setErrMsg("Must connect to Metamask");
+        setConnected("Please install Metamask");
+        return;
+    }
       const reg = user + "," + email + "," + wallet;
       const rex = JSON.stringify(reg);
       try {
-          const response = await axios.post('http://74.208.187.32/register',
+          const response = await axios.post('http://localhost:3500/register',
               JSON.stringify(reg),
               JSON.stringify({
                 headers: { 'Content-Type': 'application/json'},
@@ -87,6 +93,7 @@ const Register = () => {
       else if (err.response?.status === 411) {
               setErrMsg('Wallet already in use');
           }
+      
            else {
               setErrMsg('Error Z')
       console.log(err)

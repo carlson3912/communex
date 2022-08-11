@@ -187,11 +187,6 @@ export const Designer = () =>{
  
 
     function drawRot(ctx,i){
-        // canvas.translate(pos[i][0] +  sizes[i][0] / 2, pos[i][1] + sizes[i][1] / 2);
-        // canvas.rotate(Math.pi/2);
-        // canvas.drawImage(images[i],pos[i][1]/2 * -1 ,pos[i][0]/2*-1, sizes[i][0], sizes[i][1]);
-        // canvas.rotate(-Math.pi/2);
-        // canvas.translate(pos[i][0] + sizes[i][0] / 2 * -1, pos[i][1] + sizes[i][1] / 2 * -1);
         ctx.save();
         ctx.translate(pos[i][0],pos[i][1]);
         ctx.rotate(Math.PI/180 * rots[i]);
@@ -211,8 +206,8 @@ export const Designer = () =>{
             ctx.fillRect(0, 0, 2000, 2000);
             // ctx.drawImage(shirt,70,0,700,800);
             for(var i = 0; i<numElements; i++){
-                //drawRot(ctx,i);
-                ctx.drawImage(images[i],pos[i][0],pos[i][1], sizes[i][0], sizes[i][1]);
+                drawRot(ctx,i);
+                //ctx.drawImage(images[i],pos[i][0],pos[i][1], sizes[i][0], sizes[i][1]);
             }
             if (water){
                 ctx.drawImage(waterImage,-500,-500,2000,2000);
@@ -263,7 +258,7 @@ export const Designer = () =>{
             sessionStorage.setItem("designSubmission", res.path)
         });
         
-        // window.location.href = "../Submit"
+        window.location.href = "../Submit"
 
     }
 
@@ -505,7 +500,7 @@ export const Designer = () =>{
                             <button onClick={designSpecs}>Download Report</button>
                         </div>
                         <div >
-                            <button  id="finishDButton" onClick={e=>{
+                            <button href = "/Submit" id="finishDButton" onClick={e=>{
                                     const canvas = document.getElementById("upCanvas");
                                     const image = canvas.toDataURL('image/jpeg');
                                     infura(image);
@@ -518,7 +513,7 @@ export const Designer = () =>{
                                 }}>
                             <h1>Finish Design</h1>
                             <p>Upload to IPFS</p></button>
-                            <button>{childData}</button>
+                            <button >{childData}</button>
                         </div>
                     </div>
                 : null}     

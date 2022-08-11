@@ -16,6 +16,8 @@
   width: 100%;
 }
 .register-container {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
   background: var(--quadrinary-color);
   border-radius: 20px;
   padding: 2rem;
