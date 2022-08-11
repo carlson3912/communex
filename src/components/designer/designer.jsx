@@ -330,31 +330,21 @@ export const Designer = () =>{
     }
     return(
         <div>
-            
-            <div id="dd2model">
-            {/* <Model loc={[-1500,0,0]} cam={[-1500,0,-2000]}/> */}
-            <InsideDesigner src={threedmock} scene={scene} z={zcamera} move={move} color={shirtColor} parent={setChildData} />
-            
-            </div>
-           
-            
-             <h1>Welcome to the Design Studio</h1>
-             {scene==0 ?
-             <div>
-                 <div id="shirtColorPicker2">
-                    
-                <h1 id="colorPickerWords">Color Picker</h1>
-                    <div id="shirtColorPicker">
+            <div id="modelBackground">
+                <br />
+                <h1>Design Studio</h1>
+                {scene==0 ?
+             <div id = "scene0">
+                <h1>Color Picker</h1>
                         <input id="shirtColorPicker3" type="color" name="head" value={shirtColor} onChange={e=>{setShirtColor(e.target.value)}}/>
-                    </div>
-                    </div>
+               
+                   
                     <label for="head">Pick Your Shirt Color</label>
                 <button onClick={e=>{{setScene(1)};setZCamera(-500);setMove(true)}}>Use Color</button>
             </div>
              : null}
-             {/* Hidden 2-D Canvas for designing */}
-             <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click} hidden={true}><h1>Hello</h1></canvas>
-                {scene==1 ?
+
+{scene==1 ?
                 <>
                 <h1>Images</h1>
                 <div id="imgselect">
@@ -497,8 +487,8 @@ export const Designer = () =>{
                     
                     </>
                 : null}
-                
-                {scene==2?
+
+{scene==2?
                     <div id="totalFinishD">
                         <h2>Complete</h2>
                         <div id="rightDesign2">
@@ -536,7 +526,23 @@ export const Designer = () =>{
                             : null}   
                         </div>
                     </div>
-                : null}     
+                : null}    
+            </div>
+            <div id="dd2model">
+            {/* <Model loc={[-1500,0,0]} cam={[-1500,0,-2000]}/> */}
+                <InsideDesigner src={threedmock} scene={scene} z={zcamera} move={move} color={shirtColor} parent={setChildData} />
+            
+            </div>
+            
+           
+            
+             <h1>Welcome to the Design Studio</h1>
+             
+             {/* Hidden 2-D Canvas for designing */}
+             <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click} hidden={true}><h1>Hello</h1></canvas>
+               
+                
+                
             </div>
     )
 }

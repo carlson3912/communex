@@ -426,7 +426,7 @@ export function BasicShirtDisplaySill(prop){
           
         if(prop.scene == 0){setYRot(yrot+1)};
         if(prop.move && prop.scene==1 && z>-250){
-            setz(z-1);
+            setz(-250);
             setx(50);
             setYRot(-92);
             // state.camera.lookAt.setz(z);
@@ -503,7 +503,7 @@ const CameraController0 = () => {
         camera.position.set(250,75,-350);
         controls.target = new THREE.Vector3(250, 75, -250);
        
-        controls.minDistance = 100;
+        controls.minDistance = 150;
         controls.maxDistance = 250;
         controls.maxPolarAngle = Math.PI/2;
         controls.minPolarAngle = 3.14/3;
@@ -529,7 +529,7 @@ export const InsideDesigner= (props) => {
    
     
     return<Suspense fallback={null}>
-      <Canvas height="500px" width="600px"camera={{position:[500,10,props.z]}}>
+      <Canvas camera={{position:[500,10,props.z]}}>
        {/* First Room */}
         {props.scene == 0 ?
         <>
