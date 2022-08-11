@@ -99,11 +99,13 @@
     display: flex;
 }
 #dd2model{
-    height: 700px;
+    height: 1300px;
     background: linear-gradient(89.97deg, #be93aa07 1.84%, #746c7428 102.67%);
     background-position: center;
     background-size: 2800px 700px;
     animation: animStar 1.8s linear infinite;
+    z-index: 1;
+   
 }
 
 #blueUp{
@@ -195,7 +197,38 @@
     width:fit-content;
 }
 
+#modelBackground{
+ margin-top: 300px;
+   /* opacity: 50%; */
+    width: 20%;
+   position: absolute;
+   z-index: 2;
+   margin-left: 5%;
+   border-width: 15px;
+   border-color:pink;
+   border-style: groove;
+   flex-direction: column;
+   display: flex;
+   
+   
+   
+}
 
+#scene0{
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#realControls{
+    background-color: purple;
+    height: 100%;
+    width: 20%;
+    z-index: 2;
+}
 
 #imgBox{
     background-color: aqua;

@@ -39,6 +39,7 @@ export const Designer = () =>{
     const [ipfsLink, setIpfsLink] = useState("");
     const waterImage = new Image();
     const [childData, setChildData] = useState("");
+    
 
     waterImage.src = waterMark;
 
@@ -75,6 +76,11 @@ export const Designer = () =>{
     //         document.body.removeChild(link); //remove the link when done
     //     } 
     // }
+    function submitPage(){
+        sessionStorage.setItem("designSubmission", childData)
+        sessionStorage.setItem("mapSubmission", threedmock)
+        window.location.href = "../Submit"
+    }
 
     function changeRot(direction){
         console.log("Current rot:  "+rots[pointer]);
@@ -156,6 +162,7 @@ export const Designer = () =>{
     }
 
     const handleInputChange = (event) => {
+        //doesnt allow more than 4 images to be uploaded to a shirt
         if(images.length > 4){
             return
         }
@@ -207,12 +214,17 @@ export const Designer = () =>{
             // ctx.drawImage(shirt,70,0,700,800);
             for(var i = 0; i<numElements; i++){
                 drawRot(ctx,i);
+<<<<<<< HEAD
                 //ctx.drawImage(images[i],pos[i][0],pos[i][1], sizes[i][0], sizes[i][1]);
+=======
+                // ctx.drawImage(images[i],pos[i][0],pos[i][1], sizes[i][0], sizes[i][1]);
+>>>>>>> 045e8db775ec11123be199ee3888186ba0f6a525
             }
             if (water){
                 ctx.drawImage(waterImage,-500,-500,2000,2000);
             }
             set3dmock(canvas.current.toDataURL('image/jpeg',1));
+            
 
         }
     },[top, pos, water, shirtColor, rots])
@@ -255,7 +267,8 @@ export const Designer = () =>{
         //    metaJson("https://ipfs.io/ipfs/"+res.path);
             // metaJson("ipfs://"+res.path, shirtColor);
             metaJson("ipfs://"+childData, shirtColor);
-            sessionStorage.setItem("designSubmission", res.path)
+            sessionStorage.setItem("designSubmission", childData)
+            // sessionStorage.setItem("jsonFile", "ipfs://"+childData)
         });
         
         window.location.href = "../Submit"
@@ -316,31 +329,21 @@ export const Designer = () =>{
     }
     return(
         <div>
-            
-            <div id="dd2model">
-            {/* <Model loc={[-1500,0,0]} cam={[-1500,0,-2000]}/> */}
-            <InsideDesigner src={threedmock} scene={scene} z={zcamera} move={move} color={shirtColor} parent={setChildData} />
-            
-            </div>
-           
-            
-             <h1>Welcome to the Design Studio</h1>
-             {scene==0 ?
-             <div>
-                 <div id="shirtColorPicker2">
-                    
-                <h1 id="colorPickerWords">Color Picker</h1>
-                    <div id="shirtColorPicker">
+            <div id="modelBackground">
+                <br />
+                <h1>Design Studio</h1>
+                {scene==0 ?
+             <div id = "scene0">
+                <h1>Color Picker</h1>
                         <input id="shirtColorPicker3" type="color" name="head" value={shirtColor} onChange={e=>{setShirtColor(e.target.value)}}/>
-                    </div>
-                    </div>
+               
+                   
                     <label for="head">Pick Your Shirt Color</label>
                 <button onClick={e=>{{setScene(1)};setZCamera(-500);setMove(true)}}>Use Color</button>
             </div>
              : null}
-             {/* Hidden 2-D Canvas for designing */}
-             <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click} hidden={false}><h1>Hello</h1></canvas>
-                {scene==1 ?
+
+{scene==1 ?
                 <>
                 <h1>Images</h1>
                 <div id="imgselect">
@@ -483,8 +486,8 @@ export const Designer = () =>{
                     
                     </>
                 : null}
-                
-                {scene==2?
+
+{scene==2?
                     <div id="totalFinishD">
                         <h2>Complete</h2>
                         <div id="rightDesign2">
@@ -513,10 +516,36 @@ export const Designer = () =>{
                                 }}>
                             <h1>Finish Design</h1>
                             <p>Upload to IPFS</p></button>
+<<<<<<< HEAD
                             <button >{childData}</button>
+=======
+                            {childData!=''?
+                                <div>
+                                    <h1>Your image:</h1>
+                                    <img src={childData}/>
+                                    <button onClick={e=>{submitPage()}}>I'm happy with how it looks</button>
+                                </div>
+                            : null}   
+>>>>>>> 045e8db775ec11123be199ee3888186ba0f6a525
                         </div>
                     </div>
-                : null}     
+                : null}    
+            </div>
+            <div id="dd2model">
+            {/* <Model loc={[-1500,0,0]} cam={[-1500,0,-2000]}/> */}
+                <InsideDesigner src={threedmock} scene={scene} z={zcamera} move={move} color={shirtColor} parent={setChildData} />
+            
+            </div>
+            
+           
+            
+             <h1>Welcome to the Design Studio</h1>
+             
+             {/* Hidden 2-D Canvas for designing */}
+             <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click} hidden={true}><h1>Hello</h1></canvas>
+               
+                
+                
             </div>
     )
 }

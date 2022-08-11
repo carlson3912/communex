@@ -43,7 +43,7 @@ function nth_occurrence (string, char, nth) {
 const voteDB = async (wallet, ipfs, votes) => {
   console.log("voteDB called")
   const reg = wallet + '§'  + ipfs +'§' + votes;
-  const response = await axios.post("http://localhost:3500/vote",
+  const response = await axios.post("http://74.208.187.32//vote",
                 JSON.stringify(reg),
                 JSON.stringify({
                    headers: { 'Content-Type': 'text/plain'},
