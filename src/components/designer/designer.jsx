@@ -550,11 +550,7 @@ export const Designer = () =>{
                     </div>
                     {childData !=''?
                         <div >
-<<<<<<< HEAD
-                            {/* <button  id="finishDButton" onClick={e=>{
-=======
                             <button href = "/Submit" id="finishDButton" onClick={e=>{
->>>>>>> 780354e14aff2a8bab1a8ac415aee4d2a55e942b
                                     const canvas = document.getElementById("upCanvas");
                                     const image = canvas.toDataURL('image/jpeg');
                                     infura(image);
@@ -564,32 +560,29 @@ export const Designer = () =>{
                                     // link.href=image;
                                     // link.download ="main.jpg"
                                     // link.click();
-<<<<<<< HEAD
-                                }}> */}
+
+                                // }}> */}
                             {/* <h1>Finish Design</h1>
                             <p>Upload to IPFS</p> */}
                             {/* </button> */}
-                           
-=======
+                
+
                                 }}>
                             <h1>Finish Design</h1>
                             <p>Upload to IPFS</p></button>
-<<<<<<< HEAD
+
                             <button >{childData}</button>
-=======
+
                             {childData!=''?
->>>>>>> 780354e14aff2a8bab1a8ac415aee4d2a55e942b
+
                                 <div>
                                     <h1>Your image:</h1>
                                     <img src={childData}/>
                                     <button onClick={e=>{submitPage()}}>I'm happy with how it looks</button>
                                 </div>
-<<<<<<< HEAD
-                            
-=======
+
                             : null}   
->>>>>>> 045e8db775ec11123be199ee3888186ba0f6a525
->>>>>>> 780354e14aff2a8bab1a8ac415aee4d2a55e942b
+
                         </div>
                          : null}  
                     </div>
