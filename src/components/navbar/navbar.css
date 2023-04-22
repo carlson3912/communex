@@ -35,7 +35,7 @@ h2{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 6rem;
+
   border-bottom: 1px solid rgba(165, 165, 165, 0.1);
   height:fit-content;
 }

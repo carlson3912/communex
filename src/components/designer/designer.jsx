@@ -2,7 +2,7 @@ import './designer.css';
 import React, {useState, useEffect, useRef} from 'react'
 import logo from '../../assets/seller1.png';
 import * as THREE from 'three';
-
+import {  Link } from "react-router-dom";
 import waterMark from "../../assets/srswater.png";
 import down from '../../assets/download.png';
 import arrow from '../../assets/upArrow.png';
@@ -85,12 +85,9 @@ export const Designer = () =>{
     function changeRot(direction){
         console.log("Current rot:  "+rots[pointer]);
         var tempRot = rots;
-        if (direction == 1) {
-            tempRot[pointer] = tempRot[pointer] + 10;
-        }
-        else{
-            tempRot[pointer] = tempRot[pointer] - 10;
-        }
+   
+        tempRot[pointer] = 180 * (direction-150)/150;
+        console.log(direction);
         setRots(tempRot);
         setTop(top+1);
     }
@@ -107,6 +104,9 @@ export const Designer = () =>{
         setPos(tempP);
         var tempS = sizes
         tempS.pop(pointer);
+        var tempR = rots;
+        tempR.pop(pointer);
+        setRots(tempR);
         console.log("popped pointer at")
         setSizes(tempS);
         if (pointer != 0){
@@ -162,6 +162,7 @@ export const Designer = () =>{
     }
 
     const handleInputChange = (event) => {
+        //add image
         //doesnt allow more than 4 images to be uploaded to a shirt
         if(images.length > 4){
             return
@@ -181,7 +182,7 @@ export const Designer = () =>{
         setPointer(pointer+1);
         setNumElements(numElements+1);
         var tempPos = pos;
-        tempPos.push([0,0]);
+        tempPos.push([270,320]);
         setPos(tempPos);
         var tempRot = rots
         tempRot.push(0);
@@ -329,10 +330,91 @@ export const Designer = () =>{
 
     }
     return(
-        <div>
+        <div id = "fullDesign">
+            <Link to ="">
+            <div id="rightBackground">
+            
+                <h1>Restart</h1>
+        
+            </div>
+            
+            </Link>
+            {scene==1 ?  
+                 
+            <div id="bottomDesigner1">
+                <button onClick={e=>setScene(2)}>Done Editing</button>
+            </div>
+                    :null}
+            {scene==1 && images.length>0 &&top>1?
+            <div id="rightImage">
+                <div id="imgselect">
+                    <h1>Image Selector</h1>
+                {
+                    images.map((img, index)=>{
+                        if (index == images.length-1 && penI){
+                            return
+                        }
+                        return(
+                            <div id="imgBox" onClick={e=>setPointer(index)}>
+                                <div id="smallImage">
+                                    <img src={img.src} height="70px" />
+                                </div >
+                                <div id="imgNum">
+                                    <h3>Size: {parseInt(sizes[index][0])}, {parseInt(sizes[index][1])}</h3>
+                                    <h3>Coordinates: {pos[index][0]}, {pos[index][1]} </h3>
+                                    <h3>Rotation: {rots[index]}</h3>
+                                    <h1>{index + 1}</h1>
+                                </div>
+                                <br />
+                            </div>
+                            
+                            
+                        )
+                    })
+                }
+            </div>
+           
+            </div>
+             :null}
+              {scene==1?
+              <div id="topOfDesign">
+                        <div id="rdco">
+                            
+                            
+                            <label id="uploadLabel">
+                            <div id="blueUp">
+                            <input type="file" id="cancelUpload" onChange={handleInputChange} accept=".jpeg, .jpg, .png"/>
+                                <img id="downimage"width="50px"height="50px"src={down}/>
+                                <h3 id="downtext">Upload Image</h3>
+                            </div>
+                            </label>
+                            {/* <label id="uploadLabel" onClick={e=>setIPFS(true)}>
+                            <div id="blueUp">
+                                <img id="downimage"width="50px"height="50px"src={down}/>
+                                <h3 id="downtext">By IPFS</h3>
+                            </div>
+                            </label> */}
+                            {/* { ipfs ?
+                                <input type="text" id="ipfsUpload"onChange={handleInputChangeIPFS} /> 
+                            : null} */}
+                            { penI ? 
+                                <div id="pendingImage">
+                                    <ShowHide source={images[pointer].src} /> 
+                                    <div id="pendingImageOption">
+                                        <button onClick={e=>{setTop(top+"1");setPendingImage(false);}}>Use picture</button>
+                                        <button onClick={e=>{deleteImage();setIPFS(false)}}> Cancel</button>
+                                    </div>
+                                </div> 
+                            : null }           
+                        
+                        
+                        </div>
+                    </div>
+                    :null}
+             
             <div id="modelBackground">
-                <br />
-                <h1>Design Studio</h1>
+                
+                
                 {scene==0 ?
              <div id = "scene0">
                 <h1>Color Picker</h1>
@@ -344,75 +426,25 @@ export const Designer = () =>{
             </div>
              : null}
 
-{scene==1 ?
+{scene==1 && images.length > 0 && top > 0?
                 <>
-                <h1>Images</h1>
-                <div id="imgselect">
-                    
-                    {
-                        images.map((img, index)=>{
-                            if (index == images.length-1 && penI){
-                                return
-                            }
-                            return(
-                                <div id="imgBox" onClick={e=>setPointer(index)}>
                 
-                                    <img src={img.src} height="100px"/>
-                                    <div id="imgNum">
-                                        <h3>Size: {parseInt(sizes[index][0])}, {parseInt(sizes[index][1])}</h3>
-                                        <h3>Coordinates: {pos[index][0]}, {pos[index][1]} </h3>
-                                        <h3>Rotation: {rots[index]}</h3>
-                                        <h1>{index + 1}</h1>
-                                    </div>
-                                </div>
-                                
-                            )
-                        })
-                    }
-                </div>
+                <h1>Image Editor</h1>
+                
                 
                 <div id="rightDesign2">
                
                 
-                <div id="rdco" >
+                {/* <div id="rdco" >
                         <button onClick={e=>setScene(1)}>Back</button>
-                    </div>
-                    <div id="rdco">
-                        
-                        <div id="textupload"><h3>Upload Text</h3><input type="text"></input></div>
-                        <label id="uploadLabel">
-                        <div id="blueUp">
-                        <input type="file" id="cancelUpload" onChange={handleInputChange} accept=".jpeg, .jpg, .png"/>
-                            <img id="downimage"width="50px"height="50px"src={down}/>
-                            <h3 id="downtext">Upload Image</h3>
-                        </div>
-                        </label>
-                        <label id="uploadLabel" onClick={e=>setIPFS(true)}>
-                        <div id="blueUp">
-                            <img id="downimage"width="50px"height="50px"src={down}/>
-                            <h3 id="downtext">By IPFS</h3>
-                        </div>
-                        </label>
-                        { ipfs ?
-                            <input type="text" id="ipfsUpload"onChange={handleInputChangeIPFS} /> 
-                        : null}
-                        { penI ? 
-                            <div>
-                                <ShowHide source={images[pointer].src} /> 
-                                <div id="pendingImageOption">
-                                    <button onClick={e=>{setTop(top+"1");setPendingImage(false);}}>Use picture</button>
-                                    <button onClick={e=>{deleteImage();setIPFS(false)}}> Cancel</button>
-                                </div>
-                            </div> 
-                        : null }           
-                       
-                       
-                    </div>
+                    </div> */}
+                   
                    <div id="rdco">
-                       <h2>Position</h2>
+                    <div id="posGroup">
+                       
                        <div id='arrowB'>
                         <div id="arrowS2">
-
+                        {/* up */}
                        <button id="arrowU"onClick={e=>{
                            if (pos.length>0){
                                 var temp = pos
@@ -422,6 +454,7 @@ export const Designer = () =>{
                             }
                             }}><img src={arrow} height="50px"></img></button>
                         </div>
+                        {/* left */}
                         <div id="arrowS2">
                            <div id="arrowS">
                                 <button onClick={e=>{
@@ -432,6 +465,7 @@ export const Designer = () =>{
                                         setTop(top+1);
                                     }
                                     }} id="lbut"><img width="50px"src={arrow}></img></button>
+                                    {/* down */}
                                 <button onClick={e=>{
                                     if (pos.length>0){
                                         var temp = pos
@@ -440,6 +474,7 @@ export const Designer = () =>{
                                         setTop(top+1);
                                     }
                                 }}><img id="dbut"src={arrow} height="50px"></img></button>
+                                {/* right */}
                                 <button onClick={e=>{
                                     if (pos.length>0){
                                         var temp = pos;
@@ -453,17 +488,18 @@ export const Designer = () =>{
                             </div>
                                
                     </div>
+                    </div>
                    </div>
                     <div id="rdco">
-                        <h2>Size</h2>
-                        <button onClick={deleteImage}>Clear</button>
+                      
+                       
                         
                         <button onClick={e=>{
                             if (pos.length>0){
                                 var temp = sizes;
                                 temp[pointer][0] = temp[pointer][0] * 0.8;
                                 temp[pointer][1] = temp[pointer][1] * 0.8;
-                                setSizes(temp);console.log("changedsmall")
+                                setSizes(temp);
                                 setTop(top+1);
                             }
                             }}>Shrink</button>
@@ -472,24 +508,32 @@ export const Designer = () =>{
                                 var temp = sizes;
                                 temp[pointer][0] = temp[pointer][0] * 1.2;
                                 temp[pointer][1] = temp[pointer][1] * 1.2;
-                                setSizes(temp);console.log("changedbig")
+                                setSizes(temp);
                                 setTop(top+1);
                             }
                         }}>Enlarge</button>
                     </div>
-                    <div id="rdco" >
-                    {/* <button onClick={e => saveAsImage()}> Save 3D Image</button> */}
+                    <input type="range" min='1'max="300"onChange={e=>changeRot(e.target.value)}></input >
+                    
+                    <br />
+                    {/* <div id="rdco" >
+                 
                         <button onClick={e => changeRot(1)}> Rotate Right</button>
                         <button onClick={e => changeRot(-1)} > Rotate Left</button>
+                       
+                    </div> */}
+
+                    {/* <div id="rdco" >
+                        <button onClick={deleteImage}>Clear</button>
                         <button onClick={e=>setScene(2)}>Done Editing</button>
-                    </div>
+                    </div> */}
                     </div>
                     
                     </>
                 : null}
 
 {scene==2?
-                    <div id="totalFinishD">
+                   <div>
                         <h2>Complete</h2>
                         <div id="rightDesign2">
                             <h1>Finishing Touches</h1>
@@ -502,9 +546,15 @@ export const Designer = () =>{
                                 }
                             }}> Toggle Water Mark</button>   
                             <button onClick={designSpecs}>Download Report</button>
-                        </div>
+                            {childData ==''?
+                            <div id="checkCamera">
+                                <h2>Press the Camera to Take Your Photo</h2>
+                            </div>
+                            : null}  
+                    </div>
+                    {childData !=''?
                         <div >
-                            <button  id="finishDButton" onClick={e=>{
+                            {/* <button  id="finishDButton" onClick={e=>{
                                     const canvas = document.getElementById("upCanvas");
                                     const image = canvas.toDataURL('image/jpeg');
                                     infura(image);
@@ -514,17 +564,19 @@ export const Designer = () =>{
                                     // link.href=image;
                                     // link.download ="main.jpg"
                                     // link.click();
-                                }}>
-                            <h1>Finish Design</h1>
-                            <p>Upload to IPFS</p></button>
-                            {childData!=''?
+                                }}> */}
+                            {/* <h1>Finish Design</h1>
+                            <p>Upload to IPFS</p> */}
+                            {/* </button> */}
+                           
                                 <div>
                                     <h1>Your image:</h1>
                                     <img src={childData}/>
                                     <button onClick={e=>{submitPage()}}>I'm happy with how it looks</button>
                                 </div>
-                            : null}   
+                            
                         </div>
+                         : null}  
                     </div>
                 : null}    
             </div>
@@ -536,7 +588,7 @@ export const Designer = () =>{
             
            
             
-             <h1>Welcome to the Design Studio</h1>
+            
              
              {/* Hidden 2-D Canvas for designing */}
              <canvas ref={canvas} id="upCanvas" height="1000px" width="1000px" onMouseDown={click} hidden={true}><h1>Hello</h1></canvas>

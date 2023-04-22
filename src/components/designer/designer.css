@@ -21,6 +21,25 @@
 #pendingImageOption{
     display: flex;
 }
+
+#actualPImage{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: black;
+}
+
+#pendingImage{
+    border-color:#b801b828;
+    border-width: 10px;
+    top:50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: black;
+}
 #frontback{
     margin-right:auto;
     margin-left:auto;
@@ -36,10 +55,52 @@
 #rightDesign2{
     display: flex;
     align-items: center;
-    
+    flex-direction: column;
     justify-content: center;
+    height: 100%;
+    
 }
 
+#rightBackground{
+    contain: content;
+    margin-top: 0vh;
+   /* opacity: 50%; */
+
+   position: absolute;
+ 
+   right: 0%;
+   z-index: 3;
+   margin-left: 5%;
+   border-width: 10px;
+   border-color: var(--tertiary-color);
+   border-style: groove;
+   flex-direction: column;
+   display: flex;
+}
+
+#topOfDesign{
+    contain: content;
+
+   /* opacity: 50%; */
+ 
+
+   position: absolute;
+   z-index: 5;
+   
+   
+   right:40%;
+   flex-direction: column;
+   display: flex;
+   margin-top: 0vh;
+   
+   
+   
+}
+#posGroup{
+   
+    height: 100%;
+    width: 100%;
+}
 #colorPickerWords{
     margin-right: 0%;
 }
@@ -51,7 +112,9 @@
 
 #shirtColorPicker3{
     height:150px;
-    width:300px;
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #modelviewdesign{
@@ -69,6 +132,24 @@
     margin-bottom: 40%;
     font-family: kumarOutline;
     font-size: 200%;
+}
+
+#bottomDesigner1{
+    contain: content;
+    bottom:0;
+    
+    right: 0;
+   /* opacity: 50%; */
+  
+    
+   position: absolute;
+   z-index: 2;
+  
+  
+   border-color: var(--tertiary-color);
+  
+   flex-direction: column;
+   display: flex;
 }
 
 #rightDesign{
@@ -98,8 +179,15 @@
 #textupload{
     display: flex;
 }
+
+/* #fullDesign{
+    height: 100%;
+    margin-top: 0;
+    background-color: red; */
+/* } */
 #dd2model{
-    height: 1300px;
+    height: 100vh;
+    width: 100%;
     background: linear-gradient(89.97deg, #be93aa07 1.84%, #746c7428 102.67%);
     background-position: center;
     background-size: 2800px 700px;
@@ -179,41 +267,68 @@
     justify-content: center;
 }
 
-#totalFinishD{
-    align-items: center;
-    justify-content: center;
-    margin-right: 40%;
-    margin-left: 40%;
-    width: 20%;
+#rightImage{
+    contain: content;
+    margin-top: 10vh;
+   /* opacity: 50%; */
+
+   position: absolute;
+ 
+   right: 0%;
+   z-index: 3;
+   margin-left: 5%;
+   border-width: 10px;
+   border-color:rgb(242, 192, 255);
+   border-style: groove;
+   flex-direction: column;
+   display: flex;
 }
 
 #imgselect{
+    contain: content;
     background-color:#d71f8107;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-right: auto;
     margin-left: auto;
     background-color: purple;
     width:fit-content;
+    
 }
 
+#smallImage{
+    width:50%;
+    height:10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
 #modelBackground{
- margin-top: 300px;
+contain: content;
+ margin-top: 20vh;
    /* opacity: 50%; */
+
     width: 20%;
    position: absolute;
    z-index: 2;
-   margin-left: 5%;
+  
    border-width: 15px;
-   border-color:pink;
+   border-color: var(--tertiary-color);
    border-style: groove;
+   
    flex-direction: column;
    display: flex;
    
    
    
 }
-
+#checkCamera{
+    background-color: red;
+    width: 70%;
+}
 #scene0{
     margin-left: auto;
     margin-right: auto;
@@ -233,13 +348,65 @@
 #imgBox{
     background-color: aqua;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     border-color: purple;
     border-radius: 15px;
     border-width: 10px;
-    width:150px;
+    width:100%;
+    
+   
+
 }
-/* 
+
+
+body {
+    background: #000;
+    margin: 100px auto;
+    text-align: center;
+  }
+  
+  /* h1 { */
+    /* color: #fff;
+    margin-bottom: 60px;
+    font-family: helvetica;
+    font-size: 56px;
+    font-style: italic;
+    letter-spacing: 2px;
+  } */
+  
+  .slider {
+    -webkit-appearance: none;
+    width: 50%;
+    height: 15px;
+    background: #000;
+    outline: none;
+    border: 5px solid var(--primary-color);
+    border-radius: 8px;
+  }
+  
+  
+  /* for chrome/safari */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 25px;
+    background: #000;
+    cursor: pointer;
+    border: 5px solid var(--primary-color);
+    border-radius: 4px;
+  }
+  
+  /* for firefox */
+  .slider::-moz-range-thumb {
+    width: 20px;
+    height: 25px;
+    background: #000;
+    cursor: pointer;
+    border: 5px solid var(--primary-color);
+    border-radius: 4px;
+  }
+
 #imgNum{
-    width: 50px;
-} */
+    font-size: 10px;
+} 

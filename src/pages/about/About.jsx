@@ -76,6 +76,13 @@ const About = () => {
         <div id="rightbox">
             <h1 id="connectingt">Our Mission</h1>
               <div id ="connectingc">
+              <canvas
+        id="myCanvas"
+        width="1000"
+        height="500"
+        style={{ border: "1px solid #d3d3d3" }}
+
+      /> 
                 <br/>
                   <h2 id="cwc" >Connecting with Customers</h2>
                   <div id="small1f">
