@@ -270,27 +270,39 @@ for( let i = 0; i < siz; i ++)
    if(pos == 0 && arr.length > 15)
    {
    buttonRow.innerHTML = "<td></td><td></td><td></td><td></td><td><button id ='next'>Next</button></td>"
+   mytable.appendChild(buttonRow);
+   document.getElementById("next").addEventListener("click", function(e){
+    pos += 1;
+    renderering();
+  })
    }
-   else if (arr.length > 15){
+   else if (pos != 0 && arr.length > 15 ){
     buttonRow.innerHTML = "<td><button id ='prev'>Previous</button></td><td></td><td></td><td></td><td><button id ='next'>Next</button></td>"
+    mytable.appendChild(buttonRow);
+    document.getElementById("next").addEventListener("click", function(e){
+      pos += 1;
+      renderering();
+    })
+    {document.getElementById("prev").addEventListener("click", function(e){
+      pos -= 1;
+      renderering();
+    })}
+   }
+   else if (pos != 0) {
+    buttonRow.innerHTML = "<td><button id ='prev'>Previous</button></td><td></td><td></td><td></td>"
+    mytable.appendChild(buttonRow);
+
+    {document.getElementById("prev").addEventListener("click", function(e){
+      pos -= 1;
+      renderering();
+    })}
    }
    
-   mytable.appendChild(buttonRow);
    votes();
-   if(arr.length > 15)
-   document.getElementById("next").addEventListener("click", function(e){
-     pos += 1;
-     renderering();
-   })
-   if(pos != 0)
-   {document.getElementById("prev").addEventListener("click", function(e){
-    pos -= 1;
-    renderering();
-  })}
 }
  const connection = async () => {
   console.log("connection called")
-  const response = await axios.post("http://74.208.187.32/submissions",
+  const response = await axios.post("http://localhost:3500/submissions",
                 JSON.stringify({}),
                JSON.stringify({
                    headers: { 'Content-Type': 'text/plain'},

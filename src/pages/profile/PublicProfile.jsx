@@ -8,7 +8,7 @@ import "./profile.css";
     import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
     import shirtTwo from '../../assets/tshirt_obj.obj';
     import { OBJLoader} from 'three/examples/jsm/loaders/OBJLoader';
-import { getEffectiveConstraintOfTypeParameter } from "typescript";
+import { getEffectiveConstraintOfTypeParameter, transpileModule } from "typescript";
 import { FaTemperatureHigh } from "react-icons/fa";
     const Home = () => {
       const handleSubmit = async () => {
@@ -45,6 +45,8 @@ import { FaTemperatureHigh } from "react-icons/fa";
                     })
                     );
             console.log(response);
+            setValidPage(true);
+
                 await setUsername(response.data.name);
           await setEmail(response.data.email);
           await setWallet(response.data.wallet);
@@ -105,7 +107,7 @@ import { FaTemperatureHigh } from "react-icons/fa";
             animate()
         }
         const myTable2 = document.getElementById("votesOfUser")
-        for (let i = 0; i < response.data.submissions.length; i ++)
+        for (let i = 0; i < response.data.votes.length; i ++)
         {
           let newColumn= document.createElement("tr");
           newColumn.innerHTML = "<h2 id = 'voteList'>" + arr2[i].votes + " $SILK votes placed on " + arr2[i].title +"</h2>" 
@@ -114,6 +116,7 @@ import { FaTemperatureHigh } from "react-icons/fa";
           
         }
         catch (err) {
+          console.log(err);
             if (!err?.response) {
                 setErrMsg('Server not responding. Please try again.');
                 setValidPage(false);

@@ -24,8 +24,12 @@ const Home = () => {
     const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
 
     const wallet = accounts[0]
+<<<<<<< HEAD
+    const response = await axios.post("http://localhost:3500/auth",
+=======
     // const response = await axios.post("http://localhost:3500/auth",
     const response = await axios.post("http://74.208.187.32/auth",
+>>>>>>> 045e8db775ec11123be199ee3888186ba0f6a525
                  JSON.stringify({wallet}),
                 JSON.stringify({
                     headers: { 'Content-Type': 'text/plain'},

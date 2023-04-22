@@ -195,11 +195,6 @@ export const Designer = () =>{
  
 
     function drawRot(ctx,i){
-        // canvas.translate(pos[i][0] +  sizes[i][0] / 2, pos[i][1] + sizes[i][1] / 2);
-        // canvas.rotate(Math.pi/2);
-        // canvas.drawImage(images[i],pos[i][1]/2 * -1 ,pos[i][0]/2*-1, sizes[i][0], sizes[i][1]);
-        // canvas.rotate(-Math.pi/2);
-        // canvas.translate(pos[i][0] + sizes[i][0] / 2 * -1, pos[i][1] + sizes[i][1] / 2 * -1);
         ctx.save();
         ctx.translate(pos[i][0],pos[i][1]);
         ctx.rotate(Math.PI/180 * rots[i]);
@@ -220,6 +215,7 @@ export const Designer = () =>{
             // ctx.drawImage(shirt,70,0,700,800);
             for(var i = 0; i<numElements; i++){
                 drawRot(ctx,i);
+                //ctx.drawImage(images[i],pos[i][0],pos[i][1], sizes[i][0], sizes[i][1]);
                 // ctx.drawImage(images[i],pos[i][0],pos[i][1], sizes[i][0], sizes[i][1]);
             }
             if (water){
@@ -554,7 +550,11 @@ export const Designer = () =>{
                     </div>
                     {childData !=''?
                         <div >
+<<<<<<< HEAD
                             {/* <button  id="finishDButton" onClick={e=>{
+=======
+                            <button href = "/Submit" id="finishDButton" onClick={e=>{
+>>>>>>> 780354e14aff2a8bab1a8ac415aee4d2a55e942b
                                     const canvas = document.getElementById("upCanvas");
                                     const image = canvas.toDataURL('image/jpeg');
                                     infura(image);
@@ -564,17 +564,32 @@ export const Designer = () =>{
                                     // link.href=image;
                                     // link.download ="main.jpg"
                                     // link.click();
+<<<<<<< HEAD
                                 }}> */}
                             {/* <h1>Finish Design</h1>
                             <p>Upload to IPFS</p> */}
                             {/* </button> */}
                            
+=======
+                                }}>
+                            <h1>Finish Design</h1>
+                            <p>Upload to IPFS</p></button>
+<<<<<<< HEAD
+                            <button >{childData}</button>
+=======
+                            {childData!=''?
+>>>>>>> 780354e14aff2a8bab1a8ac415aee4d2a55e942b
                                 <div>
                                     <h1>Your image:</h1>
                                     <img src={childData}/>
                                     <button onClick={e=>{submitPage()}}>I'm happy with how it looks</button>
                                 </div>
+<<<<<<< HEAD
                             
+=======
+                            : null}   
+>>>>>>> 045e8db775ec11123be199ee3888186ba0f6a525
+>>>>>>> 780354e14aff2a8bab1a8ac415aee4d2a55e942b
                         </div>
                          : null}  
                     </div>
