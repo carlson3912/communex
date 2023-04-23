@@ -38,7 +38,7 @@ const Menu = () => (
      }
      const connectionProxy = async () => {connection()}
      const connection = async () => {
-       const response = await axios.post("https://srsbackend.herokuapp.com/auth",
+       const response = await axios.post("/auth",
                     JSON.stringify({wallet}),
                    JSON.stringify({
                        headers: { 'Content-Type': 'text/plain'},

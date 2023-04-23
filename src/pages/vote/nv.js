@@ -43,7 +43,7 @@ function nth_occurrence (string, char, nth) {
 const voteDB = async (wallet, ipfs, votes) => {
   console.log("voteDB called")
   const reg = wallet + '§'  + ipfs +'§' + votes;
-  const response = await axios.post(" https://srsbackend.herokuapp.com/vote",
+  const response = await axios.post("https://srsbackend.herokuapp.com/vote",
                 JSON.stringify(reg),
                 JSON.stringify({
                    headers: { 'Content-Type': 'text/plain'},
@@ -302,7 +302,7 @@ for( let i = 0; i < siz; i ++)
 }
  const connection = async () => {
   console.log("connection called")
-  const response = await axios.post(" https://srsbackend.herokuapp.com/submissions",
+  const response = await axios.post("https://srsbackend.herokuapp.com/submissions",
                 JSON.stringify({}),
                JSON.stringify({
                    headers: { 'Content-Type': 'text/plain'},

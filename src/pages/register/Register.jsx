@@ -68,7 +68,7 @@ const Register = () => {
       const reg = user + "," + email + "," + wallet;
       const rex = JSON.stringify(reg);
       try {
-          const response = await axios.post('https://srsbackend.herokuapp.com/register',
+          const response = await axios.post('/register',
               JSON.stringify(reg),
               JSON.stringify({
                 headers: { 'Content-Type': 'application/json'},
