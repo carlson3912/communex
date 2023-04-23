@@ -158,7 +158,7 @@ const Submit = () => {
       const reg = window.accounts[0] + "§" + title + "§" + description + "§" + secondIpfs + "§" + ipfs + "§" + royalty + "§"  + "1";
       const rex = JSON.stringify(reg);
       try {
-          const response = await axios.post('http://localhost:3500/submit',
+          const response = await axios.post('https://srsbackend.herokuapp.com/submit',
               JSON.stringify(reg),
               JSON.stringify({
                 headers: { 'Content-Type': 'application/json'},

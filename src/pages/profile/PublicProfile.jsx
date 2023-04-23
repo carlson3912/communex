@@ -37,7 +37,7 @@ import { FaTemperatureHigh } from "react-icons/fa";
         console.log(temp[1])   
         const wallet = temp[1].toLowerCase();
         try{
-            const response = await axios.post("http://localhost:3500/auth",
+            const response = await axios.post("https://srsbackend.herokuapp.com/auth",
                      JSON.stringify({wallet}),
                     JSON.stringify({
                         headers: { 'Content-Type': 'text/plain'},

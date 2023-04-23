@@ -24,7 +24,7 @@ const Home = () => {
     const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
 
     const wallet = accounts[0]
-    const response = await axios.post("http://localhost:3500/auth",
+    const response = await axios.post("https://srsbackend.herokuapp.com/auth",
                  JSON.stringify({wallet}),
                 JSON.stringify({
                     headers: { 'Content-Type': 'text/plain'},

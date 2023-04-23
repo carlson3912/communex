@@ -19,7 +19,7 @@ const Home = () => {
     const connection = async () => {
         try{
             console.log("connection called")
-        const response = await axios.post("http://localhost:3500/ss",
+        const response = await axios.post("https://srsbackend.herokuapp.com/ss",
                       JSON.stringify(user+'/'+ipfs),
                      JSON.stringify({
                          headers: { 'Content-Type': 'text/plain'},
